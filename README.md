@@ -1,53 +1,32 @@
-⚡ SYSTEM STATUS: OPERATIONAL
-  
-  <a href="https://your-portfolio-link.vercel.app">
-    <img src="https://img.shields.io/badge/DEPLOYMENT-LIVE_SIGNAL-ff0000?style=for-the-badge&logo=vercel&logoColor=white" />
-  </a>
-  <a href="https://www.linkedin.com/in/parth-sharma-16469a293">
-    <img src="https://img.shields.io/badge/NETWORK-ENCRYPTED_UPLINK-000000?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-</div>
+
+### About
+
+I don't just write code to pass exams; I build ecosystems.
+
+My philosophy is simple: Theory is useless without execution. I built this portfolio because I was tired of standard, boring resume sites. I wanted a space that actually represents who I am—someone who cares about high-performance UI, complex backend logic, and the tiny details that make software feel alive.
+
+Every repository here is a result of me trying to figure out how things work under the hood.
 
 ---
 
-### 🛑 MISSION STATEMENT
+### Quick Info
 
-I don't just write code; I build **ecosystems**. 
-Most students build projects to pass a subject. I build them to solve problems, break them, and then rebuild them better. 
-
-My philosophy is simple: **Theory is useless without execution.** Every repository you see on my profile is a testament to my obsession with understanding *how* things work under the hood—from the pixel-perfect rendering of a React component to the complex decision boundaries of a Neural Network.
-
----
-
-### 📊 OPERATOR SPECS
-
-* **Academic Core:** 9.4 CGPA
-* **Current Mission:** Shipping Code & Breaking Monoliths
-* **Language Protocol:**
-    * English: Native
-    * **German (Deutsch):** A1 [Loading...] (Target: Masters in Germany 🇩🇪)
-* **Base of Operations:** Navi Mumbai, IN
+* **Focus:** Full Stack Architecture & AI Systems
+* **Current Status:** Shipping code and breaking monoliths
+* **Academic:** 9.4 CGPA
+* **Languages:** English, Hindi, German (A1)
+* **Location:** Navi Mumbai, IN
 
 ---
 
-### ⚔️ WHY THIS PORTFOLIO?
+### The Portfolio
 
-I was tired of the same boring, white-background portfolios that look like resume PDFs. 
-I wanted a digital space that represents **who I actually am**:
-* A developer who loves **Cyberpunk aesthetics**.
-* A fan of **High-Tech UI** (inspired by Netflix & Sci-Fi interfaces).
-* Someone who pays attention to the **micro-interactions** (animations, sounds, flow).
-
-This isn't just a showcase; it's a playground where I experiment with the limits of Frontend Engineering.
-
----
-
-### 🔗 ACCESS TERMINAL
+This isn't a static template. It's a custom-built React application designed to feel like a high-tech interface. It represents my interest in Cyberpunk aesthetics and modern frontend engineering.
 
 <div align="center">
-  <h3>👇 CLICK TO ENTER THE MAINFRAME 👇</h3>
+  <h3>Visit the Mainframe</h3>
   
-  [![Portfolio](https://img.shields.io/badge/VIEW_PORTFOLIO-FF0000?style=for-the-badge&logo=react&logoColor=white)](https://your-portfolio-link.vercel.app)
-  
-  <p><i>"The code is just the beginning."</i></p>
+  <a href="https://your-portfolio-link.vercel.app">
+    <img src="https://img.shields.io/badge/Live_Site-FF0000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Site" />
+  </a>
 </div>
