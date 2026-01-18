@@ -16,8 +16,8 @@ import "./App.css";
 // --- Image Imports ---
 import iplImg from "./components/ipl.jpg"; 
 import receiptImg from "./components/receipt.webp";
-import voteImg from "./components/vote.jpg";   // <--- NEW: Voting App
-import drImg from "./components/dr.jpeg";      // <--- NEW: Medical App
+import voteImg from "./components/vote.jpg";   
+import drImg from "./components/dr.jpeg";      
 
 import pythonImg from "./components/python.webp";
 import javaImg from "./components/java.png";
@@ -67,14 +67,14 @@ function App() {
 
   const infiniteSkills = [...skillsData, ...skillsData];
 
- if (!hasEntered) {
+  if (!hasEntered) {
     return <EntryPage onEnter={() => setHasEntered(true)} />;
   }
 
   return (
     <Router>
       <ScrollToTop />
-      {/* ADD THIS CLASS vvv */}
+      {/* FADE IN ANIMATION */}
       <div className="app-master-wrapper fade-in-active">
         <Header />
         <div className="container">
@@ -139,8 +139,9 @@ function App() {
                               <span className="holo-tech">MERN Stack • OCR • AI</span>
                               <h3 className="holo-title">Smart Receipt Coach</h3>
                               <div className="holo-actions">
-                                <a href="#" className="holo-btn primary">Live Demo</a>
-                                <a href="#" className="holo-btn secondary">Code</a>
+                                {/* FIX: Replaced '#' with valid repo link to pass Vercel build */}
+                                <a href="https://github.com/Parths-29/Web-Engineering-Archives" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Source</a>
+                                <a href="https://github.com/Parths-29/Web-Engineering-Archives" target="_blank" rel="noopener noreferrer" className="holo-btn secondary">Code</a>
                               </div>
                             </div>
                           </div>
@@ -185,7 +186,7 @@ function App() {
                           </div>
                         </div>
 
-                        {/* In-Dev 3: AI Visual Proctor (Moved from Deployed) */}
+                        {/* In-Dev 3: AI Visual Proctor */}
                         <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }}>
                           <div className="holo-img-wrapper">
                             <img src={pythonImg} alt="AI Proctor" className="holo-img" />
