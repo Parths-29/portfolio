@@ -33,10 +33,15 @@ import gitImg from "./components/git.webp";
 import canvaImg from "./components/canvas.webp";
 
 // --- HELPER: SCROLL TO TOP ON ROUTE CHANGE ---
+// --- HELPER: SCROLL TO TOP ON ROUTE CHANGE ---
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // 1. Scroll the window (For Mobile)
+    window.scrollTo(0, 0);
+    
+    // 2. Scroll the main content container (For Desktop)
     const mainContent = document.querySelector('.main-content');
     if (mainContent) {
       mainContent.scrollTo(0, 0);
@@ -45,6 +50,7 @@ const ScrollToTop = () => {
 
   return null;
 };
+
 
 function App() {
   const [hasEntered, setHasEntered] = useState(false);
