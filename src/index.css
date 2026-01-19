@@ -3635,18 +3635,16 @@ body {
     100% { opacity: 1; transform: scale(1); filter: blur(0); }
 }
 
-/* --- 📱 MASTER MOBILE SUIT (Paste at the very bottom of index.css) --- */
+/* --- 📱 MASTER MOBILE SUIT V2 (Paste at bottom of index.css) --- */
 
 @media (max-width: 768px) {
 
-    /* =========================================
-       1. CORE SYSTEM & SCROLLING UNLOCK
-       ========================================= */
+    /* 1. CORE SYSTEM & SCROLLING */
     body, html, #root {
-        overflow-y: auto !important; /* Enable scrolling */
-        height: auto !important;     /* Let the page grow tall */
-        position: static !important; /* Stop locking the screen */
-        overscroll-behavior-y: none; /* Prevents "pull to refresh" bounce on some browsers */
+        overflow-y: auto !important;
+        height: auto !important;
+        position: static !important;
+        overscroll-behavior-y: none;
     }
 
     .app-master-wrapper, .container {
@@ -3655,9 +3653,7 @@ body {
         display: block !important;
     }
 
-    /* =========================================
-       2. CYBERPUNK BOTTOM NAVIGATION
-       ========================================= */
+    /* 2. BOTTOM NAV BAR (Cyberpunk Glow) */
     .sidebar {
         position: fixed !important;
         bottom: 0 !important;
@@ -3665,14 +3661,11 @@ body {
         right: 0 !important;
         width: 100% !important;
         height: 70px !important;
-        background: rgba(0, 0, 0, 0.95) !important; /* Slight transparency */
-        backdrop-filter: blur(10px) !important;     /* Blur effect behind bar */
+        background: rgba(0, 0, 0, 0.95) !important;
+        backdrop-filter: blur(10px) !important;
         border-top: 1px solid #333 !important;
-        /* CRAZY ADDITION: Red Neon Glow coming from the bottom */
         box-shadow: 0 -5px 20px rgba(255, 0, 0, 0.15) !important;
         z-index: 99999 !important;
-        
-        /* Flex Layout */
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
@@ -3686,121 +3679,84 @@ body {
         display: none !important;
     }
 
-    /* Fix Icon Alignment */
-    .nav-group, .nav-section {
-        display: flex !important;
-        flex-direction: row !important;
-        width: auto !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
     /* Icon Buttons */
     .nav-item {
         background: transparent !important;
         border: none !important;
         padding: 10px !important;
         margin: 0 !important;
-        transition: transform 0.1s ease; /* Smooth click animation */
+        transition: transform 0.1s ease;
     }
+    .nav-item:active { transform: scale(0.9); }
 
-    /* CRAZY ADDITION: Icon "Pop" when tapped */
-    .nav-item:active {
-        transform: scale(0.9);
-    }
-
-    .nav-icon img {
-        width: 26px !important;
-        height: 26px !important;
-    }
-
-    /* Active State (Red Glow Dot) */
+    .nav-icon img { width: 26px !important; height: 26px !important; }
+    
     .nav-item.active .nav-icon img {
         filter: drop-shadow(0 0 8px #ff0000);
         transform: translateY(-5px);
     }
 
-    /* =========================================
-       3. HEADER & SEARCH BAR
-       ========================================= */
+    /* 3. HEADER & SEARCH */
     .header-content-wrapper {
         padding: 10px 15px !important;
         justify-content: space-between !important;
     }
-    
-    .header-clock {
-        display: none !important; /* Hide clock */
-    }
+    .header-clock, .logo-text { display: none !important; }
+    .search-container { max-width: 180px !important; margin-right: 10px !important; }
 
-    .logo-text {
-        display: none !important; /* Hide "Portfolio" text */
-    }
-    
-    .search-container {
-        max-width: 180px !important;
-        margin-right: 10px !important;
-    }
-
-    /* =========================================
-       4. CONTENT LAYOUT & PADDING
-       ========================================= */
+    /* 4. MAIN CONTENT AREA */
     .main-content {
         height: auto !important;
         overflow: visible !important;
-        /* Padding Bottom = 100px to clear the Bottom Nav Bar */
-        padding: 20px 15px 100px 15px !important; 
+        padding: 20px 15px 100px 15px !important; /* Space for bottom nav */
         flex: none !important;
+        width: 100% !important;
     }
 
-    /* =========================================
-       5. UNIVERSAL CARD & GRID FIXES
-       ========================================= */
-    /* Force all grids to be 1 column */
-    .holo-grid, .bento-grid, .cards-grid, .explore-grid, .education-grid, .projects-grid {
+    /* 5. UNIVERSAL CARD STACKING (Fixes Connect Page) */
+    .connect-grid, .social-grid, .uplink-grid, .links-grid, .links-container {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 20px !important;
+    }
+
+    .holo-grid, .bento-grid, .explore-grid, .projects-grid {
         grid-template-columns: 1fr !important;
         gap: 20px !important;
     }
 
-    /* CRAZY ADDITION: Tactile Feedback on Cards */
-    .holo-card:active, .project-card:active, .bento-card:active {
-        transform: scale(0.98) !important;
-        transition: transform 0.1s ease;
-    }
-
-    /* =========================================
-       6. CONNECT / SOCIAL PAGE (Vertical Stack)
-       ========================================= */
-    .connect-grid, 
-    .social-grid, 
-    .uplink-grid, 
-    .links-grid,
-    .links-container {
-        display: flex !important;
-        flex-direction: column !important; /* STACK VERTICALLY */
-        width: 100% !important;
-        gap: 20px !important;
-    }
-
-    /* Force full width on these cards */
     .connect-card, .social-card, .uplink-card, .holo-card {
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
-        flex: none !important;
     }
 
-    /* =========================================
-       7. ABOUT ME PAGE
-       ========================================= */
+    /* 6. ABOUT ME PAGE FIX (The New Part) */
     .about-split-layout {
+        display: flex !important;
         flex-direction: column !important;
+        width: 100% !important;
     }
+
     .holo-id-card {
         width: 100% !important;
         margin-bottom: 30px;
     }
+
+    /* Fix the text cutting off */
     .mission-control {
-        border-left: none !important;
-        padding-left: 0 !important;
+        width: 100% !important;
+        padding: 0 0 0 15px !important; /* Add padding left so text doesn't touch the red line */
+        margin: 0 !important;
+        border-left: 2px solid #ff0000 !important; /* Keep the cool red line */
+        box-sizing: border-box !important; /* Ensures padding doesn't break width */
+    }
+
+    .mission-control p {
+        width: 100% !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        word-wrap: break-word !important; /* Prevent long words from breaking layout */
     }
 }
