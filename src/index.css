@@ -3706,15 +3706,21 @@ body {
         font-size: 1.8rem !important; /* Smaller text */
     }
 }
-/* --- 📱 MOBILE APP MODE OVERRIDE (Paste at the bottom of index.css) --- */
+/* --- 📱 ULTIMATE MOBILE APP MODE (Paste at bottom of index.css) --- */
 
 @media (max-width: 768px) {
 
-    /* 1. RESET LAYOUT (Stack Vertically) */
-    .container {
-        display: block !important;
+    /* 1. CRITICAL: FORCE SCROLLING (The Fix) */
+    body, html, #root {
+        overflow-y: auto !important; /* Enable scrolling */
+        height: auto !important;     /* Let the page grow tall */
+        position: static !important; /* Stop locking the screen */
+    }
+
+    .app-master-wrapper, .container {
         height: auto !important;
         overflow: visible !important;
+        display: block !important;
     }
 
     /* 2. TRANSFORM SIDEBAR -> BOTTOM NAV BAR */
@@ -3726,97 +3732,100 @@ body {
         height: 70px !important;
         background: #000 !important;
         border-right: none !important;
-        border-top: 1px solid #333 !important;
+        border-top: 2px solid #333 !important;
         z-index: 9999 !important;
         
-        /* Layout Items Horizontally */
+        /* Flex Layout */
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: space-around !important;
         padding: 0 !important;
-        overflow: hidden !important;
+        margin: 0 !important;
     }
 
-    /* Hide the Desktop "Hamburger" Toggle */
-    .sidebar-toggle-area {
+    /* Hide Desktop Elements */
+    .sidebar-toggle-area, .section-title, .nav-text {
         display: none !important;
     }
 
-    /* Adjust the Inner Group to spread icons */
-    .nav-group {
+    /* Fix Icon Groups */
+    .nav-group, .nav-section {
         display: flex !important;
         flex-direction: row !important;
-        width: 100% !important;
-        justify-content: space-evenly !important;
-        align-items: center !important;
-    }
-
-    /* Hide the Section Titles (Portfolio, Reach Out) */
-    .section-title {
-        display: none !important;
-    }
-
-    /* NAV ITEMS (Icons Only) */
-    .nav-item {
-        flex-direction: column !important;
-        padding: 5px !important;
+        width: auto !important;
+        padding: 0 !important;
         margin: 0 !important;
+    }
+
+    /* Icons */
+    .nav-item {
         background: transparent !important;
         border: none !important;
-        justify-content: center !important;
-        height: 100% !important;
+        box-shadow: none !important;
+        padding: 10px !important;
+        margin: 0 !important;
     }
 
-    /* Hide Text Labels to save space */
-    .nav-text {
-        display: none !important; 
-    }
-
-    /* Center the Icons */
     .nav-icon {
         margin: 0 !important;
-        display: flex !important;
-        justify-content: center !important;
     }
-
+    
     .nav-icon img {
-        width: 24px !important;
-        height: 24px !important;
+        width: 28px !important; /* Bigger icons for thumbs */
+        height: 28px !important;
     }
 
-    /* 3. MAIN CONTENT (Add padding so bottom bar doesn't cover text) */
+    /* Active State (Glow Dot) */
+    .nav-item.active {
+        background: transparent !important;
+    }
+    .nav-item.active .nav-icon img {
+        filter: drop-shadow(0 0 8px #ff0000);
+        transform: translateY(-5px);
+    }
+
+    /* 3. MAIN CONTENT ADJUSTMENTS */
     .main-content {
-        padding-bottom: 100px !important; /* Space for the bottom bar */
-        width: 100% !important;
-        overflow-x: hidden !important;
+        height: auto !important;
+        overflow: visible !important; /* Let content expand */
+        padding: 20px 15px 100px 15px !important; /* Bottom padding for Nav Bar */
+        flex: none !important;
     }
 
     /* 4. HEADER FIXES */
     .header-content-wrapper {
         padding: 10px 15px !important;
-        justify-content: space-between !important;
     }
-
-    /* Shrink the Search Bar */
-    .search-container {
-        max-width: 180px !important; 
-        margin-right: 10px !important;
-    }
-
-    /* Hide Clock on Mobile (Too wide) */
     .header-clock {
         display: none !important;
     }
+    .search-container {
+        max-width: 160px !important;
+    }
 
-    /* Profile Icon Adjustments */
-    .header-right-panel {
-        gap: 10px !important;
-        margin-left: 0 !important;
+    /* 5. GRID & CARD FIXES */
+    .holo-grid, .bento-grid, .cards-grid, .explore-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .holo-card, .bento-card, .project-card, .uplink-card {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 250px !important;
     }
     
-    /* 5. EXPLORE GRID FIX (1 Column) */
-    .explore-grid, .holo-grid {
-        grid-template-columns: 1fr !important;
+    /* 6. ABOUT ME PAGE FIX */
+    .about-split-layout {
+        flex-direction: column !important;
+    }
+    .holo-id-card {
+        width: 100% !important;
+        margin-bottom: 30px;
+    }
+    .mission-control {
+        border-left: none !important;
+        padding-left: 0 !important;
     }
 }
