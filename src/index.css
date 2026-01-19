@@ -3653,7 +3653,22 @@ body {
     .logo-text {
         display: none; /* Hide word "Portfolio" on tiny screens, keep icon */
     }
-    
+    /* --- FIX FOR CONNECT PAGE CARDS --- */
+    /* This forces the row of cards to break into a vertical column */
+    .connect-grid, .social-grid, .links-container {
+        display: flex !important;
+        flex-direction: column !important; /* Stack top-to-bottom */
+        flex-wrap: wrap !important;        /* Allow wrapping */
+        width: 100% !important;
+        gap: 20px !important;
+    }
+
+    /* Ensure the cards take full width */
+    .connect-card, .social-card, .uplink-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-right: 0 !important;
+    }
     /* 2. Grid Fixes: Force 1 Column on Mobile */
     .holo-grid, 
     .bento-grid, 
