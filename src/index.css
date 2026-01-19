@@ -3636,7 +3636,7 @@ body {
 }
 
 /* =================================================================
-   PART 1: ANIMATED ENTRY PAGE STYLES (Matrix/Boot Sequence)
+   PART 1: ANIMATED ENTRY PAGE STYLES (RED EDITION)
    ================================================================= */
 
 /* Main Container */
@@ -3645,7 +3645,7 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* KEEPS IT CENTERED */
     color: #fff;
     font-family: 'Courier New', Courier, monospace;
     overflow: hidden;
@@ -3655,24 +3655,36 @@ body {
 .boot-sequence {
     text-align: center;
     animation: fadeIn 0.5s ease-in;
+    width: 100%;
 }
-.boot-text { margin-top: 20px; color: #0f0; letter-spacing: 2px; font-size: 1.1rem; }
+/* CHANGED TO RED */
+.boot-text { 
+    margin-top: 20px; 
+    color: #ff0000; 
+    letter-spacing: 2px; 
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px #ff0000; 
+}
+
 .boot-bar-container {
     width: 200px; height: 4px; background: #333; margin: 15px auto;
 }
+/* CHANGED TO RED */
 .boot-progress-fill {
-    height: 100%; background: #0f0; width: 0%;
+    height: 100%; background: #ff0000; width: 0%;
     animation: loadBar 2.5s linear forwards;
+    box-shadow: 0 0 10px #ff0000;
 }
 
 /* Profile Selection */
-.profile-selection-container { text-align: center; }
-.tech-title { letter-spacing: 5px; margin-bottom: 40px; font-size: 2rem; }
+.profile-selection-container { text-align: center; width: 100%; }
+.tech-title { letter-spacing: 5px; margin-bottom: 40px; font-size: 2rem; color: #fff; }
 
 .tech-grid {
     display: flex;
     gap: 40px;
     justify-content: center;
+    align-items: center;
 }
 
 .tech-profile-card {
@@ -3681,10 +3693,14 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 0, 0, 0.05); /* Slight red tint */
     min-width: 200px;
 }
-.tech-profile-card:hover { border-color: #f00; transform: scale(1.05); box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+.tech-profile-card:hover { 
+    border-color: #ff0000; 
+    transform: scale(1.05); 
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); 
+}
 
 .tech-img-box {
     width: 120px; height: 120px; overflow: hidden;
@@ -3695,16 +3711,30 @@ body {
 .guest-icon { font-size: 50px; color: #555; }
 
 .tech-badge {
-    background: #f00; color: #000; font-weight: bold;
+    background: #ff0000; color: #000; font-weight: bold;
     padding: 5px 10px; display: inline-block; font-size: 0.8rem; margin-top: 10px; letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
-.tech-badge.gray { background: #555; color: #fff; }
+.tech-badge.gray { background: #555; color: #fff; box-shadow: none; }
 
 /* Unlock Sequence */
-.unlock-sequence { text-align: center; }
-.access-title { color: #0f0; font-size: 2.5rem; animation: blink 0.5s infinite; margin-bottom: 20px; }
-.console-log { text-align: left; background: rgba(0,255,0,0.05); padding: 20px; border-left: 2px solid #0f0; }
-.log-line { color: #0f0; opacity: 0; animation: typeLine 0.5s forwards; margin: 8px 0; font-size: 0.9rem; }
+.unlock-sequence { text-align: center; width: 100%; max-width: 600px; }
+/* CHANGED TO RED */
+.access-title { 
+    color: #ff0000; 
+    font-size: 2.5rem; 
+    animation: blink 0.5s infinite; 
+    margin-bottom: 20px; 
+    text-shadow: 0 0 10px #ff0000;
+}
+/* CHANGED TO RED */
+.console-log { 
+    text-align: left; 
+    background: rgba(255, 0, 0, 0.05); 
+    padding: 20px; 
+    border-left: 2px solid #ff0000; 
+}
+.log-line { color: #ff0000; opacity: 0; animation: typeLine 0.5s forwards; margin: 8px 0; font-size: 0.9rem; }
 .delay-1 { animation-delay: 0.5s; }
 .delay-2 { animation-delay: 1.2s; }
 .delay-3 { animation-delay: 2.0s; color: #fff; text-shadow: 0 0 5px #fff; }
@@ -3722,24 +3752,29 @@ body {
 
 @media (max-width: 768px) {
 
-    /* 1. CORE SYSTEM & SCROLLING */
+    /* 1. CORE SYSTEM */
     body, html, #root {
         overflow-y: auto !important;
         height: auto !important;
         position: static !important;
         overscroll-behavior-y: none;
     }
-    .app-master-wrapper, .container, .entry-container {
+    .app-master-wrapper, .container {
         height: auto !important;
         overflow: visible !important;
         display: block !important;
     }
+    
+    /* 2. ENTRY PAGE FIX (Vertical Stack & Centered) */
     .entry-container {
-        padding: 50px 20px !important;
+        /* This ensures it stays centered vertically like before */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
         min-height: 100vh !important;
+        padding: 20px !important;
     }
 
-    /* 2. ENTRY PAGE FIX (Vertical Stack) */
     .tech-grid {
         flex-direction: column !important; /* Forces stack */
         gap: 30px !important;
@@ -3751,7 +3786,7 @@ body {
         max-width: 300px !important;
     }
 
-    /* 3. BOTTOM NAV BAR (Cyberpunk Glow + Flat Layout) */
+    /* 3. BOTTOM NAV BAR */
     .sidebar {
         position: fixed !important;
         bottom: 0 !important;
@@ -3768,22 +3803,14 @@ body {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        justify-content: space-evenly !important; /* Even spacing */
+        justify-content: space-evenly !important;
         padding: 0 10px !important;
         margin: 0 !important;
     }
 
-    /* UNGROUP ICONS (The "Missing Home Icon" Fix) */
-    .nav-group, .nav-section, div.sidebar > div { 
-        display: contents !important; 
-    }
-    
-    /* Hide Desktop Elements */
-    .sidebar-toggle-area, .section-title, .nav-text, .logo, .sidebar-header { 
-        display: none !important; 
-    }
+    .nav-group, .nav-section, div.sidebar > div { display: contents !important; }
+    .sidebar-toggle-area, .section-title, .nav-text, .logo, .sidebar-header { display: none !important; }
 
-    /* Icons */
     .nav-item {
         background: transparent !important;
         border: none !important;
@@ -3798,7 +3825,7 @@ body {
         transform: translateY(-5px);
     }
 
-    /* 4. MAIN CONTENT & HEADER */
+    /* 4. MAIN CONTENT & GRIDS */
     .main-content {
         height: auto !important;
         padding: 20px 15px 100px 15px !important;
@@ -3812,7 +3839,6 @@ body {
     .header-clock, .logo-text { display: none !important; }
     .search-container { max-width: 180px !important; margin-right: 10px !important; }
 
-    /* 5. UNIVERSAL GRIDS (1 Column) */
     .connect-grid, .social-grid, .uplink-grid, .links-grid, .links-container, .about-split-layout {
         display: flex !important;
         flex-direction: column !important;
@@ -3829,7 +3855,7 @@ body {
         margin: 0 !important;
     }
 
-    /* 6. ABOUT ME TEXT FIX (Safe Padding) */
+    /* 5. ABOUT ME TEXT FIX */
     .mission-control {
         width: 100% !important;
         padding: 0 0 0 15px !important;
