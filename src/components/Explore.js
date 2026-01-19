@@ -23,16 +23,7 @@ function Explore() {
       link: "https://github.com/Parths-29/Web-Engineering-Archives"
     },
     
-    {
-      id: "ai",
-      title: "AI & Deep Learning",
-      subtitle: "Neural Networks • NLP",
-      img: aiImg,
-      size: "large-square", // Big box
-      desc: "Training models that think and adapt.",
-      // LINK: Points to your AI Lab
-      link: "https://github.com/Parths-29/AI-Neural-Systems"
-    },
+    
     {
       id: "frontend",
       title: "Frontend Engineering",
@@ -42,6 +33,16 @@ function Explore() {
       desc: "Crafting pixel-perfect, immersive UI.",
       // LINK: Points to Web Archive (Frontend section)
       link: "https://github.com/Parths-29/Web-Engineering-Archives"
+    },
+    {
+      id: "ai",
+      title: "AI & Deep Learning",
+      subtitle: "Neural Networks • NLP",
+      img: aiImg,
+      size: "large-square", // Big box
+      desc: "Training models that think and adapt.",
+      // LINK: Points to your AI Lab
+      link: "https://github.com/Parths-29/AI-Neural-Systems"
     },
     {
       id: "mlops",
