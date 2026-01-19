@@ -1858,7 +1858,8 @@ body {
 
 .holo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    /* Changed 350px -> 280px to fit on phones */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 30px;
     padding: 20px 0;
 }
@@ -3632,4 +3633,76 @@ body {
 @keyframes cinemaFadeIn {
     0% { opacity: 0; transform: scale(0.98); filter: blur(5px); }
     100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+/* --- MOBILE RESPONSIVENESS PATCH --- */
+
+@media (max-width: 768px) {
+    
+    /* 1. Header Fixes: Hide Clock & Adjust Search to prevent overlap */
+    .header-clock {
+        display: none !important; /* Hide clock on phones to save space */
+    }
+    .header-content-wrapper {
+        padding: 10px 15px !important;
+        gap: 10px;
+    }
+    .logo {
+        margin-right: 10px !important;
+    }
+    .logo-text {
+        display: none; /* Hide word "Portfolio" on tiny screens, keep icon */
+    }
+    
+    /* 2. Grid Fixes: Force 1 Column on Mobile */
+    .holo-grid, 
+    .bento-grid, 
+    .cards-grid, 
+    .explore-grid,
+    .education-grid,
+    .projects-grid,
+    .council-grid {
+        grid-template-columns: 1fr !important; /* Force single column */
+        gap: 20px !important;
+    }
+
+    /* 3. Card Sizing: Allow cards to shrink to fit phone width */
+    .holo-card, 
+    .bento-card, 
+    .project-card, 
+    .education-card,
+    .uplink-card {
+        width: 100% !important;
+        min-width: 0 !important; /* Prevents card from forcing scroll */
+        height: auto !important; /* Let height adjust to text */
+    }
+
+    /* 4. About Me Page Fixes */
+    .about-split-layout {
+        flex-direction: column !important; /* Stack ID card on top of text */
+    }
+    .holo-id-card {
+        flex: 1;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .mission-control {
+        width: 100% !important;
+        min-width: 0 !important;
+        padding-left: 0 !important;
+        border-left: none !important; /* Remove border line on mobile */
+    }
+
+    /* 5. Main Content Padding Fix */
+    .main-content {
+        padding: 20px 15px !important; /* Less padding on mobile */
+    }
+    
+    /* 6. Section Headers */
+    .section-header, .connect-header {
+        padding: 15px !important; /* Smaller headers */
+    }
+    .section-header h2, .connect-header h2 {
+        font-size: 1.8rem !important; /* Smaller text */
+    }
 }
