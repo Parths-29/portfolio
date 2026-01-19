@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import profileImg from "../img1.jpg"; // Your profile image
+import profileImg from "./img1.jpg"; // Ensure this matches your file name
 
 function EntryPage({ onEnter }) {
   const [booting, setBooting] = useState(true);
   const [unlocking, setUnlocking] = useState(false);
 
-  // 1. THE COOL BOOT SEQUENCE (Restored)
+  // 1. THE COOL BOOT SEQUENCE
   useEffect(() => {
     const timer = setTimeout(() => setBooting(false), 2500); // 2.5s boot time
     return () => clearTimeout(timer);
@@ -24,7 +24,7 @@ function EntryPage({ onEnter }) {
   return (
     <div className="entry-container">
       
-      {/* STAGE 1: THE COOL BOOT LOADER (Restored) */}
+      {/* STAGE 1: THE COOL BOOT LOADER */}
       {booting && (
         <div className="boot-sequence">
            <div className="tech-loader">
@@ -72,7 +72,7 @@ function EntryPage({ onEnter }) {
         </div>
       )}
 
-      {/* STAGE 3: THE "ACCESS GRANTED" SEQUENCE (Restored) */}
+      {/* STAGE 3: THE "ACCESS GRANTED" SEQUENCE */}
       {unlocking && (
         <div className="unlock-sequence">
            <h1 className="access-title">ACCESS GRANTED</h1>

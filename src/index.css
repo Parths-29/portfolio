@@ -3635,7 +3635,90 @@ body {
     100% { opacity: 1; transform: scale(1); filter: blur(0); }
 }
 
-/* --- 📱 MASTER MOBILE SUIT V2 (Paste at bottom of index.css) --- */
+/* =================================================================
+   PART 1: ANIMATED ENTRY PAGE STYLES (Matrix/Boot Sequence)
+   ================================================================= */
+
+/* Main Container */
+.entry-container {
+    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+}
+
+/* Boot Sequence */
+.boot-sequence {
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+.boot-text { margin-top: 20px; color: #0f0; letter-spacing: 2px; font-size: 1.1rem; }
+.boot-bar-container {
+    width: 200px; height: 4px; background: #333; margin: 15px auto;
+}
+.boot-progress-fill {
+    height: 100%; background: #0f0; width: 0%;
+    animation: loadBar 2.5s linear forwards;
+}
+
+/* Profile Selection */
+.profile-selection-container { text-align: center; }
+.tech-title { letter-spacing: 5px; margin-bottom: 40px; font-size: 2rem; }
+
+.tech-grid {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.tech-profile-card {
+    border: 1px solid #333;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    min-width: 200px;
+}
+.tech-profile-card:hover { border-color: #f00; transform: scale(1.05); box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+
+.tech-img-box {
+    width: 120px; height: 120px; overflow: hidden;
+    border-radius: 50%; border: 2px solid #555; margin: 0 auto 15px;
+}
+.tech-avatar { width: 100%; height: 100%; object-fit: cover; }
+.guest-box { display: flex; align-items: center; justify-content: center; background: #111; }
+.guest-icon { font-size: 50px; color: #555; }
+
+.tech-badge {
+    background: #f00; color: #000; font-weight: bold;
+    padding: 5px 10px; display: inline-block; font-size: 0.8rem; margin-top: 10px; letter-spacing: 1px;
+}
+.tech-badge.gray { background: #555; color: #fff; }
+
+/* Unlock Sequence */
+.unlock-sequence { text-align: center; }
+.access-title { color: #0f0; font-size: 2.5rem; animation: blink 0.5s infinite; margin-bottom: 20px; }
+.console-log { text-align: left; background: rgba(0,255,0,0.05); padding: 20px; border-left: 2px solid #0f0; }
+.log-line { color: #0f0; opacity: 0; animation: typeLine 0.5s forwards; margin: 8px 0; font-size: 0.9rem; }
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1.2s; }
+.delay-3 { animation-delay: 2.0s; color: #fff; text-shadow: 0 0 5px #fff; }
+
+/* Keyframe Animations */
+@keyframes loadBar { to { width: 100%; } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes typeLine { to { opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+/* =================================================================
+   PART 2: MASTER MOBILE SUIT (Responsiveness & Mobile App Mode)
+   ================================================================= */
 
 @media (max-width: 768px) {
 
@@ -3646,14 +3729,29 @@ body {
         position: static !important;
         overscroll-behavior-y: none;
     }
-
-    .app-master-wrapper, .container {
+    .app-master-wrapper, .container, .entry-container {
         height: auto !important;
         overflow: visible !important;
         display: block !important;
     }
+    .entry-container {
+        padding: 50px 20px !important;
+        min-height: 100vh !important;
+    }
 
-    /* 2. BOTTOM NAV BAR (Cyberpunk Glow) */
+    /* 2. ENTRY PAGE FIX (Vertical Stack) */
+    .tech-grid {
+        flex-direction: column !important; /* Forces stack */
+        gap: 30px !important;
+        width: 100% !important;
+        align-items: center !important;
+    }
+    .tech-profile-card {
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+
+    /* 3. BOTTOM NAV BAR (Cyberpunk Glow + Flat Layout) */
     .sidebar {
         position: fixed !important;
         bottom: 0 !important;
@@ -3666,37 +3764,47 @@ body {
         border-top: 1px solid #333 !important;
         box-shadow: 0 -5px 20px rgba(255, 0, 0, 0.15) !important;
         z-index: 99999 !important;
+        
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        justify-content: space-around !important;
-        padding: 0 !important;
+        justify-content: space-evenly !important; /* Even spacing */
+        padding: 0 10px !important;
         margin: 0 !important;
     }
 
-    /* Hide Desktop Sidebar Elements */
-    .sidebar-toggle-area, .section-title, .nav-text {
-        display: none !important;
+    /* UNGROUP ICONS (The "Missing Home Icon" Fix) */
+    .nav-group, .nav-section, div.sidebar > div { 
+        display: contents !important; 
+    }
+    
+    /* Hide Desktop Elements */
+    .sidebar-toggle-area, .section-title, .nav-text, .logo, .sidebar-header { 
+        display: none !important; 
     }
 
-    /* Icon Buttons */
+    /* Icons */
     .nav-item {
         background: transparent !important;
         border: none !important;
         padding: 10px !important;
-        margin: 0 !important;
-        transition: transform 0.1s ease;
+        width: auto !important;
+        flex: none !important;
     }
     .nav-item:active { transform: scale(0.9); }
-
-    .nav-icon img { width: 26px !important; height: 26px !important; }
-    
+    .nav-icon img { width: 28px !important; height: 28px !important; }
     .nav-item.active .nav-icon img {
         filter: drop-shadow(0 0 8px #ff0000);
         transform: translateY(-5px);
     }
 
-    /* 3. HEADER & SEARCH */
+    /* 4. MAIN CONTENT & HEADER */
+    .main-content {
+        height: auto !important;
+        padding: 20px 15px 100px 15px !important;
+        flex: none !important;
+        width: 100% !important;
+    }
     .header-content-wrapper {
         padding: 10px 15px !important;
         justify-content: space-between !important;
@@ -3704,59 +3812,33 @@ body {
     .header-clock, .logo-text { display: none !important; }
     .search-container { max-width: 180px !important; margin-right: 10px !important; }
 
-    /* 4. MAIN CONTENT AREA */
-    .main-content {
-        height: auto !important;
-        overflow: visible !important;
-        padding: 20px 15px 100px 15px !important; /* Space for bottom nav */
-        flex: none !important;
-        width: 100% !important;
-    }
-
-    /* 5. UNIVERSAL CARD STACKING (Fixes Connect Page) */
-    .connect-grid, .social-grid, .uplink-grid, .links-grid, .links-container {
+    /* 5. UNIVERSAL GRIDS (1 Column) */
+    .connect-grid, .social-grid, .uplink-grid, .links-grid, .links-container, .about-split-layout {
         display: flex !important;
         flex-direction: column !important;
         width: 100% !important;
         gap: 20px !important;
     }
-
     .holo-grid, .bento-grid, .explore-grid, .projects-grid {
         grid-template-columns: 1fr !important;
         gap: 20px !important;
     }
-
-    .connect-card, .social-card, .uplink-card, .holo-card {
+    .connect-card, .social-card, .uplink-card, .holo-card, .holo-id-card {
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
     }
 
-    /* 6. ABOUT ME PAGE FIX (The New Part) */
-    .about-split-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-    }
-
-    .holo-id-card {
-        width: 100% !important;
-        margin-bottom: 30px;
-    }
-
-    /* Fix the text cutting off */
+    /* 6. ABOUT ME TEXT FIX (Safe Padding) */
     .mission-control {
         width: 100% !important;
-        padding: 0 0 0 15px !important; /* Add padding left so text doesn't touch the red line */
+        padding: 0 0 0 15px !important;
         margin: 0 !important;
-        border-left: 2px solid #ff0000 !important; /* Keep the cool red line */
-        box-sizing: border-box !important; /* Ensures padding doesn't break width */
+        border-left: 2px solid #ff0000 !important;
+        box-sizing: border-box !important;
     }
-
     .mission-control p {
         width: 100% !important;
-        font-size: 0.95rem !important;
-        line-height: 1.6 !important;
-        word-wrap: break-word !important; /* Prevent long words from breaking layout */
+        word-wrap: break-word !important;
     }
 }
