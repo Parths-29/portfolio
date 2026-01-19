@@ -3635,101 +3635,18 @@ body {
     100% { opacity: 1; transform: scale(1); filter: blur(0); }
 }
 
-/* --- MOBILE RESPONSIVENESS PATCH --- */
-
-@media (max-width: 768px) {
-    
-    /* 1. Header Fixes: Hide Clock & Adjust Search to prevent overlap */
-    .header-clock {
-        display: none !important; /* Hide clock on phones to save space */
-    }
-    .header-content-wrapper {
-        padding: 10px 15px !important;
-        gap: 10px;
-    }
-    .logo {
-        margin-right: 10px !important;
-    }
-    .logo-text {
-        display: none; /* Hide word "Portfolio" on tiny screens, keep icon */
-    }
-    /* --- FIX FOR CONNECT PAGE CARDS --- */
-    /* This forces the row of cards to break into a vertical column */
-    .connect-grid, .social-grid, .links-container {
-        display: flex !important;
-        flex-direction: column !important; /* Stack top-to-bottom */
-        flex-wrap: wrap !important;        /* Allow wrapping */
-        width: 100% !important;
-        gap: 20px !important;
-    }
-
-    /* Ensure the cards take full width */
-    .connect-card, .social-card, .uplink-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-right: 0 !important;
-    }
-    /* 2. Grid Fixes: Force 1 Column on Mobile */
-    .holo-grid, 
-    .bento-grid, 
-    .cards-grid, 
-    .explore-grid,
-    .education-grid,
-    .projects-grid,
-    .council-grid {
-        grid-template-columns: 1fr !important; /* Force single column */
-        gap: 20px !important;
-    }
-
-    /* 3. Card Sizing: Allow cards to shrink to fit phone width */
-    .holo-card, 
-    .bento-card, 
-    .project-card, 
-    .education-card,
-    .uplink-card {
-        width: 100% !important;
-        min-width: 0 !important; /* Prevents card from forcing scroll */
-        height: auto !important; /* Let height adjust to text */
-    }
-
-    /* 4. About Me Page Fixes */
-    .about-split-layout {
-        flex-direction: column !important; /* Stack ID card on top of text */
-    }
-    .holo-id-card {
-        flex: 1;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    .mission-control {
-        width: 100% !important;
-        min-width: 0 !important;
-        padding-left: 0 !important;
-        border-left: none !important; /* Remove border line on mobile */
-    }
-
-    /* 5. Main Content Padding Fix */
-    .main-content {
-        padding: 20px 15px !important; /* Less padding on mobile */
-    }
-    
-    /* 6. Section Headers */
-    .section-header, .connect-header {
-        padding: 15px !important; /* Smaller headers */
-    }
-    .section-header h2, .connect-header h2 {
-        font-size: 1.8rem !important; /* Smaller text */
-    }
-}
-/* --- 📱 ULTIMATE MOBILE APP MODE (Paste at bottom of index.css) --- */
+/* --- 📱 MASTER MOBILE SUIT (Paste at the very bottom of index.css) --- */
 
 @media (max-width: 768px) {
 
-    /* 1. CRITICAL: FORCE SCROLLING (The Fix) */
+    /* =========================================
+       1. CORE SYSTEM & SCROLLING UNLOCK
+       ========================================= */
     body, html, #root {
         overflow-y: auto !important; /* Enable scrolling */
         height: auto !important;     /* Let the page grow tall */
         position: static !important; /* Stop locking the screen */
+        overscroll-behavior-y: none; /* Prevents "pull to refresh" bounce on some browsers */
     }
 
     .app-master-wrapper, .container {
@@ -3738,17 +3655,22 @@ body {
         display: block !important;
     }
 
-    /* 2. TRANSFORM SIDEBAR -> BOTTOM NAV BAR (Fixed & Always Visible) */
+    /* =========================================
+       2. CYBERPUNK BOTTOM NAVIGATION
+       ========================================= */
     .sidebar {
-        position: fixed !important; /* Forces it to stay on screen */
+        position: fixed !important;
         bottom: 0 !important;
         left: 0 !important;
-        right: 0 !important; /* Stretches edge-to-edge */
+        right: 0 !important;
         width: 100% !important;
         height: 70px !important;
-        background: #000 !important;
-        border-top: 2px solid #333 !important;
-        z-index: 10000 !important; /* Ensures it sits on top of everything */
+        background: rgba(0, 0, 0, 0.95) !important; /* Slight transparency */
+        backdrop-filter: blur(10px) !important;     /* Blur effect behind bar */
+        border-top: 1px solid #333 !important;
+        /* CRAZY ADDITION: Red Neon Glow coming from the bottom */
+        box-shadow: 0 -5px 20px rgba(255, 0, 0, 0.15) !important;
+        z-index: 99999 !important;
         
         /* Flex Layout */
         display: flex !important;
@@ -3759,12 +3681,12 @@ body {
         margin: 0 !important;
     }
 
-    /* Hide Desktop Elements */
+    /* Hide Desktop Sidebar Elements */
     .sidebar-toggle-area, .section-title, .nav-text {
         display: none !important;
     }
 
-    /* Fix Icon Groups */
+    /* Fix Icon Alignment */
     .nav-group, .nav-section {
         display: flex !important;
         flex-direction: row !important;
@@ -3773,66 +3695,103 @@ body {
         margin: 0 !important;
     }
 
-    /* Icons */
+    /* Icon Buttons */
     .nav-item {
         background: transparent !important;
         border: none !important;
-        box-shadow: none !important;
         padding: 10px !important;
         margin: 0 !important;
+        transition: transform 0.1s ease; /* Smooth click animation */
     }
 
-    .nav-icon {
-        margin: 0 !important;
+    /* CRAZY ADDITION: Icon "Pop" when tapped */
+    .nav-item:active {
+        transform: scale(0.9);
     }
-    
+
     .nav-icon img {
-        width: 28px !important; /* Bigger icons for thumbs */
-        height: 28px !important;
+        width: 26px !important;
+        height: 26px !important;
     }
 
-    /* Active State (Glow Dot) */
-    .nav-item.active {
-        background: transparent !important;
-    }
+    /* Active State (Red Glow Dot) */
     .nav-item.active .nav-icon img {
         filter: drop-shadow(0 0 8px #ff0000);
         transform: translateY(-5px);
     }
 
-    /* 3. MAIN CONTENT ADJUSTMENTS */
-   /* 3. MAIN CONTENT ADJUSTMENTS */
+    /* =========================================
+       3. HEADER & SEARCH BAR
+       ========================================= */
+    .header-content-wrapper {
+        padding: 10px 15px !important;
+        justify-content: space-between !important;
+    }
+    
+    .header-clock {
+        display: none !important; /* Hide clock */
+    }
+
+    .logo-text {
+        display: none !important; /* Hide "Portfolio" text */
+    }
+    
+    .search-container {
+        max-width: 180px !important;
+        margin-right: 10px !important;
+    }
+
+    /* =========================================
+       4. CONTENT LAYOUT & PADDING
+       ========================================= */
     .main-content {
         height: auto !important;
         overflow: visible !important;
-        /* Increase bottom padding so text isn't hidden behind the nav bar */
-        padding: 20px 15px 90px 15px !important; 
+        /* Padding Bottom = 100px to clear the Bottom Nav Bar */
+        padding: 20px 15px 100px 15px !important; 
         flex: none !important;
     }
-    /* 4. HEADER FIXES */
-    .header-content-wrapper {
-        padding: 10px 15px !important;
-    }
-    .header-clock {
-        display: none !important;
-    }
-    .search-container {
-        max-width: 160px !important;
-    }
 
-    /* 5. GRID & CARD FIXES */
-    .holo-grid, .bento-grid, .cards-grid, .explore-grid {
+    /* =========================================
+       5. UNIVERSAL CARD & GRID FIXES
+       ========================================= */
+    /* Force all grids to be 1 column */
+    .holo-grid, .bento-grid, .cards-grid, .explore-grid, .education-grid, .projects-grid {
         grid-template-columns: 1fr !important;
         gap: 20px !important;
     }
 
-    .holo-card, .bento-card, .project-card, .uplink-card {
-        width: 100% !important;
-        height: auto !important;
-        min-height: 250px !important;
+    /* CRAZY ADDITION: Tactile Feedback on Cards */
+    .holo-card:active, .project-card:active, .bento-card:active {
+        transform: scale(0.98) !important;
+        transition: transform 0.1s ease;
     }
-    
-    /* 6. ABOUT ME PAGE FIX */
+
+    /* =========================================
+       6. CONNECT / SOCIAL PAGE (Vertical Stack)
+       ========================================= */
+    .connect-grid, 
+    .social-grid, 
+    .uplink-grid, 
+    .links-grid,
+    .links-container {
+        display: flex !important;
+        flex-direction: column !important; /* STACK VERTICALLY */
+        width: 100% !important;
+        gap: 20px !important;
+    }
+
+    /* Force full width on these cards */
+    .connect-card, .social-card, .uplink-card, .holo-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        flex: none !important;
+    }
+
+    /* =========================================
+       7. ABOUT ME PAGE
+       ========================================= */
     .about-split-layout {
         flex-direction: column !important;
     }
