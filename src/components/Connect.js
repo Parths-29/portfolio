@@ -27,8 +27,8 @@ function Connect() {
       
       {/* --- THE HEAVY "HOLO-BANNER" HEADER --- */}
       <div className="section-header">
-        <h2 className="glitch-text" data-text="ESTABLISH UPLINK">
-          ESTABLISH UPLINK
+        <h2 className="glitch-text" data-text="LETS CONNECT">
+          LETS CONNECT
         </h2>
         
         {/* Tech Data Bar */}
@@ -67,7 +67,7 @@ function Connect() {
           <div className="card-bg"></div>
           <div className="card-content">
             <div className="icon-wrapper">✉️</div>
-            <h3>SECURE MAIL</h3>
+            <h3>DROP ME AN EMAIL</h3>
             <p className="link-text">parth.sharma1@somaiya.edu</p>
             <div className="action-status">
                 {copied ? ">> COPIED TO CLIPBOARD <<" : "CLICK TO COPY"}
