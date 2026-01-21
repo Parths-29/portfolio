@@ -1,7 +1,25 @@
 /* index.css - Complete Stylesheet (YouTube Music Style) */
 /* --- PHASE 3: MASTER LAYOUT FIXES --- */
 /* --- GLOBAL CYBERPUNK PATCH (src/index.css) --- */
+/* 1. IMPORT PREMIUM FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600;700&display=swap');
 
+/* 2. APPLY THEM GLOBALLY */
+body, html {
+    font-family: 'Inter', sans-serif !important; /* Clean human reading font */
+}
+
+/* 3. UPDATE HEADERS TO BE BOLD & STYLISH */
+h1, h2, h3, .tech-title, .section-header, .entry-title {
+    font-family: 'Space Grotesk', sans-serif !important;
+    text-transform: uppercase;
+    letter-spacing: 1px !important; /* Less spaced out = less robotic */
+}
+
+/* 4. TWEAK THE MONOSPACE (Keep it only for small tech details) */
+.tech-badge, .access-badge, .console-log {
+    font-family: 'Courier New', monospace !important;
+}
 /* 1. IMPORT TECH FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 

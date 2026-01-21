@@ -82,7 +82,7 @@ function Explore() {
       {/* Dynamic Header */}
       <div className="section-header explore-header">
         <div>
-           <h2 className="neon-text">Explore Domains</h2>
+           <h2 className="neon-text">MY WORK</h2>
            <p className="explore-subtitle">Select a sector to view projects</p>
         </div>
       </div>
