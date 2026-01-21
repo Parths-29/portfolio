@@ -43,7 +43,21 @@ function Connect() {
 
       {/* --- THE INTERACTIVE GRID --- */}
       <div className="uplink-grid">
-        
+         {/* 7. RESUME (Canva Link) */}
+        <a 
+          href="https://www.canva.com/design/DAG-mYmRPgc/L8w5WgxxdBX3zO7tdZT43g/edit?utm_content=DAG-mYmRPgc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="uplink-card resume"
+          style={{borderTop: '4px solid #00E5FF'}} /* Neon Cyan */
+        >
+          <div className="card-bg"></div>
+          <div className="card-content">
+            <div className="icon-wrapper">📄</div>
+            <h3>CLASSIFIED DOSSIER</h3>
+            <p className="link-text">View / Download Resume</p>
+          </div>
+        </a>
         {/* 1. EMAIL (Click to Copy) */}
         <div 
           className="uplink-card email" 
@@ -61,43 +75,7 @@ function Connect() {
           </div>
         </div>
 
-        {/* 2. WHATSAPP */}
-        <a 
-          href="https://wa.me/919324769799" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="uplink-card whatsapp"
-          style={{borderTop: '4px solid #25D366'}} /* WhatsApp Green */
-        >
-          <div className="card-bg"></div>
-          <div className="card-content">
-            {/* Image Icon */}
-            <div className="icon-wrapper" style={{ padding: 0, overflow: 'hidden' }}>
-                <img src={whatsappImg} alt="WhatsApp" style={iconStyle} />
-            </div>
-            <h3>WHATSAPP</h3>
-            <p className="link-text">+91 9324769799</p> 
-          </div>
-        </a>
-
-        {/* 3. INSTAGRAM */}
-        <a 
-          href="https://instagram.com/Parth_s29" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="uplink-card instagram"
-          style={{borderTop: '4px solid #E1306C'}} /* Insta Pink */
-        >
-          <div className="card-bg"></div>
-          <div className="card-content">
-            {/* Image Icon */}
-            <div className="icon-wrapper" style={{ padding: 0, overflow: 'hidden' }}>
-                <img src={instaImg} alt="Instagram" style={iconStyle} />
-            </div>
-            <h3>INSTAGRAM</h3>
-            <p className="link-text">@Parth_s29</p>
-          </div>
-        </a>
+        
 
         {/* 4. LINKEDIN */}
         <a 
@@ -146,22 +124,45 @@ function Connect() {
             <p className="link-text">LeetCode Profile</p>
           </div>
         </a>
-
-        {/* 7. RESUME (Canva Link) */}
+        {/* 2. WHATSAPP */}
         <a 
-          href="https://www.canva.com/design/DAG-mYmRPgc/L8w5WgxxdBX3zO7tdZT43g/edit?utm_content=DAG-mYmRPgc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+          href="https://wa.me/919324769799" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="uplink-card resume"
-          style={{borderTop: '4px solid #00E5FF'}} /* Neon Cyan */
+          className="uplink-card whatsapp"
+          style={{borderTop: '4px solid #25D366'}} /* WhatsApp Green */
         >
           <div className="card-bg"></div>
           <div className="card-content">
-            <div className="icon-wrapper">📄</div>
-            <h3>CLASSIFIED DOSSIER</h3>
-            <p className="link-text">View / Download Resume</p>
+            {/* Image Icon */}
+            <div className="icon-wrapper" style={{ padding: 0, overflow: 'hidden' }}>
+                <img src={whatsappImg} alt="WhatsApp" style={iconStyle} />
+            </div>
+            <h3>WHATSAPP</h3>
+            <p className="link-text">+91 9324769799</p> 
           </div>
         </a>
+
+        {/* 3. INSTAGRAM */}
+        <a 
+          href="https://instagram.com/Parth_s29" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="uplink-card instagram"
+          style={{borderTop: '4px solid #E1306C'}} /* Insta Pink */
+        >
+          <div className="card-bg"></div>
+          <div className="card-content">
+            {/* Image Icon */}
+            <div className="icon-wrapper" style={{ padding: 0, overflow: 'hidden' }}>
+                <img src={instaImg} alt="Instagram" style={iconStyle} />
+            </div>
+            <h3>INSTAGRAM</h3>
+            <p className="link-text">@Parth_s29</p>
+          </div>
+        </a>
+
+       
 
       </div>
     </div>
