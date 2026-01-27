@@ -3,7 +3,50 @@
 /* --- GLOBAL CYBERPUNK PATCH (src/index.css) --- */
 /* 1. IMPORT PREMIUM FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600;700&display=swap');
+/* --- THE 3D CYBER GRID (Infinite Floor) --- */
+.cyber-grid-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #000; /* Deep Black Space */
+    z-index: -1; /* Send to back */
+    perspective: 600px; /* This creates the 3D camera effect */
+}
 
+.cyber-grid {
+    position: absolute;
+    bottom: -30%;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 0, 0, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.3) 1px, transparent 1px);
+    background-size: 40px 40px; /* Size of the grid squares */
+    transform: rotateX(60deg); /* Tilts the floor to look 3D */
+    animation: gridMove 2s linear infinite; /* Moves it forever */
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%); /* Fades out in distance */
+}
+
+/* The Animation that makes it fly */
+@keyframes gridMove {
+    0% { transform: rotateX(60deg) translateY(0); }
+    100% { transform: rotateX(60deg) translateY(40px); }
+}
+
+/* --- GLOWING ORB IN THE DISTANCE --- */
+.cyber-sun {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
+    z-index: -2;
+    pointer-events: none;
+}
 /* 2. APPLY THEM GLOBALLY */
 body, html {
     font-family: 'Inter', sans-serif !important; /* Clean human reading font */
