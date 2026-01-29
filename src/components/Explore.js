@@ -54,16 +54,6 @@ function Explore() {
       // LINK: Points to AI Lab
       link: "https://github.com/Parths-29/AI-Neural-Systems"
     },
-    {
-      id: "blockchain",
-      title: "Blockchain & Web3",
-      subtitle: "Smart Contracts • DApps",
-      img: blockchainImg,
-      size: "standard",
-      desc: "Decentralized solutions for the future web.",
-      // LINK: Points to Web3 Repo
-      link: "https://github.com/Parths-29/Decentralized-Web3"
-    },
     
     {
       id: "design",
@@ -75,6 +65,17 @@ function Explore() {
       // LINK: Points to Design Lab
       link: "https://github.com/Parths-29/UI-UX-Design-Lab"
     },
+    {
+      id: "blockchain",
+      title: "Blockchain & Web3",
+      subtitle: "Smart Contracts • DApps",
+      img: blockchainImg,
+      size: "standard",
+      desc: "Decentralized solutions for the future web.",
+      // LINK: Points to Web3 Repo
+      link: "https://github.com/Parths-29/Decentralized-Web3"
+    },
+    
   ];
 
   return (
