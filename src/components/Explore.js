@@ -54,17 +54,6 @@ function Explore() {
       // LINK: Points to AI Lab
       link: "https://github.com/Parths-29/AI-Neural-Systems"
     },
-    
-    {
-      id: "design",
-      title: "Figma & UX/UI",
-      subtitle: "Prototyping • Design Systems",
-      img: figmaImg,
-      size: "standard",
-      desc: "Designing intuitive user journeys.",
-      // LINK: Points to Design Lab
-      link: "https://github.com/Parths-29/UI-UX-Design-Lab"
-    },
     {
       id: "blockchain",
       title: "Blockchain & Web3",
@@ -76,6 +65,16 @@ function Explore() {
       link: "https://github.com/Parths-29/Decentralized-Web3"
     },
     
+    {
+      id: "design",
+      title: "Figma & UX/UI",
+      subtitle: "Prototyping • Design Systems",
+      img: figmaImg,
+      size: "standard",
+      desc: "Designing intuitive user journeys.",
+      // LINK: Points to Design Lab
+      link: "https://github.com/Parths-29/UI-UX-Design-Lab"
+    },
   ];
 
   return (
