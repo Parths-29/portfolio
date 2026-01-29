@@ -3,31 +3,7 @@
 /* --- GLOBAL CYBERPUNK PATCH (src/index.css) --- */
 /* 1. IMPORT PREMIUM FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600;700&display=swap');
-/* --- THE 3D CYBER GRID (Infinite Floor) --- */
-.cyber-grid-container {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: #000; /* Deep Black Space */
-    z-index: -1; /* Send to back */
-    perspective: 600px; /* This creates the 3D camera effect */
-}
 
-.cyber-grid {
-    position: absolute;
-    bottom: -30%;
-    left: -50%;
-    width: 200%;
-    height: 100%;
-    background-image: 
-        linear-gradient(rgba(255, 0, 0, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 0, 0, 0.3) 1px, transparent 1px);
-    background-size: 40px 40px; /* Size of the grid squares */
-    transform: rotateX(60deg); /* Tilts the floor to look 3D */
-    animation: gridMove 2s linear infinite; /* Moves it forever */
-    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%); /* Fades out in distance */
-}
 
 /* The Animation that makes it fly */
 @keyframes gridMove {
