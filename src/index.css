@@ -4031,3 +4031,153 @@ body {
         z-index: 99999 !important;
     }
 }
+/* =========================================================
+   YOUTUBE MUSIC MOBILE THEME (Add to src/index.css)
+   ========================================================= */
+
+/* HIDE DESKTOP ELEMENTS ON MOBILE */
+@media (max-width: 768px) {
+    .sidebar, .header-clock, .desktop-only { display: none !important; }
+}
+
+/* 1. THE MOBILE SHELL */
+.ytm-mobile-shell {
+    background-color: #030303; /* YTM Main Background */
+    color: white;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif; /* YTM Font look */
+    padding-bottom: 80px; /* CRITICAL: Space for Bottom Nav */
+    padding-top: 110px;   /* CRITICAL: Space for Header */
+}
+
+/* 2. HEADER (Fixed at Top) */
+.ytm-header {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    background: rgba(3, 3, 3, 0.95); /* Slight blur */
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.ytm-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+}
+
+.ytm-logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.ytm-logo-icon {
+    width: 24px; height: 24px;
+    background: #FF0000; /* YouTube Red */
+    border-radius: 50%;
+    color: white;
+    display: flex; justify-content: center; align-items: center;
+    font-weight: bold; font-size: 14px;
+}
+.ytm-logo-text {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+
+.ytm-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.ytm-avatar {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* 3. SCROLLABLE PILLS */
+.ytm-pills-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 0 16px 12px 16px;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+.ytm-pills-container::-webkit-scrollbar { display: none; } /* Hide Chrome */
+
+.ytm-pill {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    color: #fff;
+    font-weight: 500;
+    transition: 0.2s;
+}
+.ytm-pill.active {
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+}
+
+/* 4. CONTENT AREA (Your Projects/Bio) */
+.ytm-content {
+    padding: 0 16px;
+}
+/* Style your existing cards to look like 'Song Rows' */
+.project-card, .holo-card {
+    display: flex !important;
+    align-items: center;
+    background: transparent !important; /* Remove card bg */
+    border: none !important;
+    padding: 10px 0 !important;
+    margin-bottom: 5px !important;
+}
+/* If using Bento Grid, convert to List for Mobile */
+@media (max-width: 768px) {
+    .bento-grid { display: flex; flex-direction: column; gap: 0; }
+    .bento-card { 
+        height: 80px !important; 
+        flex-direction: row; 
+        margin-bottom: 10px;
+        background: transparent !important;
+    }
+}
+
+/* 5. BOTTOM NAV (The 'New Feature') */
+.ytm-bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 65px; /* Standard Mobile Nav Height */
+    background: #212121; /* Slightly lighter than pure black */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    z-index: 1001; /* Above everything */
+    padding-bottom: 5px; /* Space for iPhone Home Bar */
+}
+
+.ytm-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #aaa; /* Inactive Color */
+    font-size: 10px;
+    width: 60px;
+}
+
+.ytm-nav-item .icon {
+    font-size: 22px;
+}
+
+.ytm-nav-item.active {
+    color: white; /* Active Color */
+}

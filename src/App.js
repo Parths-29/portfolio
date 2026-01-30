@@ -212,6 +212,65 @@ function App() {
                   </>
                 }
               />
+              {/* INSIDE YOUR <Router> WRAPPER */}
+
+<div className="ytm-mobile-shell">
+  
+  {/* --- PHASE 1: YTM HEADER --- */}
+  <div className="ytm-header">
+    <div className="ytm-top-bar">
+      <div className="ytm-logo">
+        <div className="ytm-logo-icon">P</div> {/* Red Circle Icon */}
+        <span className="ytm-logo-text">Music</span> {/* Change to 'Portfolio' if you want */}
+      </div>
+      <div className="ytm-actions">
+        {/* Search Icon */}
+        <span className="material-icons">search</span> 
+        {/* Profile Avatar */}
+        <img src="YOUR_PROFILE_PIC.jpg" className="ytm-avatar" alt="Profile" />
+      </div>
+    </div>
+
+    {/* SCROLLABLE PILLS (Like 'Relax', 'Romance', etc.) */}
+    <div className="ytm-pills-container">
+      <div className="ytm-pill active">All</div>
+      <div className="ytm-pill">DevOps</div>
+      <div className="ytm-pill">AI/ML</div>
+      <div className="ytm-pill">Web3</div>
+      <div className="ytm-pill">Design</div>
+    </div>
+  </div>
+
+  {/* --- MAIN SCROLLABLE CONTENT --- */}
+  <div className="ytm-content">
+     <Routes>
+        {/* YOUR EXISTING ROUTES HERE */}
+        <Route path="/" element={<Home />} />
+        {/* ... etc ... */}
+     </Routes>
+  </div>
+
+  {/* --- PHASE 2: FIXED BOTTOM NAV --- */}
+  <div className="ytm-bottom-nav">
+    <div className="ytm-nav-item active">
+      <span className="icon">🏠</span> {/* Use an SVG or Icon component */}
+      <span className="label">Home</span>
+    </div>
+    <div className="ytm-nav-item">
+      <span className="icon">▶️</span>
+      <span className="label">Samples</span> {/* Or 'Projects' */}
+    </div>
+    <div className="ytm-nav-item">
+      <span className="icon">🧭</span>
+      <span className="label">Explore</span>
+    </div>
+    <div className="ytm-nav-item">
+      <span className="icon">📚</span>
+      <span className="label">Library</span> {/* Or 'About' */}
+    </div>
+  </div>
+
+</div>
 
               {/* --- OTHER ROUTES --- */}
               <Route path="/explore" element={<Explore />} />
