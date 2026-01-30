@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-// ADDED "Link" to imports so the dock works
-import { BrowserRouter as Router, Routes, Route, useLocation, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 // --- Components ---
 import Header from "./components/Header";
@@ -33,6 +32,7 @@ import figmaImg from "./components/fig.jpg";
 import gitImg from "./components/git.webp";
 import canvaImg from "./components/canvas.webp";
 
+// --- HELPER: SCROLL TO TOP ON ROUTE CHANGE ---
 // --- HELPER: SCROLL TO TOP ON ROUTE CHANGE ---
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -145,6 +145,7 @@ function App() {
                               <span className="holo-tech">MERN Stack • OCR • AI</span>
                               <h3 className="holo-title">Smart Receipt Coach</h3>
                               <div className="holo-actions">
+                                {/* FIX: Replaced '#' with valid repo link to pass Vercel build */}
                                 <a href="https://github.com/Parths-29/Web-Engineering-Archives" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Source</a>
                                 <a href="https://github.com/Parths-29/Web-Engineering-Archives" target="_blank" rel="noopener noreferrer" className="holo-btn secondary">Code</a>
                               </div>
@@ -221,43 +222,6 @@ function App() {
             </Routes>
           </main>
         </div>
-
-        {/* --- 🛑 FIXED MOBILE DOCK (YOUR TABS) --- */}
-        {/* Only visible on mobile thanks to CSS */}
-        <div className="mobile-bottom-dock">
-            
-            <Link to="/" className="dock-item">
-                {/* Home Icon */}
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-                <span className="dock-label">Home</span>
-            </Link>
-
-            <Link to="/explore" className="dock-item">
-                {/* Explore/Project Icon */}
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z"/></svg>
-                <span className="dock-label">Explore</span>
-            </Link>
-
-            <Link to="/experience" className="dock-item">
-                {/* Experience/Work Icon */}
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h18c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
-                <span className="dock-label">Exp.</span>
-            </Link>
-
-            <Link to="/about" className="dock-item">
-                {/* About Me/User Icon */}
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                <span className="dock-label">About</span>
-            </Link>
-
-            <Link to="/connect" className="dock-item">
-                {/* Connect/Mail Icon */}
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                <span className="dock-label">Connect</span>
-            </Link>
-
-        </div>
-
       </div>
     </Router>
   );
