@@ -4181,3 +4181,56 @@ body {
 .ytm-nav-item.active {
     color: white; /* Active Color */
 }
+/* =========================================================
+   MOBILE DOCK (YOUTUBE MUSIC STYLE)
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. THE DOCK ITSELF (Fixed to Screen) */
+    .ytm-bottom-nav {
+        position: fixed !important; /* Locks it to the screen */
+        bottom: 0 !important;       /* Glues it to the bottom */
+        left: 0 !important;
+        width: 100% !important;
+        height: 70px !important;    /* Standard app nav height */
+        
+        background: #212121 !important; /* YT Music Grey */
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        
+        display: flex !important;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 99999 !important; /* Forces it ON TOP of everything */
+        padding-bottom: 5px;       /* Safe area for iPhone home bar */
+    }
+
+    /* 2. THE NAV ITEMS */
+    .ytm-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #aaa;  /* Inactive Color */
+        font-size: 10px;
+        width: 25%;   /* Equal width for 4 items */
+        height: 100%;
+    }
+
+    /* Active State (Bright White) */
+    .ytm-nav-item.active {
+        color: white;
+    }
+    .ytm-nav-item.active svg {
+        fill: white;
+    }
+
+    /* 3. PADDING FIX (So content doesn't hide behind the bar) */
+    .main-content, .ytm-content, .app-master-wrapper {
+        padding-bottom: 90px !important; /* Adds empty space at bottom of page */
+    }
+    
+    /* 4. HIDE OLD SIDEBAR */
+    .sidebar { display: none !important; }
+}
