@@ -189,20 +189,60 @@ p, span, .desc, .bio-description {
 }
 /* --- FIX: FIXED SIDEBAR & SCROLLABLE CONTENT --- */
 
-/* 1. LOCK THE MAIN WINDOW (Stops the whole page from moving) */
-body, html, #root {
-    height: 100vh;       /* Force full screen height */
-    width: 100vw;
-    margin: 0;
-    overflow: hidden;    /* CRITICAL: Disables browser window scrollbar */
-    background-color: #050505;
+/* --- SMART LOCK: FIXED ON DESKTOP, SCROLLABLE ON MOBILE --- */
+
+/* DESKTOP MODE (Computers): Lock the window, scroll inside */
+@media (min-width: 769px) {
+    body, html, #root {
+        height: 100vh;       
+        width: 100vw;
+        margin: 0;
+        overflow: hidden;    /* Lock the window */
+        background-color: #050505;
+    }
+
+    .app-master-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100%;        
+        overflow: hidden;
+    }
+
+    .main-content {
+        height: 100%;
+        overflow-y: auto;    /* Scroll only this part */
+    }
 }
 
-/* 2. MASTER WRAPPER (Flex Column) */
-.app-master-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;        /* Fills the locked window */
+/* MOBILE MODE (Phones): Unlock everything, scroll normally */
+@media (max-width: 768px) {
+    body, html, #root {
+        height: auto !important;
+        width: 100% !important;
+        margin: 0;
+        overflow-y: auto !important; /* FORCE SCROLLING */
+        overflow-x: hidden !important;
+        position: static !important;
+    }
+
+    .app-master-wrapper {
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    
+    .container {
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .main-content {
+        height: auto !important;
+        overflow: visible !important; /* Let content expand naturally */
+        flex: none !important;
+        display: block !important;
+    }
 }
 
 /* 3. CONTAINER (Holds Sidebar + Main Content) */
