@@ -3984,3 +3984,50 @@ body {
         z-index: 99999 !important;
     }
 }
+/* ============================================================
+   🚑 NUCLEAR MOBILE SCROLL FIX (PASTE AT VERY BOTTOM OF CSS)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    /* 1. FORCE THE BROWSER WINDOW TO SCROLL */
+    html, body, #root {
+        height: auto !important;          /* Let the page grow tall */
+        min-height: 100vh !important;     /* At least full screen */
+        overflow-y: auto !important;      /* Enable vertical scroll */
+        overflow-x: hidden !important;    /* Block horizontal scroll */
+        position: relative !important;    /* Stop being "fixed" */
+        touch-action: pan-y !important;   /* Force touch gestures to work */
+        overscroll-behavior-y: auto !important; /* Allow pull-to-refresh */
+    }
+
+    /* 2. DESTROY THE "APP WRAPPER" LOCKS */
+    .app-master-wrapper {
+        height: auto !important;
+        overflow: visible !important;     /* Let content spill out */
+        display: block !important;        /* Stop Flexbox from trapping height */
+    }
+
+    /* 3. UNLOCK THE MAIN CONTENT AREA */
+    .container {
+        height: auto !important;
+        display: block !important;        /* Stack elements vertically */
+        overflow: visible !important;
+    }
+
+    .main-content {
+        height: auto !important;
+        overflow: visible !important;     /* No internal scrollbar, use window */
+        flex: none !important;
+        display: block !important;
+        padding-bottom: 120px !important; /* Add space at bottom so navbar doesn't cover text */
+    }
+
+    /* 4. ENSURE SIDEBAR DOESN'T BLOCK TOUCHES */
+    .sidebar {
+        position: fixed !important;
+        bottom: 0 !important;
+        height: 70px !important;
+        z-index: 99999 !important;
+    }
+}
