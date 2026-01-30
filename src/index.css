@@ -3905,3 +3905,42 @@ body {
         word-wrap: break-word !important;
     }
 }
+/* --- 📱 EMERGENCY MOBILE SCROLL FIX --- */
+/* Paste this at the VERY BOTTOM of index.css */
+
+@media (max-width: 768px) {
+
+    /* 1. FORCE THE WINDOW TO SCROLL */
+    body, html, #root {
+        overflow-y: auto !important; /* Turns scrolling back ON */
+        height: auto !important;     /* Lets the page grow tall */
+        position: static !important; /* Stops it from being "stuck" */
+        touch-action: auto !important; /* Re-enables touch gestures */
+    }
+
+    /* 2. UNLOCK THE CONTAINERS */
+    .app-master-wrapper, .container {
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+
+    /* 3. ALLOW CONTENT TO EXPAND */
+    .main-content {
+        height: auto !important;
+        overflow: visible !important; /* Lets content spill down */
+        width: 100% !important;
+        flex: none !important;
+        padding-bottom: 120px !important; /* Extra space for bottom nav */
+    }
+
+    /* 4. ENSURE SIDEBAR IS FIXED AT BOTTOM */
+    .sidebar {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 70px !important;
+        z-index: 99999 !important;
+    }
+}
