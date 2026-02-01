@@ -3823,265 +3823,108 @@ body {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 
-/* =================================================================
-   PART 2: MASTER MOBILE SUIT (Responsiveness & Mobile App Mode)
-   ================================================================= */
-
-@media (max-width: 768px) {
-
-    /* 1. CORE SYSTEM */
-    body, html, #root {
-        overflow-y: auto !important;
-        height: auto !important;
-        position: static !important;
-        overscroll-behavior-y: none;
-    }
-    .app-master-wrapper, .container {
-        height: auto !important;
-        overflow: visible !important;
-        display: block !important;
-    }
-    
-    /* 2. ENTRY PAGE FIX (Vertical Stack & Centered) */
-    .entry-container {
-        /* This ensures it stays centered vertically like before */
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        min-height: 100vh !important;
-        padding: 20px !important;
-    }
-
-    .tech-grid {
-        flex-direction: column !important; /* Forces stack */
-        gap: 30px !important;
-        width: 100% !important;
-        align-items: center !important;
-    }
-    .tech-profile-card {
-        width: 100% !important;
-        max-width: 300px !important;
-    }
-
-    /* 3. BOTTOM NAV BAR */
-    .sidebar {
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        height: 70px !important;
-        background: rgba(0, 0, 0, 0.95) !important;
-        backdrop-filter: blur(10px) !important;
-        border-top: 1px solid #333 !important;
-        box-shadow: 0 -5px 20px rgba(255, 0, 0, 0.15) !important;
-        z-index: 99999 !important;
-        
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-evenly !important;
-        padding: 0 10px !important;
-        margin: 0 !important;
-    }
-
-    .nav-group, .nav-section, div.sidebar > div { display: contents !important; }
-    .sidebar-toggle-area, .section-title, .nav-text, .logo, .sidebar-header { display: none !important; }
-
-    .nav-item {
-        background: transparent !important;
-        border: none !important;
-        padding: 10px !important;
-        width: auto !important;
-        flex: none !important;
-    }
-    .nav-item:active { transform: scale(0.9); }
-    .nav-icon img { width: 28px !important; height: 28px !important; }
-    .nav-item.active .nav-icon img {
-        filter: drop-shadow(0 0 8px #ff0000);
-        transform: translateY(-5px);
-    }
-
-    /* 4. MAIN CONTENT & GRIDS */
-    .main-content {
-        height: auto !important;
-        padding: 20px 15px 100px 15px !important;
-        flex: none !important;
-        width: 100% !important;
-    }
-    .header-content-wrapper {
-        padding: 10px 15px !important;
-        justify-content: space-between !important;
-    }
-    .header-clock, .logo-text { display: none !important; }
-    .search-container { max-width: 180px !important; margin-right: 10px !important; }
-
-    .connect-grid, .social-grid, .uplink-grid, .links-grid, .links-container, .about-split-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 20px !important;
-    }
-    .holo-grid, .bento-grid, .explore-grid, .projects-grid {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
-    .connect-card, .social-card, .uplink-card, .holo-card, .holo-id-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-    }
-
-    /* 5. ABOUT ME TEXT FIX */
-    .mission-control {
-        width: 100% !important;
-        padding: 0 0 0 15px !important;
-        margin: 0 !important;
-        border-left: 2px solid #ff0000 !important;
-        box-sizing: border-box !important;
-    }
-    .mission-control p {
-        width: 100% !important;
-        word-wrap: break-word !important;
-    }
-}
-/* --- 📱 EMERGENCY MOBILE SCROLL FIX --- */
-/* Paste this at the VERY BOTTOM of index.css */
-
-@media (max-width: 768px) {
-
-    /* 1. FORCE THE WINDOW TO SCROLL */
-    body, html, #root {
-        overflow-y: auto !important; /* Turns scrolling back ON */
-        height: auto !important;     /* Lets the page grow tall */
-        position: static !important; /* Stops it from being "stuck" */
-        touch-action: auto !important; /* Re-enables touch gestures */
-    }
-
-    /* 2. UNLOCK THE CONTAINERS */
-    .app-master-wrapper, .container {
-        height: auto !important;
-        overflow: visible !important;
-        display: block !important;
-    }
-
-    /* 3. ALLOW CONTENT TO EXPAND */
-    .main-content {
-        height: auto !important;
-        overflow: visible !important; /* Lets content spill down */
-        width: 100% !important;
-        flex: none !important;
-        padding-bottom: 120px !important; /* Extra space for bottom nav */
-    }
-
-    /* 4. ENSURE SIDEBAR IS FIXED AT BOTTOM */
-    .sidebar {
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 70px !important;
-        z-index: 99999 !important;
-    }
-}
 /* ============================================================
-   🚑 NUCLEAR MOBILE SCROLL FIX (PASTE AT VERY BOTTOM OF CSS)
+   📱 COMPLETE MOBILE & DOCK CSS (FINAL VERSION)
    ============================================================ */
 
-@media (max-width: 768px) {
-
-    /* 1. FORCE THE BROWSER WINDOW TO SCROLL */
-    html, body, #root {
-        height: auto !important;          /* Let the page grow tall */
-        min-height: 100vh !important;     /* At least full screen */
-        overflow-y: auto !important;      /* Enable vertical scroll */
-        overflow-x: hidden !important;    /* Block horizontal scroll */
-        position: relative !important;    /* Stop being "fixed" */
-        touch-action: pan-y !important;   /* Force touch gestures to work */
-        overscroll-behavior-y: auto !important; /* Allow pull-to-refresh */
-    }
-
-    /* 2. DESTROY THE "APP WRAPPER" LOCKS */
-    .app-master-wrapper {
-        height: auto !important;
-        overflow: visible !important;     /* Let content spill out */
-        display: block !important;        /* Stop Flexbox from trapping height */
-    }
-
-    /* 3. UNLOCK THE MAIN CONTENT AREA */
-    .container {
-        height: auto !important;
-        display: block !important;        /* Stack elements vertically */
-        overflow: visible !important;
-    }
-
-    .main-content {
-        height: auto !important;
-        overflow: visible !important;     /* No internal scrollbar, use window */
-        flex: none !important;
-        display: block !important;
-        padding-bottom: 120px !important; /* Add space at bottom so navbar doesn't cover text */
-    }
-
-    /* 4. ENSURE SIDEBAR DOESN'T BLOCK TOUCHES */
-    .sidebar {
-        position: fixed !important;
-        bottom: 0 !important;
-        height: 70px !important;
-        z-index: 99999 !important;
-    }
+/* 1. CRITICAL: HIDE DOCK ON DESKTOP (PC) */
+/* This removes the "weird playcards" from your computer screen */
+.mobile-bottom-dock {
+    display: none !important;
 }
 
-/* =========================================================
-   MOBILE DOCK (YOUTUBE MUSIC STYLE)
-   ========================================================= */
-
+/* 2. MOBILE-ONLY STYLES */
 @media (max-width: 768px) {
 
-    /* 1. THE DOCK ITSELF (Fixed to Screen) */
-    .ytm-bottom-nav {
-        position: fixed !important; /* Locks it to the screen */
-        bottom: 0 !important;       /* Glues it to the bottom */
-        left: 0 !important;
-        width: 100% !important;
-        height: 70px !important;    /* Standard app nav height */
-        
-        background: #212121 !important; /* YT Music Grey */
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        
-        display: flex !important;
-        justify-content: space-around;
-        align-items: center;
-        z-index: 99999 !important; /* Forces it ON TOP of everything */
-        padding-bottom: 5px;       /* Safe area for iPhone home bar */
+    /* --- A. NUCLEAR SCROLLING FIX (Unlocks the phone screen) --- */
+    html, body, #root {
+        height: auto !important;          
+        min-height: 100vh !important;     
+        overflow-y: auto !important;      /* Force Scroll bar */
+        overflow-x: hidden !important;    /* Stop side-scrolling */
+        position: relative !important;    
+        touch-action: pan-y !important;   /* Enable touch */
+        background-color: #030303 !important; /* YTM Dark Background */
     }
 
-    /* 2. THE NAV ITEMS */
-    .ytm-nav-item {
+    /* Unlock the wrappers so they don't trap the content */
+    .app-master-wrapper, .container, .main-content {
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+        padding-bottom: 90px !important; /* Space for the Bottom Dock */
+    }
+
+    /* Hide the old PC Sidebar */
+    .sidebar { display: none !important; }
+
+
+    /* --- B. THE FIXED BOTTOM DOCK (YouTube Music Style) --- */
+    .mobile-bottom-dock {
+        display: flex !important; /* Show it ONLY on mobile */
+        
+        position: fixed !important; /* Stick to screen */
+        bottom: 0 !important;       /* Bottom edge */
+        left: 0 !important;
+        width: 100% !important;
+        height: 70px !important;    /* Tall touch-friendly height */
+        
+        background: rgba(15, 15, 15, 0.95) !important; /* Glassy Dark Grey */
+        backdrop-filter: blur(12px); /* Blur effect behind it */
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        
+        justify-content: space-around;
+        align-items: center;
+        z-index: 2147483647 !important; /* Max Z-Index (Always on top) */
+        padding-bottom: 5px; /* Extra space for iPhone swipe bar */
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.5); /* Shadow for depth */
+    }
+
+    /* --- C. DOCK ICONS & TEXT --- */
+    .dock-item {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        color: #aaa;  /* Inactive Color */
-        font-size: 10px;
-        width: 25%;   /* Equal width for 4 items */
+        background: transparent !important;
+        width: 20%;
         height: 100%;
+        border: none !important;
+        outline: none !important;
+        cursor: pointer;
     }
 
-    /* Active State (Bright White) */
-    .ytm-nav-item.active {
-        color: white;
-    }
-    .ytm-nav-item.active svg {
-        fill: white;
+    /* Icon Style */
+    .dock-item svg {
+        width: 24px;
+        height: 24px;
+        fill: #909090; /* Inactive Grey */
+        margin-bottom: 4px;
+        transition: transform 0.2s ease, fill 0.2s ease;
     }
 
-    /* 3. PADDING FIX (So content doesn't hide behind the bar) */
-    .main-content, .ytm-content, .app-master-wrapper {
-        padding-bottom: 90px !important; /* Adds empty space at bottom of page */
+    /* Text Label Style */
+    .dock-label {
+        font-size: 10px;
+        color: #909090; /* Inactive Grey */
+        font-weight: 500;
+        font-family: sans-serif;
     }
-    
-    /* 4. HIDE OLD SIDEBAR */
-    .sidebar { display: none !important; }
+
+    /* ACTIVE / HOVER STATE (When you touch it) */
+    .dock-item:active svg, .dock-item:hover svg {
+        fill: #ffffff; /* Turn White */
+        transform: translateY(-3px); /* Pop up slightly */
+    }
+    .dock-item:active .dock-label, .dock-item:hover .dock-label {
+        color: #ffffff; /* Turn White */
+    }
+
+    /* --- D. HEADER ADJUSTMENT (Optional) --- */
+    /* Ensures the top header doesn't cover your bio */
+    .header-wrapper {
+        position: relative !important;
+        background: transparent !important;
+    }
 }
