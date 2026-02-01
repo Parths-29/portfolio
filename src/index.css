@@ -3824,63 +3824,115 @@ body {
 
 
 /* ============================================================
-   📱 COMPLETE MOBILE & DOCK CSS (FINAL VERSION)
+   📱 FINAL UNIFIED MOBILE SUIT (Replaces all previous mobile CSS)
    ============================================================ */
 
-/* 1. CRITICAL: HIDE DOCK ON DESKTOP (PC) */
-/* This removes the "weird playcards" from your computer screen */
+/* 1. HIDE MOBILE DOCK ON PC (Desktop Mode) */
 .mobile-bottom-dock {
     display: none !important;
 }
 
-/* 2. MOBILE-ONLY STYLES */
+/* 2. MOBILE MODE (Phones only) */
 @media (max-width: 768px) {
 
-    /* --- A. NUCLEAR SCROLLING FIX (Unlocks the phone screen) --- */
+    /* --- A. CORE SCROLLING & LAYOUT UNLOCK --- */
     html, body, #root {
         height: auto !important;          
         min-height: 100vh !important;     
-        overflow-y: auto !important;      /* Force Scroll bar */
-        overflow-x: hidden !important;    /* Stop side-scrolling */
+        overflow-y: auto !important;      /* FORCE SCROLL */
+        overflow-x: hidden !important;    
         position: relative !important;    
-        touch-action: pan-y !important;   /* Enable touch */
-        background-color: #030303 !important; /* YTM Dark Background */
+        touch-action: pan-y !important;   
+        background-color: #030303 !important;
+        overscroll-behavior-y: none;      /* Prevents rubber-banding */
     }
 
-    /* Unlock the wrappers so they don't trap the content */
-    .app-master-wrapper, .container, .main-content {
+    /* Unlock wrappers so they don't trap content */
+    .app-master-wrapper, .container {
         height: auto !important;
         overflow: visible !important;
         display: block !important;
-        padding-bottom: 90px !important; /* Space for the Bottom Dock */
     }
 
-    /* Hide the old PC Sidebar */
+    /* Fix Main Content Area */
+    .main-content {
+        height: auto !important;
+        overflow: visible !important;
+        width: 100% !important;
+        flex: none !important;
+        padding: 20px 15px 100px 15px !important; /* Bottom padding for Dock */
+    }
+
+    /* Hide the OLD Sidebar (We use the Dock now) */
     .sidebar { display: none !important; }
 
+    /* Hide Desktop-specific elements */
+    .header-clock, .logo-text, .desktop-only { display: none !important; }
+    .search-container { max-width: 140px !important; }
 
-    /* --- B. THE FIXED BOTTOM DOCK (YouTube Music Style) --- */
+
+    /* --- B. ENTRY PAGE FIX (Vertical Stack) --- */
+    .entry-container {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        min-height: 100vh !important;
+        padding: 20px !important;
+    }
+    .tech-grid {
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+    .tech-profile-card {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+
+    /* --- C. GRID REPAIRS (Fixes 'Explore' & 'Projects' Squishing) --- */
+    /* This forces all grids to be 1 column wide on phone */
+    .holo-grid, 
+    .bento-grid, 
+    .explore-grid, 
+    .projects-grid, 
+    .connect-grid,
+    .social-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* FORCE SINGLE COLUMN */
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    /* Make cards full width */
+    .connect-card, .social-card, .uplink-card, .holo-card, .bento-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+
+    /* --- D. THE FIXED BOTTOM DOCK (YouTube Music Style) --- */
     .mobile-bottom-dock {
-        display: flex !important; /* Show it ONLY on mobile */
-        
-        position: fixed !important; /* Stick to screen */
-        bottom: 0 !important;       /* Bottom edge */
+        display: flex !important;
+        position: fixed !important;
+        bottom: 0 !important;
         left: 0 !important;
         width: 100% !important;
-        height: 70px !important;    /* Tall touch-friendly height */
+        height: 70px !important;
         
-        background: rgba(15, 15, 15, 0.95) !important; /* Glassy Dark Grey */
-        backdrop-filter: blur(12px); /* Blur effect behind it */
+        background: rgba(15, 15, 15, 0.95) !important; /* Glassy Black */
+        backdrop-filter: blur(12px);
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         
         justify-content: space-around;
         align-items: center;
-        z-index: 2147483647 !important; /* Max Z-Index (Always on top) */
-        padding-bottom: 5px; /* Extra space for iPhone swipe bar */
-        box-shadow: 0 -5px 20px rgba(0,0,0,0.5); /* Shadow for depth */
+        z-index: 2147483647 !important; /* MAX Z-Index */
+        padding-bottom: 5px;
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
     }
 
-    /* --- C. DOCK ICONS & TEXT --- */
+    /* Dock Icons */
     .dock-item {
         display: flex;
         flex-direction: column;
@@ -3890,41 +3942,25 @@ body {
         background: transparent !important;
         width: 20%;
         height: 100%;
-        border: none !important;
-        outline: none !important;
-        cursor: pointer;
+        color: #888;
     }
 
-    /* Icon Style */
     .dock-item svg {
         width: 24px;
         height: 24px;
-        fill: #909090; /* Inactive Grey */
+        fill: #909090;
         margin-bottom: 4px;
-        transition: transform 0.2s ease, fill 0.2s ease;
+        transition: 0.2s;
     }
 
-    /* Text Label Style */
-    .dock-label {
-        font-size: 10px;
-        color: #909090; /* Inactive Grey */
-        font-weight: 500;
-        font-family: sans-serif;
-    }
+    .dock-label { font-size: 10px; color: #909090; }
 
-    /* ACTIVE / HOVER STATE (When you touch it) */
+    /* Active State */
     .dock-item:active svg, .dock-item:hover svg {
-        fill: #ffffff; /* Turn White */
-        transform: translateY(-3px); /* Pop up slightly */
+        fill: #ffffff;
+        transform: translateY(-3px);
     }
     .dock-item:active .dock-label, .dock-item:hover .dock-label {
-        color: #ffffff; /* Turn White */
-    }
-
-    /* --- D. HEADER ADJUSTMENT (Optional) --- */
-    /* Ensures the top header doesn't cover your bio */
-    .header-wrapper {
-        position: relative !important;
-        background: transparent !important;
+        color: #ffffff;
     }
 }
