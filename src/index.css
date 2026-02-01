@@ -3839,18 +3839,18 @@ body {
     html, body, #root {
         height: auto !important;          
         min-height: 100vh !important;     
-        overflow-y: scroll !important;    /* CHANGED: 'scroll' forces the mechanism */
+        overflow-y: scroll !important;    /* FORCE SCROLL MECHANISM */
         overflow-x: hidden !important;    
         position: relative !important;    
         touch-action: pan-y !important;   
         background-color: #030303 !important;
         
-        /* THE MAGIC SCROLL LINES: */
-        -webkit-overflow-scrolling: touch !important; /* Makes iPhone scroll smooth */
-        overscroll-behavior-y: auto !important;       /* Allows the page to 'bounce' so it doesn't feel stuck */
+        /* MAGIC SMOOTH SCROLLING */
+        -webkit-overflow-scrolling: touch !important; 
+        overscroll-behavior-y: auto !important;
     }
 
-    /* Unlock wrappers so they don't trap content */
+    /* Unlock wrappers */
     .app-master-wrapper, .container {
         height: auto !important;
         overflow: visible !important;
@@ -3863,14 +3863,11 @@ body {
         overflow: visible !important;
         width: 100% !important;
         flex: none !important;
-        padding: 20px 15px 120px 15px !important; /* Increased padding for Dock */
+        padding: 20px 15px 120px 15px !important; /* Padding for Bottom Dock */
     }
 
-    /* Hide the OLD Sidebar (We use the Dock now) */
-    .sidebar { display: none !important; }
-
-    /* Hide Desktop-specific elements */
-    .header-clock, .logo-text, .desktop-only { display: none !important; }
+    /* Hide Desktop Elements */
+    .sidebar, .header-clock, .logo-text, .desktop-only { display: none !important; }
     .search-container { max-width: 140px !important; }
 
 
@@ -3887,35 +3884,43 @@ body {
         gap: 20px !important;
         width: 100% !important;
     }
-    .tech-profile-card {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
 
 
-    /* --- C. GRID REPAIRS (Fixes 'Explore' & 'Projects' Squishing) --- */
-    /* This forces all grids to be 1 column wide on phone */
+    /* --- C. GRID REPAIRS (EXPLORE PAGE) --- */
     .holo-grid, 
     .bento-grid, 
     .explore-grid, 
-    .projects-grid, 
-    .connect-grid,
-    .social-grid {
+    .projects-grid {
         display: grid !important;
         grid-template-columns: 1fr !important; /* FORCE SINGLE COLUMN */
         gap: 20px !important;
         width: 100% !important;
     }
 
-    /* Make cards full width */
-    .connect-card, .social-card, .uplink-card, .holo-card, .bento-card {
+
+    /* --- C-2. CONNECT PAGE FIX (THE ICONS FIX) --- */
+    /* This forces the row of icons to break into a vertical list */
+    .connect-grid, 
+    .social-grid, 
+    .links-container, 
+    .social-icons-container {
+        display: flex !important;
+        flex-direction: column !important; /* STACK VERTICALLY */
+        align-items: center !important;
+        width: 100% !important;
+        gap: 20px !important;
+    }
+
+    /* Ensure the cards/icons take full width */
+    .connect-card, .social-card, .icon-card {
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
+        justify-content: center !important; /* Center text inside */
     }
 
 
-    /* --- D. THE FIXED BOTTOM DOCK (YouTube Music Style) --- */
+    /* --- D. THE FIXED BOTTOM DOCK --- */
     .mobile-bottom-dock {
         display: flex !important;
         position: fixed !important;
@@ -3924,18 +3929,17 @@ body {
         width: 100% !important;
         height: 70px !important;
         
-        background: rgba(15, 15, 15, 0.95) !important; /* Glassy Black */
+        background: rgba(15, 15, 15, 0.95) !important; 
         backdrop-filter: blur(12px);
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         
         justify-content: space-around;
         align-items: center;
-        z-index: 2147483647 !important; /* MAX Z-Index */
+        z-index: 2147483647 !important; 
         padding-bottom: 5px;
         box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
     }
 
-    /* Dock Icons */
     .dock-item {
         display: flex;
         flex-direction: column;
@@ -3958,7 +3962,6 @@ body {
 
     .dock-label { font-size: 10px; color: #909090; }
 
-    /* Active State */
     .dock-item:active svg, .dock-item:hover svg {
         fill: #ffffff;
         transform: translateY(-3px);
@@ -3968,7 +3971,7 @@ body {
     }
 }
 
-/* Allow clicks to pass through the background so you can grab the screen to scroll */
+/* Allow scrolling touches to pass through background */
 .cyber-grid-container {
     pointer-events: none !important; 
 }
