@@ -3824,7 +3824,7 @@ body {
 
 
 /* ============================================================
-   📱 FINAL STRICT MOBILE FIX (Zero Empty Space, Perfect Grid)
+   📱 FINAL MOBILE SUIT (Vertical Stack + Big Cards)
    ============================================================ */
 
 /* 1. HIDE DOCK ON DESKTOP */
@@ -3833,118 +3833,127 @@ body {
 /* 2. MOBILE MODE (Phones only) */
 @media (max-width: 768px) {
 
-    /* --- A. CORE LAYOUT (No Extra Space) --- */
+    /* --- A. CORE SETTINGS --- */
     html, body, #root {
         height: auto !important; min-height: 100vh !important;
         overflow-y: auto !important; overflow-x: hidden !important;
         background-color: #030303 !important;
+        -webkit-overflow-scrolling: touch !important;
     }
 
-    .app-master-wrapper, .container {
+    .app-master-wrapper, .container, .main-content {
         height: auto !important; display: block !important;
         overflow: visible !important; width: 100% !important;
+        padding: 0 0 90px 0 !important; /* Space for Dock */
     }
+    
+    .main-content { padding: 15px 15px 100px 15px !important; }
 
-    /* REDUCED PADDING to fix "More Empty Space" issue */
-    .main-content {
-        padding: 10px 15px 80px 15px !important; /* 80px is just enough for dock */
-        min-height: 100vh !important;
-        display: block !important;
-    }
-
-
-    /* --- B. HEADER & COMMAND SLIDE FIX --- */
-    /* Remove the (P) Text */
-    .logo-text, .header-clock, .sidebar { display: none !important; }
-
-    /* Center the Command/Search Bar */
-    .header-wrapper {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        padding: 10px 0 !important;
-    }
-    .search-container {
-        width: 90% !important; /* Proper width */
-        margin: 0 auto !important; /* Perfectly Centered */
-    }
+    /* Hide Desktop Elements */
+    .sidebar, .header-clock, .logo-text, .desktop-only { display: none !important; }
+    
+    /* Header & Search Fix */
+    .header-wrapper { display: flex !important; justify-content: center !important; }
+    .search-container { width: 95% !important; margin: 10px 0 !important; }
 
 
-    /* --- C. ENTRY PAGE FIX (Operator Slide) --- */
+    /* --- B. ENTRY PAGE FIX (Operator & Guest Stack) --- */
+    /* This forces the two cards to sit one on top of the other */
     .entry-container {
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
         min-height: 100vh !important;
-        padding: 0 !important;
+        padding: 20px !important;
+    }
+    
+    .tech-grid {
+        display: flex !important;
+        flex-direction: column !important; /* VERTICAL STACK */
+        gap: 30px !important;
+        width: 100% !important;
+        align-items: center !important;
     }
 
-    /* Fix the Operator Card Appearance */
-    .tech-profile-card {
-        width: 85% !important; /* Not too wide */
+    /* Fix the specific Operator/Guest Cards */
+    .tech-profile-card, .profile-card {
+        width: 100% !important;
         max-width: 320px !important;
-        margin: 0 auto !important;
-        transform: none !important; /* Stop 3D tilt messing it up */
-        background: #111 !important; /* Solid dark background */
-        border: 1px solid #333 !important;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-    }
-
-
-    /* --- D. CONNECT PAGE FIX (Show ALL Icons) --- */
-    /* Forces icons to wrap to the next line instead of hiding */
-    .social-row, .social-icons, .icon-container {
-        display: flex !important;
-        flex-wrap: wrap !important; /* KEY FIX: Allows multiple rows */
-        justify-content: center !important;
-        gap: 20px !important;
-        width: 100% !important;
-    }
-
-
-    /* --- E. GENERAL GRID FIX (Vertical Stack) --- */
-    .holo-grid, .bento-grid, .explore-grid, .projects-grid, 
-    .connect-grid, .links-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important;
-        width: 100% !important;
-    }
-
-    /* Make Cards Look Normal & Solid */
-    .holo-card, .bento-card, .connect-card, .social-card, .project-card {
-        width: 100% !important;
         height: auto !important;
-        min-height: 150px !important;
         margin: 0 !important;
-        background: #0a0a0a !important; /* Solid Black/Grey */
-        border: 1px solid #222 !important;
-        border-radius: 12px !important;
+        transform: none !important;
         opacity: 1 !important;
         visibility: visible !important;
     }
 
 
-    /* --- F. VISIBILITY FORCE --- */
+    /* --- C. EXPLORE & CONNECT FIX (Vertical List + Big Cards) --- */
+    
+    /* 1. FORCE EVERYTHING INTO A VERTICAL LIST */
+    .holo-grid, .bento-grid, .explore-grid, .projects-grid, 
+    .connect-grid, .social-grid, .links-grid, .social-row, .icon-container {
+        display: flex !important;
+        flex-direction: column !important; /* One Item Per Line */
+        gap: 30px !important;
+        width: 100% !important;
+        align-items: center !important;
+    }
+
+    /* 2. MAKE CARDS BIGGER (Size Fix) */
+    .holo-card, .bento-card, .connect-card, .social-card, 
+    .uplink-card, .project-card, .icon-card, a.social-icon-btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        
+        /* INCREASED SIZE HERE: */
+        min-height: 220px !important; /* Taller Cards */
+        
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        
+        /* Solid Visibility */
+        background: #111 !important;
+        border: 1px solid #333 !important;
+        border-radius: 16px !important;
+        padding: 20px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* 3. SPECIFIC FIX FOR CONNECT ICONS */
+    /* Ensure icons are visible and centered */
+    .social-icons {
+        display: flex !important;
+        flex-direction: column !important; /* Stack Vertical */
+        width: 100% !important;
+        gap: 20px !important;
+    }
+
+
+    /* --- D. FORCE VISIBILITY (No Hidden Animations) --- */
     [data-aos] {
         opacity: 1 !important;
         transform: none !important;
         visibility: visible !important;
+        transition: none !important;
     }
 
 
-    /* --- G. BOTTOM DOCK --- */
+    /* --- E. BOTTOM DOCK --- */
     .mobile-bottom-dock {
         display: flex !important;
         position: fixed !important; bottom: 0 !important; left: 0 !important;
-        width: 100% !important; height: 65px !important;
-        background: #0f0f0f !important;
+        width: 100% !important; height: 70px !important;
+        background: #111 !important;
         border-top: 1px solid #333;
         z-index: 2147483647 !important;
         justify-content: space-around; align-items: center;
     }
-
     .dock-item {
         display: flex; flex-direction: column;
         align-items: center; justify-content: center;
@@ -3953,7 +3962,6 @@ body {
     }
     .dock-item svg { width: 24px; height: 24px; fill: #888; margin-bottom: 4px; }
     .dock-label { font-size: 10px; color: #888; }
-    
     .dock-item.active svg { fill: white; }
     .dock-item.active .dock-label { color: white; }
 }
