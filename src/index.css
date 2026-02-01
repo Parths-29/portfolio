@@ -3824,158 +3824,97 @@ body {
 
 
 /* ============================================================
-   📱 FINAL UNIFIED MOBILE SUIT (Polished & Fixed)
+   📱 EMERGENCY RESCUE MOBILE SUIT (Fixes Visibility & Grids)
    ============================================================ */
 
-/* 1. HIDE MOBILE DOCK ON PC */
-.mobile-bottom-dock {
-    display: none !important;
-}
+/* 1. HIDE DOCK ON DESKTOP */
+.mobile-bottom-dock { display: none !important; }
 
 /* 2. MOBILE MODE (Phones only) */
 @media (max-width: 768px) {
 
-    /* --- A. CORE SCROLLING (Smooth & Unlocked) --- */
+    /* --- A. FORCE VISIBILITY (The "I Can't See Anything" Fix) --- */
+    /* This overrides AOS animations so content always shows up */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: translate(0) scale(1) !important;
+        visibility: visible !important;
+    }
+
+    /* --- B. SCROLLING ENGINE --- */
     html, body, #root {
-        height: auto !important;          
-        min-height: 100vh !important;     
-        overflow-y: scroll !important;    /* FORCE SCROLL MECHANISM */
-        overflow-x: hidden !important;    
-        position: relative !important;    
-        touch-action: pan-y !important;   
+        height: auto !important; min-height: 100vh !important;
+        overflow-y: auto !important; overflow-x: hidden !important;
+        position: relative !important;
         background-color: #030303 !important;
-        
-        /* MAGIC SCROLL LINES */
-        -webkit-overflow-scrolling: touch !important; 
-        overscroll-behavior-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
     }
 
-    /* Unlock wrappers */
-    .app-master-wrapper, .container {
-        height: auto !important;
-        overflow: visible !important;
-        display: block !important;
-    }
-
-    /* Fix Main Content Area (REDUCED BOTTOM SPACE) */
-    .main-content {
-        height: auto !important;
-        overflow: visible !important;
-        width: 100% !important;
-        flex: none !important;
-        /* Changed 100px to 85px to remove extra blank space */
-        padding: 20px 15px 85px 15px !important; 
+    .app-master-wrapper, .container, .main-content {
+        height: auto !important; display: block !important;
+        overflow: visible !important; width: 100% !important;
+        padding: 20px 15px 120px 15px !important; flex: none !important;
     }
 
     /* Hide Desktop Elements */
     .sidebar, .header-clock, .logo-text, .desktop-only { display: none !important; }
+    .search-container { max-width: 100% !important; margin: 10px 0 !important; }
 
 
-    /* --- B. SEARCH BAR FIX (Detached & Clean) --- */
-    .search-container { 
-        max-width: 100% !important;
-        width: auto !important;
-        margin: 10px 5px !important; /* Adds space around it */
-        position: relative !important;
-        top: 0 !important;
-    }
-    .header-wrapper {
-        padding: 10px 15px !important; /* Adds breathing room to header */
+    /* --- C. GRID & LAYOUT REPAIR (The "Messed Up" Fix) --- */
+    
+    /* 1. FORCE VERTICAL STACK FOR ALL GRIDS */
+    .holo-grid, .bento-grid, .explore-grid, .projects-grid, 
+    .connect-grid, .social-grid, .links-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 25px !important;
+        width: 100% !important;
         height: auto !important;
     }
 
-
-    /* --- C. UNIVERSAL "ONE LINE" FIX (Connect & Grids) --- */
-    /* This forces EVERY grid to be a vertical stack (1 item per line) */
-    .holo-grid, 
-    .bento-grid, 
-    .explore-grid, 
-    .projects-grid, 
-    .connect-grid,      /* Fixes Connect Page */
-    .social-grid,       /* Fixes Social Icons */
-    .links-grid,
-    .social-row {
-        display: flex !important;
-        flex-direction: column !important; /* STACK VERTICALLY */
-        width: 100% !important;
-        gap: 20px !important;
-    }
-
-    /* Make all cards/icons full width */
-    .connect-card, .social-card, .uplink-card, .holo-card, .bento-card, .icon-card {
+    /* 2. FIX EXPLORE & CONNECT CARDS */
+    /* Ensures they take full width and don't collapse */
+    .holo-card, .bento-card, .connect-card, .social-card, .uplink-card, .project-card {
         width: 100% !important;
         max-width: 100% !important;
+        min-height: 150px !important; /* Prevents 0 height invisible cards */
         margin: 0 !important;
-    }
-
-
-    /* --- D. ENTRY PAGE FIX --- */
-    .entry-container {
         display: flex !important;
         flex-direction: column !important;
+        background: rgba(20,20,20,0.8) !important; /* Ensure background is visible */
+    }
+
+    /* 3. SPECIFIC CONNECT PAGE ICONS */
+    .social-row, .social-icons, .icon-container {
+        display: flex !important;
+        flex-wrap: wrap !important; /* Allow wrapping if needed */
         justify-content: center !important;
-        min-height: 100vh !important;
-        padding: 20px !important;
-    }
-    .tech-grid {
-        flex-direction: column !important;
         gap: 20px !important;
-        width: 100% !important;
     }
 
 
-    /* --- E. THE FIXED BOTTOM DOCK --- */
+    /* --- D. FIXED BOTTOM DOCK --- */
     .mobile-bottom-dock {
         display: flex !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 70px !important;
-        
-        background: rgba(15, 15, 15, 0.95) !important; 
-        backdrop-filter: blur(12px);
+        position: fixed !important; bottom: 0 !important; left: 0 !important;
+        width: 100% !important; height: 70px !important;
+        background: rgba(15, 15, 15, 0.98) !important;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-        
-        justify-content: space-around;
-        align-items: center;
-        z-index: 2147483647 !important; 
-        padding-bottom: 5px;
-        box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+        justify-content: space-around; align-items: center;
+        z-index: 2147483647 !important;
     }
 
     .dock-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        text-decoration: none; width: 20%; height: 100%; color: #888;
         background: transparent !important;
-        width: 20%;
-        height: 100%;
-        color: #888;
     }
-
-    .dock-item svg {
-        width: 24px;
-        height: 24px;
-        fill: #909090;
-        margin-bottom: 4px;
-        transition: 0.2s;
-    }
-
+    .dock-item svg { width: 24px; height: 24px; fill: #909090; margin-bottom: 4px; }
     .dock-label { font-size: 10px; color: #909090; }
-
-    .dock-item:active svg, .dock-item:hover svg {
-        fill: #ffffff;
-        transform: translateY(-3px);
-    }
-    .dock-item:active .dock-label, .dock-item:hover .dock-label {
-        color: #ffffff;
-    }
+    .dock-item.active svg { fill: white; }
+    .dock-item.active .dock-label { color: white; }
 }
 
-/* Allow scrolling touches to pass through background */
-.cyber-grid-container {
-    pointer-events: none !important; 
-}
+.cyber-grid-container { pointer-events: none !important; }
