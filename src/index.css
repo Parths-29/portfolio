@@ -3824,7 +3824,7 @@ body {
 
 
 /* ============================================================
-   📱 SIMPLE & SOLID MOBILE SUITE (Vertical Stack Only)
+   📱 FINAL STRICT MOBILE FIX (Zero Empty Space, Perfect Grid)
    ============================================================ */
 
 /* 1. HIDE DOCK ON DESKTOP */
@@ -3833,92 +3833,113 @@ body {
 /* 2. MOBILE MODE (Phones only) */
 @media (max-width: 768px) {
 
-    /* --- A. ENABLE SCROLLING (Standard Web Scroll) --- */
+    /* --- A. CORE LAYOUT (No Extra Space) --- */
     html, body, #root {
         height: auto !important; min-height: 100vh !important;
         overflow-y: auto !important; overflow-x: hidden !important;
         background-color: #030303 !important;
-        position: relative !important;
     }
 
-    .app-master-wrapper, .container, .main-content {
+    .app-master-wrapper, .container {
         height: auto !important; display: block !important;
         overflow: visible !important; width: 100% !important;
-        padding: 10px 15px 100px 15px !important; /* Space for Dock */
     }
 
-    /* Hide Desktop Elements */
-    .sidebar, .header-clock, .logo-text, .desktop-only { display: none !important; }
-    .search-container { width: 100% !important; margin: 10px 0 !important; }
-
-
-    /* --- B. VISIBILITY FORCE (Make everything visible) --- */
-    [data-aos] {
-        opacity: 1 !important;
-        transform: none !important;
-        visibility: visible !important;
-        transition: none !important;
-    }
-
-
-    /* --- C. THE "STRAIGHT FORMAT" FIX (Vertical Stack) --- */
-    /* This forces EVERY grid to stack cards one on top of another */
-    .holo-grid, .bento-grid, .explore-grid, .projects-grid, 
-    .connect-grid, .social-grid, .links-grid {
-        display: flex !important;
-        flex-direction: column !important; /* Vertical Stack */
-        gap: 20px !important;
-        width: 100% !important;
-    }
-
-    /* --- D. CARD STYLING (Normal & Solid) --- */
-    /* No blur, no glass, just a solid readable card */
-    .holo-card, .bento-card, .connect-card, .social-card, 
-    .uplink-card, .project-card, .tech-profile-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        min-height: 150px !important;
-        margin: 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        
-        /* Solid Background so you can see it */
-        background: #111111 !important; 
-        border: 1px solid #333 !important;
-        border-radius: 12px !important;
-        padding: 15px !important;
-        opacity: 1 !important;
-    }
-
-
-    /* --- E. CONNECT PAGE ICONS FIX --- */
-    /* Forces icons to stay on screen (Wrap if needed) */
-    .social-row, .social-icons, .icon-container {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 20px !important;
-        width: 100% !important;
-    }
-
-
-    /* --- F. ENTRY PAGE (Center the User Card) --- */
-    .entry-container {
+    /* REDUCED PADDING to fix "More Empty Space" issue */
+    .main-content {
+        padding: 10px 15px 80px 15px !important; /* 80px is just enough for dock */
         min-height: 100vh !important;
+        display: block !important;
+    }
+
+
+    /* --- B. HEADER & COMMAND SLIDE FIX --- */
+    /* Remove the (P) Text */
+    .logo-text, .header-clock, .sidebar { display: none !important; }
+
+    /* Center the Command/Search Bar */
+    .header-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 10px 0 !important;
+    }
+    .search-container {
+        width: 90% !important; /* Proper width */
+        margin: 0 auto !important; /* Perfectly Centered */
+    }
+
+
+    /* --- C. ENTRY PAGE FIX (Operator Slide) --- */
+    .entry-container {
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
+        min-height: 100vh !important;
+        padding: 0 !important;
+    }
+
+    /* Fix the Operator Card Appearance */
+    .tech-profile-card {
+        width: 85% !important; /* Not too wide */
+        max-width: 320px !important;
+        margin: 0 auto !important;
+        transform: none !important; /* Stop 3D tilt messing it up */
+        background: #111 !important; /* Solid dark background */
+        border: 1px solid #333 !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
     }
 
 
-    /* --- G. SIMPLE BOTTOM DOCK --- */
+    /* --- D. CONNECT PAGE FIX (Show ALL Icons) --- */
+    /* Forces icons to wrap to the next line instead of hiding */
+    .social-row, .social-icons, .icon-container {
+        display: flex !important;
+        flex-wrap: wrap !important; /* KEY FIX: Allows multiple rows */
+        justify-content: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+
+    /* --- E. GENERAL GRID FIX (Vertical Stack) --- */
+    .holo-grid, .bento-grid, .explore-grid, .projects-grid, 
+    .connect-grid, .links-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    /* Make Cards Look Normal & Solid */
+    .holo-card, .bento-card, .connect-card, .social-card, .project-card {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 150px !important;
+        margin: 0 !important;
+        background: #0a0a0a !important; /* Solid Black/Grey */
+        border: 1px solid #222 !important;
+        border-radius: 12px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+
+    /* --- F. VISIBILITY FORCE --- */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
+
+    /* --- G. BOTTOM DOCK --- */
     .mobile-bottom-dock {
         display: flex !important;
         position: fixed !important; bottom: 0 !important; left: 0 !important;
-        width: 100% !important; height: 70px !important;
-        background: #111111 !important; /* Solid Dark Grey */
+        width: 100% !important; height: 65px !important;
+        background: #0f0f0f !important;
         border-top: 1px solid #333;
         z-index: 2147483647 !important;
         justify-content: space-around; align-items: center;
@@ -3930,12 +3951,11 @@ body {
         text-decoration: none; width: 20%; height: 100%; color: #888;
         background: transparent !important;
     }
-    .dock-item svg { width: 24px; height: 24px; fill: #888; margin-bottom: 5px; }
-    .dock-label { font-size: 11px; color: #888; }
+    .dock-item svg { width: 24px; height: 24px; fill: #888; margin-bottom: 4px; }
+    .dock-label { font-size: 10px; color: #888; }
     
     .dock-item.active svg { fill: white; }
     .dock-item.active .dock-label { color: white; }
 }
 
-/* Allow scrolling touches to pass through background */
 .cyber-grid-container { pointer-events: none !important; }
