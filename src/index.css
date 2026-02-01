@@ -3823,33 +3823,41 @@ body {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 
-/* =================================================================
-   💎 PREMIUM MOBILE SUITE (Professional App-Like UI)
-   ================================================================= */
+/* ==================================================================================
+   🚀 ULTIMATE PREMIUM MOBILE SUITE (V5.0 - The "Holy Grail")
+   ================================================================================== 
+   FEATURES:
+   1. Native iOS/Android Smooth Scrolling (Unlocked)
+   2. Intelligent Grid System (Vertical Cards, Horizontal Icons)
+   3. Visibility Enforcer (Fixes "Invisible" Animations)
+   4. Glassmorphism UI (Premium Blur Effects)
+   ================================================================================== */
 
-/* 1. DESKTOP SAFETY LOCK (Hide Mobile Elements on PC) */
+/* --- 1. DESKTOP SAFETY (Hide Mobile Elements on PC) --- */
 .mobile-bottom-dock { display: none !important; }
 
 
-/* 2. MOBILE ENGINE (Only applies to screens smaller than 768px) */
+/* --- 2. MASTER MOBILE ENGINE (Only runs on phones) --- */
 @media (max-width: 768px) {
 
-    /* --- A. CORE SCROLLING ENGINE (High Performance) --- */
+    /* ==============================
+       A. CORE SCROLLING PHYSICS
+       ============================== */
     html, body, #root {
         height: auto !important;
         min-height: 100vh !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
+        overflow-y: auto !important;       /* FORCE SCROLL */
+        overflow-x: hidden !important;     /* STOP SIDE SCROLL */
         position: relative !important;
-        background-color: #050505 !important; /* Deep Black OLED friendly */
+        background-color: #050505 !important; /* Premium OLED Black */
         
-        /* iOS Smooth Scrolling Physics */
+        /* Enable Smooth Momentum Scrolling (iOS) */
         -webkit-overflow-scrolling: touch !important;
         overscroll-behavior-y: auto !important;
         scroll-behavior: smooth !important;
     }
 
-    /* Unlock the "App Wrappers" that were trapping content */
+    /* Unlock the Desktop "App Wrappers" */
     .app-master-wrapper, .container {
         height: auto !important;
         display: block !important;
@@ -3858,38 +3866,47 @@ body {
         position: static !important;
     }
 
-    /* --- B. LAYOUT & SPACING (Professional White Space) --- */
+    /* ==============================
+       B. LAYOUT & WHITESPACE
+       ============================== */
     .main-content {
         height: auto !important;
         overflow: visible !important;
         width: 100% !important;
         flex: none !important;
         display: block !important;
-        padding: 15px 15px 95px 15px !important; /* Perfect spacing for Dock */
+        /* Bottom padding ensures content isn't hidden behind the dock */
+        padding: 15px 15px 100px 15px !important; 
         box-sizing: border-box !important;
     }
 
-    /* Fix Header Spacing */
+    /* Header & Search Bar Refinement */
     .header-wrapper {
-        padding: 15px 5px !important;
-        background: transparent !important;
+        padding: 10px 0 !important;
         position: relative !important;
-        margin-bottom: 10px !important;
+        background: transparent !important;
     }
-
-    /* Detach Search Bar for clean look */
+    
     .search-container {
         width: 100% !important;
         max-width: 100% !important;
-        margin: 10px 0 20px 0 !important;
-        background: rgba(255, 255, 255, 0.08) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        margin: 15px 0 25px 0 !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
         backdrop-filter: blur(10px) !important;
+        border-radius: 12px !important;
+    }
+
+    /* Hide Desktop-Only Elements */
+    .sidebar, .header-clock, .logo-text, .desktop-only { 
+        display: none !important; 
     }
 
 
-    /* --- C. VISIBILITY ENFORCER (Fixes "Invisible Content") --- */
-    /* Forces all animated elements to appear immediately on mobile */
+    /* ==============================
+       C. VISIBILITY ENFORCER
+       ============================== */
+    /* Fixes the issue where AOS Animations hide content on mobile */
     [data-aos] {
         opacity: 1 !important;
         transform: none !important;
@@ -3898,29 +3915,49 @@ body {
     }
 
 
-    /* --- D. INTELLIGENT GRID SYSTEM (The "Stacking" Logic) --- */
-    /* 1. Force all main grids to single-column vertical stack */
+    /* ==============================
+       D. INTELLIGENT GRID SYSTEM
+       ============================== */
+    
+    /* TYPE 1: VERTICAL STACK GRIDS (Projects, Explore, Feed) */
+    /* These need to stack one on top of another for readability */
     .holo-grid, 
     .bento-grid, 
     .explore-grid, 
-    .projects-grid, 
-    .connect-grid,
-    .social-grid,
-    .links-grid {
+    .projects-grid {
         display: flex !important;
         flex-direction: column !important;
-        gap: 24px !important; /* Professional gap size */
+        gap: 24px !important;
         width: 100% !important;
-        height: auto !important;
     }
 
-    /* 2. Style ALL Cards (Explore, Projects, Connect) */
+    /* TYPE 2: HORIZONTAL WRAP GRIDS (Connect Icons, Tech Stack) */
+    /* These should flow naturally in rows */
+    .connect-grid, 
+    .social-grid, 
+    .links-grid,
+    .social-row,
+    .social-icons,
+    .icon-container {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+
+    /* ==============================
+       E. PREMIUM CARD STYLING
+       ============================== */
+    /* Applies glassmorphism and proper sizing to ALL cards */
     .holo-card, 
     .bento-card, 
     .connect-card, 
     .social-card, 
     .uplink-card, 
-    .project-card, 
+    .project-card,
     .tech-profile-card {
         width: 100% !important;
         max-width: 100% !important;
@@ -3929,38 +3966,30 @@ body {
         display: flex !important;
         flex-direction: column !important;
         
-        /* Premium Card Styling */
-        background: rgba(20, 20, 20, 0.6) !important;
+        /* Glass Style */
+        background: rgba(20, 20, 20, 0.75) !important;
         border: 1px solid rgba(255, 255, 255, 0.08) !important;
         backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
         border-radius: 16px !important;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3) !important;
-        padding: 15px !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+        padding: 20px !important;
+        opacity: 1 !important;
+    }
+
+    /* Fix Image Heights inside cards */
+    .holo-img, .project-img {
+        height: 180px !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
     }
 
 
-    /* --- E. PAGE-SPECIFIC FIXES --- */
-    
-    /* 1. CONNECT PAGE (Fixing the icons) */
-    .social-row, .social-icons, .icon-container {
-        display: flex !important;
-        flex-direction: row !important; /* Keep icons in row */
-        flex-wrap: wrap !important;     /* Wrap if screen is too small */
-        justify-content: center !important;
-        gap: 15px !important;
-        width: 100% !important;
-    }
-    
-    /* Make Connect Icons bigger and touch-friendly */
-    .icon-card, .social-icon-btn {
-        width: 60px !important;
-        height: 60px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
+    /* ==============================
+       F. PAGE-SPECIFIC FIXES
+       ============================== */
 
-    /* 2. ENTRY PAGE (Vertical Centering) */
+    /* 1. ENTRY PAGE (Center the Operator Card) */
     .entry-container {
         display: flex !important;
         flex-direction: column !important;
@@ -3969,28 +3998,44 @@ body {
         min-height: 100vh !important;
         padding: 20px !important;
     }
+    .tech-profile-card {
+        transform: none !important; /* Stop 3D tilt on mobile */
+    }
+
+    /* 2. CONNECT PAGE ICONS (Touch Targets) */
+    .icon-card, .social-icon-btn {
+        width: 55px !important;
+        height: 55px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 50% !important; /* Circular icons */
+    }
 
 
-    /* --- F. THE PREMIUM BOTTOM DOCK --- */
+    /* ==============================
+       G. THE PREMIUM DOCK (Bottom Nav)
+       ============================== */
     .mobile-bottom-dock {
         display: flex !important;
         position: fixed !important;
         bottom: 0 !important;
         left: 0 !important;
         width: 100% !important;
-        height: 75px !important; /* Slightly taller for modern phones */
+        height: 75px !important; /* Taller for modern phones */
         
-        /* Glassmorphism Background */
-        background: rgba(10, 10, 10, 0.92) !important;
+        /* Deep Glass Effect */
+        background: rgba(8, 8, 8, 0.94) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         
         justify-content: space-evenly !important;
         align-items: center !important;
-        z-index: 2147483647 !important; /* Ensures it is always on top */
-        padding-bottom: 10px !important; /* Safe area for iPhone Home Bar */
-        box-shadow: 0 -10px 40px rgba(0,0,0,0.5) !important;
+        z-index: 2147483647 !important; /* Always on top */
+        padding-bottom: 15px !important; /* Space for iPhone Home Bar */
+        box-shadow: 0 -10px 40px rgba(0,0,0,0.6) !important;
     }
 
     .dock-item {
@@ -3999,18 +4044,17 @@ body {
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        background: transparent !important;
         width: 20%;
         height: 100%;
-        color: #666; /* Inactive Color */
+        background: transparent !important;
         transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .dock-item svg {
         width: 26px;
         height: 26px;
-        fill: #666;
-        margin-bottom: 6px;
+        fill: #666; /* Inactive Grey */
+        margin-bottom: 5px;
         transition: fill 0.3s ease;
     }
 
@@ -4021,21 +4065,23 @@ body {
         letter-spacing: 0.3px;
     }
 
-    /* Active State (Glowing White) */
+    /* Active / Hover State */
     .dock-item:active svg, .dock-item:hover svg {
         fill: #fff;
-        filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
+        filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
     }
     .dock-item:active .dock-label, .dock-item:hover .dock-label {
         color: #fff;
     }
     .dock-item:active {
-        transform: scale(0.95);
+        transform: scale(0.92); /* Subtle press effect */
     }
-
-    /* --- G. HIDE DESKTOP ELEMENTS --- */
-    .sidebar, .header-clock, .logo-text, .desktop-only { display: none !important; }
 }
 
-/* Allow scrolling touches to pass through background */
-.cyber-grid-container { pointer-events: none !important; }
+/* ==============================
+   H. GLOBAL INTERACTION FIXES
+   ============================== */
+/* Allow scrolling touches to pass through the background grid */
+.cyber-grid-container {
+    pointer-events: none !important; 
+}
