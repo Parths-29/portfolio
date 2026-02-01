@@ -3964,3 +3964,6 @@ body {
         color: #ffffff;
     }
 }
+.cyber-grid-container {
+    pointer-events: none !important; /* Allows touches to pass through the background */
+}

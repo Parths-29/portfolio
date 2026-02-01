@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// We import Link so the bottom dock buttons work
+// Import Link so the bottom dock buttons work
 import { BrowserRouter as Router, Routes, Route, useLocation, Link } from "react-router-dom";
 
 // --- Components ---
@@ -87,14 +87,14 @@ function App() {
 
   const infiniteSkills = [...skillsData, ...skillsData];
 
-  // --- HOME FEED COMPONENT ---
-  // This bundles your Bio, Skills, and Projects into one "Page" so the Router can render it cleanly
+  // --- HOME FEED COMPONENT (FIXED) ---
+  // I removed 'data-aos' attributes here so they show up on Laptop immediately
   const HomeFeed = () => (
     <>
       <Bio />
 
       {/* SKILLS MARQUEE */}
-      <div className="section" data-aos="fade-up">
+      <div className="section">
         <div className="section-header">
           <h2>Featured Skills</h2>
         </div>
@@ -113,13 +113,13 @@ function App() {
       </div>
 
       {/* DEPLOYED SYSTEMS */}
-      <div className="section" data-aos="fade-up">
+      <div className="section">
         <div className="section-header">
           <h2>Deployed Systems</h2>
         </div>
         <div className="holo-grid">
           {/* Project 1 */}
-          <div className="holo-card" data-aos="zoom-in" data-aos-delay="100">
+          <div className="holo-card">
             <div className="holo-img-wrapper">
               <img src={iplImg} alt="IPL Predictor" className="holo-img" />
               <div className="holo-content">
@@ -133,7 +133,7 @@ function App() {
             </div>
           </div>
           {/* Project 2 */}
-          <div className="holo-card" data-aos="zoom-in" data-aos-delay="200">
+          <div className="holo-card">
             <div className="holo-img-wrapper">
               <img src={receiptImg} alt="Receipt Scanner" className="holo-img" />
               <div className="holo-content">
@@ -150,12 +150,12 @@ function App() {
       </div>
 
       {/* ACTIVE PROTOCOLS */}
-      <div className="section" data-aos="fade-up">
+      <div className="section">
         <div className="section-header" style={{ borderLeftColor: '#00ccff', borderBottomColor: 'rgba(0, 204, 255, 0.3)' }}>
           <h2 style={{ textShadow: '0 0 10px rgba(0, 204, 255, 0.8)' }}>Active Development Protocols</h2>
         </div>
         <div className="holo-grid">
-          <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }} data-aos="flip-up">
+          <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }}>
             <div className="holo-img-wrapper">
               <img src={voteImg} alt="Voting" className="holo-img" />
               <div className="holo-content">
@@ -167,7 +167,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }} data-aos="flip-up" data-aos-delay="100">
+          <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }}>
             <div className="holo-img-wrapper">
               <img src={drImg} alt="Medical" className="holo-img" />
               <div className="holo-content">
@@ -179,7 +179,7 @@ function App() {
               </div>
             </div>
           </div>
-           <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }} data-aos="flip-up" data-aos-delay="200">
+           <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }}>
             <div className="holo-img-wrapper">
               <img src={pythonImg} alt="AI Proctor" className="holo-img" />
               <div className="holo-content">
@@ -234,7 +234,6 @@ function App() {
 
 
       {/* 2. MOBILE DOCK (Outside wrapper so it stays fixed) */}
-      {/* The CSS controls Hiding this on Desktop and Showing on Mobile */}
       <div className="mobile-bottom-dock">
             <Link to="/" className="dock-item">
                 <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -246,7 +245,6 @@ function App() {
                 <span className="dock-label">Explore</span>
             </Link>
 
-            {/* EXPERIENCE TAB */}
             <Link to="/experience" className="dock-item">
                 <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h18c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
                 <span className="dock-label">Exp.</span>
