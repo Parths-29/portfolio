@@ -3824,154 +3824,94 @@ body {
 
 
 /* ============================================================
-   📱 FINAL UNIFIED MOBILE SUIT (Replaces all previous mobile CSS)
+   📱 FINAL UNIFIED MOBILE SUIT (NUCLEAR FIX)
    ============================================================ */
 
-/* 1. HIDE MOBILE DOCK ON PC (Desktop Mode) */
-.mobile-bottom-dock {
-    display: none !important;
-}
+/* 1. HIDE DOCK ON DESKTOP */
+.mobile-bottom-dock { display: none !important; }
 
 /* 2. MOBILE MODE (Phones only) */
 @media (max-width: 768px) {
 
-    /* --- A. CORE SCROLLING & LAYOUT UNLOCK --- */
+    /* --- A. ENABLE SCROLLING --- */
     html, body, #root {
-        height: auto !important;          
-        min-height: 100vh !important;     
-        overflow-y: scroll !important;    /* FORCE SCROLL MECHANISM */
-        overflow-x: hidden !important;    
-        position: relative !important;    
-        touch-action: pan-y !important;   
+        height: auto !important; min-height: 100vh !important;
+        overflow-y: auto !important; overflow-x: hidden !important;
+        position: relative !important; touch-action: pan-y !important;
         background-color: #030303 !important;
-        
-        /* MAGIC SMOOTH SCROLLING */
-        -webkit-overflow-scrolling: touch !important; 
+        -webkit-overflow-scrolling: touch !important;
         overscroll-behavior-y: auto !important;
     }
 
-    /* Unlock wrappers */
-    .app-master-wrapper, .container {
-        height: auto !important;
-        overflow: visible !important;
-        display: block !important;
+    /* Unlock Wrappers */
+    .app-master-wrapper, .container, .main-content {
+        height: auto !important; display: block !important;
+        overflow: visible !important; width: 100% !important;
+        padding-bottom: 120px !important; flex: none !important;
     }
 
-    /* Fix Main Content Area */
-    .main-content {
-        height: auto !important;
-        overflow: visible !important;
-        width: 100% !important;
-        flex: none !important;
-        padding: 20px 15px 120px 15px !important; /* Padding for Bottom Dock */
-    }
-
-    /* Hide Desktop Elements */
+    /* Hide Desktop Stuff */
     .sidebar, .header-clock, .logo-text, .desktop-only { display: none !important; }
     .search-container { max-width: 140px !important; }
 
-
-    /* --- B. ENTRY PAGE FIX (Vertical Stack) --- */
-    .entry-container {
+    /* --- B. UNIVERSAL GRID FIX (THE "ONE LINE" FIX) --- */
+    /* This targets EVERY grid or flex row and forces it to be a vertical list */
+    
+    .holo-grid, .bento-grid, .explore-grid, .projects-grid, /* Standard Grids */
+    .connect-grid, .social-grid, .links-grid,              /* Connect Page Grids */
+    .social-icons, .social-row, .icons-container,          /* Icon Containers */
+    div[class*="grid"], div[class*="flex"]                 /* CATCH-ALL: Any div with 'grid' or 'flex' in name */
+    {
         display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        min-height: 100vh !important;
-        padding: 20px !important;
-    }
-    .tech-grid {
-        flex-direction: column !important;
-        gap: 20px !important;
+        flex-direction: column !important; /* Stack items vertically */
+        grid-template-columns: 1fr !important;
         width: 100% !important;
-    }
-
-
-    /* --- C. GRID REPAIRS (EXPLORE PAGE) --- */
-    .holo-grid, 
-    .bento-grid, 
-    .explore-grid, 
-    .projects-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important; /* FORCE SINGLE COLUMN */
         gap: 20px !important;
-        width: 100% !important;
-    }
-
-
-    /* --- C-2. CONNECT PAGE FIX (THE ICONS FIX) --- */
-    /* This forces the row of icons to break into a vertical list */
-    .connect-grid, 
-    .social-grid, 
-    .links-container, 
-    .social-icons-container {
-        display: flex !important;
-        flex-direction: column !important; /* STACK VERTICALLY */
         align-items: center !important;
-        width: 100% !important;
-        gap: 20px !important;
     }
 
-    /* Ensure the cards/icons take full width */
-    .connect-card, .social-card, .icon-card {
+    /* Force all cards to be full width */
+    .holo-card, .bento-card, .connect-card, .social-card, .icon-card, a {
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
-        justify-content: center !important; /* Center text inside */
+        box-sizing: border-box !important;
+    }
+    
+    /* Specific fix for entry page to keep it centered */
+    .entry-container {
+        min-height: 100vh !important;
+        justify-content: center !important;
     }
 
-
-    /* --- D. THE FIXED BOTTOM DOCK --- */
+    /* --- C. FIXED BOTTOM DOCK --- */
     .mobile-bottom-dock {
         display: flex !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 70px !important;
-        
-        background: rgba(15, 15, 15, 0.95) !important; 
+        position: fixed !important; bottom: 0 !important; left: 0 !important;
+        width: 100% !important; height: 70px !important;
+        background: rgba(15, 15, 15, 0.95) !important;
         backdrop-filter: blur(12px);
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-        
-        justify-content: space-around;
-        align-items: center;
-        z-index: 2147483647 !important; 
+        justify-content: space-around; align-items: center;
+        z-index: 2147483647 !important;
         padding-bottom: 5px;
-        box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
     }
 
     .dock-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        background: transparent !important;
-        width: 20%;
-        height: 100%;
-        color: #888;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        text-decoration: none; background: transparent !important;
+        width: 20%; height: 100%; color: #888;
     }
 
     .dock-item svg {
-        width: 24px;
-        height: 24px;
-        fill: #909090;
-        margin-bottom: 4px;
-        transition: 0.2s;
+        width: 24px; height: 24px; fill: #909090;
+        margin-bottom: 4px; transition: 0.2s;
     }
-
     .dock-label { font-size: 10px; color: #909090; }
 
-    .dock-item:active svg, .dock-item:hover svg {
-        fill: #ffffff;
-        transform: translateY(-3px);
-    }
-    .dock-item:active .dock-label, .dock-item:hover .dock-label {
-        color: #ffffff;
-    }
+    .dock-item:active svg, .dock-item:hover svg { fill: #ffffff; transform: translateY(-3px); }
+    .dock-item:active .dock-label, .dock-item:hover .dock-label { color: #ffffff; }
 }
 
-/* Allow scrolling touches to pass through background */
-.cyber-grid-container {
-    pointer-events: none !important; 
-}
+.cyber-grid-container { pointer-events: none !important; }
