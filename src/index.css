@@ -3839,12 +3839,15 @@ body {
     html, body, #root {
         height: auto !important;          
         min-height: 100vh !important;     
-        overflow-y: auto !important;      /* FORCE SCROLL */
+        overflow-y: scroll !important;    /* CHANGED: 'scroll' forces the mechanism */
         overflow-x: hidden !important;    
         position: relative !important;    
         touch-action: pan-y !important;   
         background-color: #030303 !important;
-        overscroll-behavior-y: none;      /* Prevents rubber-banding */
+        
+        /* THE MAGIC SCROLL LINES: */
+        -webkit-overflow-scrolling: touch !important; /* Makes iPhone scroll smooth */
+        overscroll-behavior-y: auto !important;       /* Allows the page to 'bounce' so it doesn't feel stuck */
     }
 
     /* Unlock wrappers so they don't trap content */
@@ -3860,7 +3863,7 @@ body {
         overflow: visible !important;
         width: 100% !important;
         flex: none !important;
-        padding: 20px 15px 100px 15px !important; /* Bottom padding for Dock */
+        padding: 20px 15px 120px 15px !important; /* Increased padding for Dock */
     }
 
     /* Hide the OLD Sidebar (We use the Dock now) */
@@ -3964,6 +3967,8 @@ body {
         color: #ffffff;
     }
 }
+
+/* Allow clicks to pass through the background so you can grab the screen to scroll */
 .cyber-grid-container {
-    pointer-events: none !important; /* Allows touches to pass through the background */
+    pointer-events: none !important; 
 }
