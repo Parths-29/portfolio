@@ -58,15 +58,6 @@ function Experience() {
       category: "dev"
     },
     {
-      id: 7,
-      role: "Web Development Intern",
-      company: "Praitnik",
-      date: "May 2025 - July 2025",
-      desc: "Developed responsive client-facing web solutions. Focused on component modularity and UI consistency, translating Figma designs into pixel-perfect React code for local businesses.",
-      tags: ["Frontend", "UI/UX", "React"],
-      category: "dev"
-    },
-    {
       id: 8,
       role: "Visual Design Strategist",
       company: "Robocon (Robotics Council)",
@@ -75,6 +66,16 @@ function Experience() {
       tags: ["Design", "Branding", "Robotics"],
       category: "creative"
     },
+    {
+      id: 7,
+      role: "Web Development Intern",
+      company: "Praitnik",
+      date: "May 2025 - July 2025",
+      desc: "Developed responsive client-facing web solutions. Focused on component modularity and UI consistency, translating Figma designs into pixel-perfect React code for local businesses.",
+      tags: ["Frontend", "UI/UX", "React"],
+      category: "dev"
+    },
+    
   ];
 
   // --- SCROLL ANIMATION LOGIC (Fixed for React) ---
