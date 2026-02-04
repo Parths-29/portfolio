@@ -58,15 +58,6 @@ function Experience() {
       category: "dev"
     },
     {
-      id: 8,
-      role: "Visual Design Strategist",
-      company: "Robocon (Robotics Council)",
-      date: "Aug 2023 - Nov 2023",
-      desc: "Managed the visual identity for the college robotics team. Created technical assets, event branding, and social media campaigns that increased engagement during national robotics competitions.",
-      tags: ["Design", "Branding", "Robotics"],
-      category: "creative"
-    },
-    {
       id: 7,
       role: "Web Development Intern",
       company: "Praitnik",
@@ -74,6 +65,16 @@ function Experience() {
       desc: "Developed responsive client-facing web solutions. Focused on component modularity and UI consistency, translating Figma designs into pixel-perfect React code for local businesses.",
       tags: ["Frontend", "UI/UX", "React"],
       category: "dev"
+    },
+    
+    {
+      id: 8,
+      role: "Visual Design Strategist",
+      company: "Robocon (Robotics Council)",
+      date: "Aug 2023 - Nov 2023",
+      desc: "Managed the visual identity for the college robotics team. Created technical assets, event branding, and social media campaigns that increased engagement during national robotics competitions.",
+      tags: ["Design", "Branding", "Robotics"],
+      category: "creative"
     },
     
   ];
