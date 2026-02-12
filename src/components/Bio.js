@@ -1,14 +1,12 @@
 import React from "react";
-import profileImg from "../img1.jpg"; // Using your profile picture
+import profileImg from "../img1.jpg"; 
 
 function Bio() {
   return (
     <section className="hero-section">
       
-      {/* --- LEFT SIDE: TEXT CONTENT --- */}
+      {/* --- LEFT SIDE: TEXT (No Changes) --- */}
       <div className="hero-content">
-        
-        {/* 1. The Glitch Name Effect */}
         <p className="hero-greeting"> ACCESS GRANTED // WELCOME</p>
         <h1 className="hero-name glitch" data-text="PARTH SHARMA">
           PARTH SHARMA
@@ -18,7 +16,6 @@ function Bio() {
           FULL STACK ARCHITECT | AI OPERATIVE | 3RD YEAR @ KJSCE
         </div>
 
-        {/* 2. Humanized Bio Text */}
         <div className="hero-manifesto">
           <p>
             Hi, I'm Parth. I'm a developer who loves breaking things just to see how to fix them. 
@@ -32,26 +29,31 @@ function Bio() {
           </p>
         </div>
 
-        {/* 3. Personal Status Bar (The "Good Things") */}
         <div className="hero-personal">
           <div style={{ display: 'flex', gap: '20px', fontSize: '0.9rem', color: '#888' }}>
             <span>⚡ <b>Status:</b> Shipping Code</span>
             <span>🇩🇪 <b>Language:</b> Learning German (A1)</span>
-            <span>🎓 <b>Grade:</b> 9.4 CGPA</span>
           </div>
         </div>
-      
       </div>
 
-      {/* --- RIGHT SIDE: PHOTO WITH SCANNER --- */}
+      {/* --- RIGHT SIDE: TACTICAL HUD FRAME (New Design) --- */}
       <div className="hero-visual">
-        <div className="hero-img-container">
-          <img src={profileImg} alt="Parth Sharma" className="hero-img" />
-          {/* The red laser scanning line */}
-          <div className="hero-scanline"></div>
+        <div className="hud-frame-container">
+            {/* The Image */}
+            <img src={profileImg} alt="Parth Sharma" className="hud-img" />
+            
+            {/* The Overlay Corners (The "Targeting" Look) */}
+            <div className="hud-corner top-left"></div>
+            <div className="hud-corner top-right"></div>
+            <div className="hud-corner bottom-left"></div>
+            <div className="hud-corner bottom-right"></div>
+
+            {/* Optional: A small "Live" tag in the corner */}
+            <div className="hud-tag">ProCriminal29</div>
         </div>
         
-        {/* Decorative Background Glows */}
+        {/* Background Atmosphere */}
         <div className="hero-glow-spot left"></div>
         <div className="hero-glow-spot right"></div>
       </div>

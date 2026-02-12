@@ -3962,3 +3962,222 @@ body {
 
 /* Force override 3D effects */
 .cyber-grid-container { pointer-events: none !important; }
+
+/* =========================================
+   ☢️ CYBERPUNK REACTOR CORE (Profile Image)
+   ========================================= */
+
+/* 1. The Container */
+.tech-reactor-container {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. The Inner Image Circle (The Core) */
+.reactor-core {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+    background: #000;
+}
+
+.reactor-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.2); /* B&W initially */
+    transition: all 0.5s ease;
+}
+
+/* Hover Effect: Color Restore + Zoom */
+.tech-reactor-container:hover .reactor-img {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.1);
+}
+
+/* 3. The Spinning Rings */
+
+/* Ring 1: Dashed Outer Ring */
+.reactor-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    pointer-events: none; /* Let clicks pass through */
+}
+
+.ring-1 {
+    width: 360px;
+    height: 360px;
+    border-top: 2px solid #ff0000;
+    border-bottom: 2px solid #ff0000;
+    opacity: 0.6;
+    animation: spin-right 10s linear infinite;
+}
+
+/* Ring 2: Inner Tech Dashes */
+.ring-2 {
+    width: 320px;
+    height: 320px;
+    border-left: 4px solid #ff0000;
+    border-right: 4px solid transparent;
+    opacity: 0.4;
+    animation: spin-left 6s linear infinite;
+}
+
+/* Ring 3: Pulsing Glow Halo */
+.ring-3 {
+    width: 280px;
+    height: 280px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    animation: pulse-glow 2s infinite alternate;
+}
+
+/* 4. Animations */
+@keyframes spin-right {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-left {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.2); border-color: rgba(255,0,0,0.2); }
+    100% { box-shadow: 0 0 50px rgba(255, 0, 0, 0.6); border-color: rgba(255,0,0,0.6); }
+}
+
+/* 5. Mobile Adjustment */
+@media (max-width: 768px) {
+    .tech-reactor-container {
+        transform: scale(0.8); /* Shrink slightly on phones */
+    }
+}
+/* =========================================
+   🎯 TACTICAL HUD FRAME (Clean & Techy)
+   ========================================= */
+
+/* 1. The Container */
+.hud-frame-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px; /* Space between image and corners */
+}
+
+/* 2. The Image */
+.hud-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Clean Square or Slight Rounding - NOT a Circle */
+    border-radius: 4px; 
+    
+    /* The "Cool" Factor: B&W by default, Color on Hover */
+    filter: grayscale(100%) contrast(1.1) brightness(0.9);
+    transition: all 0.4s ease-out;
+    
+    /* A subtle border directly on the image */
+    border: 1px solid #333;
+}
+
+/* Hover Effect: Image lights up */
+.hud-frame-container:hover .hud-img {
+    filter: grayscale(0%) contrast(1) brightness(1);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+    border-color: #ff0000;
+}
+
+/* 3. The Corners (The Viewfinder brackets) */
+.hud-corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid #ff0000; /* Red Brackets */
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Neon Glow */
+}
+
+/* Positioning the 4 corners */
+.hud-corner.top-left {
+    top: 0; left: 0;
+    border-right: none; border-bottom: none; /* Make it an "L" shape */
+}
+
+.hud-corner.top-right {
+    top: 0; right: 0;
+    border-left: none; border-bottom: none;
+}
+
+.hud-corner.bottom-left {
+    bottom: 0; left: 0;
+    border-right: none; border-top: none;
+}
+
+.hud-corner.bottom-right {
+    bottom: 0; right: 0;
+    border-left: none; border-top: none;
+}
+
+/* Hover Interaction: The corners "tighten" around the image */
+.hud-frame-container:hover .hud-corner {
+    width: 330px; /* Expand to form a full box? Or shrink? */
+    height: 330px; /* Let's make them form a full box */
+    opacity: 1;
+    border-width: 1px; /* Thinner when full */
+    box-shadow: 0 0 20px red;
+}
+
+/* Wait, let's keep the bracket animation simpler so it's not "crazy" */
+.hud-frame-container:hover .hud-corner.top-left { transform: translate(5px, 5px); }
+.hud-frame-container:hover .hud-corner.top-right { transform: translate(-5px, 5px); }
+.hud-frame-container:hover .hud-corner.bottom-left { transform: translate(5px, -5px); }
+.hud-frame-container:hover .hud-corner.bottom-right { transform: translate(-5px, -5px); }
+
+
+/* 4. The "SYS_ADMIN" Tag */
+.hud-tag {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: #ff0000;
+    background: rgba(20, 0, 0, 0.8);
+    padding: 5px 10px;
+    border: 1px solid #ff0000;
+    border-radius: 4px;
+    
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.hud-frame-container:hover .hud-tag {
+    opacity: 1;
+    bottom: -40px; /* Slide down slightly */
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .hud-frame-container {
+        width: 280px;
+        height: 280px;
+    }
+}
