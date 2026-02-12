@@ -4181,3 +4181,55 @@ body {
         height: 280px;
     }
 }
+/* ============================================================
+   📱 MOBILE PATCH 2.0 (Fixes Connect & About Page)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    /* --- 1. CONNECT PAGE FIX (Force WhatsApp/LeetCode Visibility) --- */
+    .uplink-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100% !important;
+        padding-bottom: 50px !important;
+    }
+
+    .uplink-card {
+        width: 100% !important;
+        /* Force a minimum height so they never disappear */
+        min-height: 140px !important; 
+        /* Reset grid positioning that hides items */
+        grid-column: auto !important;
+        grid-row: auto !important;
+        display: flex !important;
+        /* Ensure the card content is visible */
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+
+    /* --- 2. ABOUT ME PAGE FIX (Fix Balance/Centering) --- */
+    .about-split-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        /* Center the ID card perfectly */
+        align-items: center !important; 
+        width: 100% !important;
+        gap: 30px !important;
+    }
+
+    .holo-id-card {
+        /* Remove the fixed 320px width so it fits the phone */
+        flex: none !important;
+        width: 100% !important; 
+        max-width: 340px !important; /* Keep it looking like an ID */
+        margin: 0 auto !important;   /* Force center alignment */
+    }
+
+    .mission-control {
+        width: 100% !important;
+        padding: 0 10px !important;
+    }
+}
