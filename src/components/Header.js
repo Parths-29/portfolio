@@ -49,10 +49,12 @@ function Header() {
       <div className="header-content-wrapper">
         
         {/* Logo */}
-        <div className="logo" onClick={() => navigate("/")} style={{cursor:'pointer'}}>
-          <div className="logo-icon">P</div>
-          <span className="logo-text">Portfolio</span>
-        </div>
+        {/* --- THE TERMINAL OS LOGO --- */}
+<div className="cyber-logo-container">
+  <span className="logo-prompt">&gt;</span>
+  <span className="logo-name">PARTH</span>
+  <span className="logo-cursor">_</span>
+</div>
 
         {/* Search Bar */}
         <div className="search-container" style={{position: 'relative'}}>

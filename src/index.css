@@ -1385,23 +1385,21 @@ body {
 /* 1. The Container (The Window) */
 .skill-marquee-container {
   width: 100%;
-  overflow: hidden; /* Hides the scrollbar */
+  overflow: hidden; 
   position: relative;
   padding: 40px 0;
-  background: #121212; /* Matches your background */
-  /* Fade effect on edges */
+  background: #121212; 
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 /* 2. The Track (The Moving Strip) */
 .skill-marquee-track {
-  display: flex !important;        /* CRITICAL: Forces horizontal layout */
-  flex-direction: row !important;  /* CRITICAL: Aligns items side-by-side */
-  flex-wrap: nowrap !important;    /* CRITICAL: Prevents wrapping to next line */
+  display: flex !important;        
+  flex-direction: row !important;  
+  flex-wrap: nowrap !important;    
   gap: 30px;
-  width: max-content;              /* Allows strip to be wider than screen */
-  /* The Animation */
+  width: max-content;              
   animation: scrollMarquee 30s linear infinite;
 }
 
@@ -1413,21 +1411,28 @@ body {
 /* 3. The Animation (Right to Left) */
 @keyframes scrollMarquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* Moves exactly half the duplicated list */
+  100% { transform: translateX(-50%); } 
 }
 
 /* 4. The Card (Fixed Size) */
 .marquee-card {
-  width: 280px !important;    /* Force fixed width */
-  min-width: 280px !important; /* Prevent shrinking */
-  height: 360px !important;    /* Force fixed height */
-  background: #1a1a1a;
+  width: 280px !important;    
+  min-width: 280px !important; 
+  height: 360px !important;    
+  background: #0a0a0a; /* Made slightly darker to frame the white logos better */
   border-radius: 16px;
   position: relative;
   overflow: hidden;
   border: 1px solid #333;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  
+  /* --- FIX: Center the image inside the card --- */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* --- FIX: Add padding so logos don't hit the edges --- */
+  padding: 40px; 
 }
 
 /* Hover Effects */
@@ -1442,7 +1447,8 @@ body {
 .marquee-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures image fills card without stretching */
+  /* --- CRITICAL FIX: Changed from 'cover' to 'contain' --- */
+  object-fit: contain; /* This prevents stretching and keeps the logo's real shape */
   transition: filter 0.3s ease;
   display: block;
 }
@@ -1461,12 +1467,9 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Pushes text to bottom */
+  justify-content: flex-end; 
   align-items: flex-start;
-  /* Gradient background for readability */
   background: linear-gradient(to top, rgba(0,0,0,0.95) 10%, transparent 100%);
-  
-  /* Hidden Animation State */
   transform: translateY(20px);
   opacity: 0;
   transition: all 0.3s ease-in-out;
@@ -4232,4 +4235,392 @@ body {
         width: 100% !important;
         padding: 0 10px !important;
     }
+}
+
+/* ============================================================
+   🧹 CLEAN CONNECT PAGE (Removes Neon/AI Styling on Desktop)
+   ============================================================ */
+
+/* 1. Force all cards to have a uniform, clean border (Overrides colored inline styles) */
+/* This targets the thick colored "AI" lines and resets them to a normal, clean border */
+.uplink-card.email, 
+.uplink-card.linkedin, 
+.uplink-card.github, 
+.uplink-card.leetcode, 
+.uplink-card.resume, 
+.uplink-card.whatsapp, 
+.uplink-card.instagram {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important; 
+}
+
+/* Note: All your original glowing icons and hover colors are kept intact! */
+
+/* 2. Kill the rotating "Fire/Scanner" background effect entirely */
+.card-bg {
+    display: none !important;
+}
+
+/* 3. Clean Hover Effect (Subtle lift, NO neon glow) */
+.uplink-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: #666 !important;
+    background: #1a1a1a !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important; /* Standard dark shadow */
+}
+
+/* 4. Remove neon text shadows from the icons */
+.uplink-card .icon-wrapper {
+    color: #fff !important; /* Make all text/icons uniform white */
+    text-shadow: none !important;
+    filter: none !important;
+}
+
+/* 5. Make image icons (WhatsApp/Insta) blend in gracefully */
+.uplink-card .icon-wrapper img {
+    filter: grayscale(100%) opacity(0.8);
+    transition: all 0.3s ease;
+}
+
+/* Only reveal original colors of images when hovered */
+.uplink-card:hover .icon-wrapper img {
+    filter: grayscale(0%) opacity(1);
+}
+
+/* 6. Clean up text fonts */
+.uplink-card h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0px !important;
+}
+
+.uplink-card .link-text {
+    font-family: 'Inter', sans-serif !important; /* Removes the terminal monospace font */
+    color: #888 !important;
+}
+
+/* ============================================================
+   🪪 SLEEK TECH ID BADGE (Replaces the AI/Neon Glow in About Me)
+   ============================================================ */
+
+/* 1. The ID Card Container (Brutalist Style) */
+.holo-id-card {
+    background: #0a0a0a !important;
+    border: 1px solid #333 !important;
+    border-top: 4px solid #ff0000 !important; /* Thick red accent line */
+    /* Hard, sharp shadow instead of a blurry glow */
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.8) !important; 
+    border-radius: 4px !important;
+    padding: 24px !important;
+    backdrop-filter: none !important; /* Remove the heavy blur */
+    transition: transform 0.2s ease;
+}
+
+.holo-id-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0px rgba(255, 0, 0, 0.2) !important; 
+}
+
+/* 2. The Photo Wrapper */
+.id-photo-wrapper {
+    width: 100% !important;
+    height: 280px !important;
+    border: 1px solid #333 !important;
+    background: #000 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 2px !important;
+    margin-bottom: 20px !important;
+}
+
+/* 3. The Image (B&W to Color on hover) */
+.id-photo {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    filter: grayscale(100%) contrast(1.1) !important;
+    transition: all 0.4s ease-out !important;
+}
+
+.holo-id-card:hover .id-photo {
+    filter: grayscale(0%) contrast(1) !important;
+    transform: scale(1.05) !important;
+}
+
+/* 4. Kill the old moving scan-line */
+.scan-line {
+    display: none !important; 
+}
+
+/* 5. Add a static, high-end "Security Grid" overlay */
+.id-photo-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Very subtle horizontal lines */
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 6. Add a professional "Live/REC" tag in the corner */
+.id-photo-wrapper::before {
+    content: 'REC •';
+    position: absolute;
+    top: 12px; 
+    right: 12px;
+    color: #ff0000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 3;
+    animation: recBlink 1.5s infinite;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+@keyframes recBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+/* ============================================================
+   🧠 THE BIOMETRIC NEURAL-SYNC SCANNER (Ultimate Tech UI)
+   ============================================================ */
+
+/* 1. The Hardware Frame (Sci-Fi Cut Corners) */
+.neural-id-card {
+    background: #050505 !important;
+    padding: 20px !important;
+    position: relative;
+    /* This creates the jagged, cyberpunk cut-corner shape */
+    clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
+    border: 2px solid #333;
+    border-top: 4px solid #ff0000;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 0 transparent; /* Resets standard shadow due to clip-path */
+}
+
+/* Simulate a shadow using a pseudo-element behind the clip-path */
+.neural-id-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg, rgba(255,0,0,0.1), transparent);
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.neural-id-card:hover {
+    border-color: #ff0000;
+    background: #0a0a0a !important;
+}
+
+/* 2. The Photo Wrapper */
+.neural-photo-wrapper {
+    width: 100%;
+    height: 300px;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    cursor: crosshair; /* Hacker cursor */
+    /* Add a subtle CRT monitor curve to the inner image */
+    border-radius: 8px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,1);
+}
+
+/* 3. The Image (The Thermal / Encrypted State) */
+.neural-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Crazy Thermal/Data Filter */
+    filter: sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(1.5) brightness(0.8);
+    transform: scale(1.1);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* THE MAGIC REVEAL (Access Granted) */
+.neural-id-card:hover .neural-photo {
+    /* Snaps back to crystal clear high-definition reality */
+    filter: sepia(0%) hue-rotate(0deg) saturate(100%) contrast(1.1) brightness(1.1);
+    transform: scale(1);
+}
+
+/* 4. The AI Targeting Crosshair */
+.neural-crosshair {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 120px; height: 120px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: 2px dashed rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
+    z-index: 5;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    animation: rotateCrosshair 8s linear infinite;
+}
+
+/* Add corner brackets to the crosshair */
+.neural-crosshair::after {
+    content: ''; position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px solid #ff0000;
+    opacity: 0.3;
+}
+
+/* On Hover: Crosshair LOCKS ON */
+.neural-id-card:hover .neural-crosshair {
+    width: 80px; height: 80px;
+    border-color: #00ff00; /* Turns Green for Verified */
+    border-style: solid;
+    animation: none; /* Stops rotating */
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.2);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+/* 5. The Active Laser Scan */
+.neural-laser {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: #ff0000;
+    box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+    z-index: 4;
+    opacity: 0.8;
+    animation: biometricScan 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.neural-id-card:hover .neural-laser {
+    display: none; /* Laser turns off when verified */
+}
+
+/* 6. The Terminal Data Overlay */
+.neural-overlay-data {
+    position: absolute;
+    bottom: 10px; left: 10px;
+    display: flex; flex-direction: column;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.data-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #ff0000;
+    background: rgba(0,0,0,0.7);
+    padding: 2px 6px;
+    margin-bottom: 2px;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+.neural-id-card:hover .data-line {
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+/* 7. The "VERIFIED" Stamp */
+.auth-stamp {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(2);
+    font-size: 3rem;
+    font-weight: 900;
+    color: transparent;
+    border: 4px solid #00ff00;
+    padding: 10px 20px;
+    letter-spacing: 10px;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Stamp Slams down on hover */
+.neural-id-card:hover .auth-stamp {
+    opacity: 0.8;
+    color: #00ff00;
+    text-shadow: 0 0 20px #00ff00;
+    box-shadow: 0 0 30px rgba(0,255,0,0.3), inset 0 0 20px rgba(0,255,0,0.3);
+    transform: translate(-50%, -50%) scale(1) rotate(-15deg);
+}
+
+/* --- DETAILS AREA BELOW PHOTO --- */
+.neural-name { font-size: 1.8rem; color: white; margin-bottom: 5px; text-transform: uppercase; }
+.neural-role { font-size: 0.9rem; color: #ff0000; font-family: 'JetBrains Mono', monospace; margin-bottom: 15px; }
+.neural-status { font-size: 0.8rem; color: #aaa; display: flex; align-items: center; gap: 10px; }
+.blink-dot { width: 8px; height: 8px; background: #00ff00; border-radius: 50%; animation: recBlink 1s infinite; box-shadow: 0 0 10px #00ff00; }
+
+/* ANIMATIONS */
+@keyframes biometricScan {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes rotateCrosshair {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes recBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+/* ============================================================
+   🖥️ TERMINAL OS LOGO (Top Left Corner)
+   ============================================================ */
+
+.cyber-logo-container {
+    display: flex;
+    align-items: center;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 1.4rem; /* Adjust size as needed */
+    font-weight: 800;
+    letter-spacing: 2px;
+    cursor: pointer;
+    user-select: none;
+    padding: 10px;
+}
+
+/* The ">" symbol */
+.logo-prompt {
+    color: #ff0000; /* Neon Red */
+    margin-right: 8px;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+/* Your Name */
+.logo-name {
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+/* The Blinking Cursor */
+.logo-cursor {
+    color: #ff0000;
+    margin-left: 2px;
+    animation: terminalBlink 1s step-end infinite;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+@keyframes terminalBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Hover Effect: The whole logo glows slightly when moused over */
+.cyber-logo-container:hover .logo-name {
+    color: #ff0000;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    transition: all 0.3s ease;
 }

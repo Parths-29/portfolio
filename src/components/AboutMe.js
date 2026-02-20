@@ -9,6 +9,7 @@ function AboutMe() {
       
       {/* --- SECTION 1: INTRO --- */}
       <div className="about-split-layout" style={{marginTop: '0px'}}>
+        
         <div className="holo-id-card">
           <div className="id-photo-wrapper">
              <img src={profileImage} alt="Parth Profile" className="id-photo" />
