@@ -45,7 +45,7 @@ function Connect() {
       <div className="uplink-grid">
          {/* 7. RESUME (Canva Link) */}
         <a 
-          href="https://www.canva.com/design/DAG-mYmRPgc/L8w5WgxxdBX3zO7tdZT43g/edit?utm_content=DAG-mYmRPgc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+          href="https://drive.google.com/file/d/1ice2qONnHyA6kDRY5KGYabZk2QuXJLIx/view?usp=sharing" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="uplink-card resume"
@@ -54,7 +54,7 @@ function Connect() {
           <div className="card-bg"></div>
           <div className="card-content">
             <div className="icon-wrapper">📄</div>
-            <h3>CLASSIFIED DOSSIER</h3>
+            <h3>RESUME</h3>
             <p className="link-text">View / Download Resume</p>
           </div>
         </a>
