@@ -58,37 +58,30 @@ body {
     cursor: crosshair; /* Cool Crosshair Cursor */
 }
 
-/* 3. FIX THE "UGLY RED BLOCK" HEADERS */
-/* --- MODERN HEADER DESIGN (Top accent + Clean layout) --- */
+/* 3. CLEAN CENTERED HEADERS */
+/* --- CENTERED HEADER DESIGN (No accent, clean & simple) --- */
 .section-header,
 .connect-header,
 .explore-section-header {
     width: 100% !important;
     margin: 40px 0 40px 0 !important;
-    padding: 30px 40px !important;
+    padding: 24px 40px !important;
 
-    /* Clean dark background with subtle texture */
-    background: linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%) !important;
-    background-image: repeating-linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.02) 0px,
-        rgba(255, 255, 255, 0.02) 1px,
-        transparent 1px,
-        transparent 20px
-    ) !important;
+    /* Clean dark background with minimal texture */
+    background: linear-gradient(135deg, rgba(15, 15, 15, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%) !important;
+    background-image: none !important;
 
-    /* Modern top border accent instead of left border */
-    border-top: 3px solid #ff0000 !important;
-    border-bottom: 1px solid rgba(255, 0, 0, 0.2) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    /* No borders - just clean */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none;
     border-radius: 8px;
 
-    /* Clean centered layout */
+    /* Centered layout */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    align-items: flex-start !important;
-    text-align: left !important;
+    align-items: center !important;
+    text-align: center !important;
 }
 
 /* Ensure the H2 text inside is styled cleanly */
@@ -97,7 +90,33 @@ body {
 .explore-section-header h2 {
     color: white !important;
     text-shadow: none !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    margin: 0 !important;
+    width: 100%;
+}
+
+/* Remove any red decorations */
+.section-header::before, 
+.explore-section-header::before,
+.pills-nav-header::before {
+    content: '';
+    display: none !important;
+}
+
+.section-header h2, 
+.explore-section-header h2,
+.pills-nav-header h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.5rem !important;
+    color: white !important;
+    text-shadow: none !important;
+}
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 1.6rem;
@@ -1410,7 +1429,7 @@ body {
   100% { transform: translateX(-50%); } 
 }
 
-/* 4. The Card (Fixed Size) */
+/* 4. ICON-BASED CAROUSEL CARDS (SVG Icons, No White Backgrounds) */
 .marquee-card {
   width: 280px !important;    
   min-width: 280px !important; 
@@ -1419,80 +1438,84 @@ body {
   border-radius: 16px;
   position: relative;
   overflow: hidden;
-  border: 1px solid #333;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
   cursor: pointer;
   
-  /* Center and contain images cleanly */
+  /* Flexbox layout for centered icon */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   padding: 30px; 
 }
 
-/* Hover Effects */
+/* Hover Effects - Enhanced */
 .marquee-card:hover {
-  transform: scale(1.05) translateY(-10px);
-  border-color: #ff0000;
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+  transform: scale(1.08) translateY(-15px);
+  border-color: rgba(255, 0, 0, 0.5);
+  box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3), inset 0 0 20px rgba(255, 0, 0, 0.05);
   z-index: 10;
 }
 
-/* 5. The Image - Handle white backgrounds cleanly */
-.marquee-img {
+/* Icon Wrapper - Large centered SVG */
+.marquee-icon-wrapper {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.marquee-icon {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  transition: filter 0.3s ease;
-  display: block;
   filter: drop-shadow(0 0 0px rgba(0, 0, 0, 0));
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-/* Remove white background from images - blend them better */
-.marquee-card .marquee-img {
-  background: transparent !important;
+.marquee-card:hover .marquee-icon {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 5px 15px currentColor);
 }
 
-.marquee-card:hover .marquee-img {
-  filter: brightness(0.4) drop-shadow(0 0 8px rgba(255, 0, 0, 0.3));
-}
-
-/* 6. The Text Overlay */
-.marquee-overlay {
+/* Text Overlay - Always visible, clean labels */
+.marquee-text-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end; 
-  align-items: flex-start;
-  background: linear-gradient(to top, rgba(0,0,0,0.95) 10%, transparent 100%);
-  transform: translateY(20px);
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Reveal Text on Hover */
-.marquee-card:hover .marquee-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, transparent 100%);
+  text-align: center;
   transform: translateY(0);
   opacity: 1;
+  transition: all 0.3s ease;
 }
 
-.marquee-title {
+.marquee-card:hover .marquee-text-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* Tech Name - Technology label */
+.marquee-tech-name {
   color: #ff0000;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.marquee-desc {
-  color: #ccc;
-  font-size: 14px;
+/* Tech Description - Sub label */
+.marquee-tech-desc {
+  color: #aaa;
+  font-size: 12px;
+  margin: 0;
   line-height: 1.4;
+  opacity: 0.8;
 }
 /* --- SIDEBAR NEON GLOW & CLOCK --- */
 

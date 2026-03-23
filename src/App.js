@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BrowserRouter as Router, Routes, Route, useLocation, Link } from "react-router-dom";
 
+// --- REACT ICONS FOR DEVELOPER SKILLS ---
+import { SiPython, SiJava, SiReact, SiNodedotjs, SiMongodb, SiTypescript, SiGit, SiFigma, SiTensorflow, SiGooglecloud } from "react-icons/si";
+import { FaDatabase, FaCode } from "react-icons/fa";
+
 // --- Components ---
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -20,55 +24,26 @@ import "./App.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-// --- Image Imports ---
+// --- Image Imports (for projects only) ---
 import iplImg from "./components/ipl.jpg"; 
 import receiptImg from "./components/receipt.webp";
 import voteImg from "./components/vote.jpg";   
 import drImg from "./components/dr.jpeg";      
 
-import pythonImg from "./components/python.webp";
-import javaImg from "./components/java.png";
-import dsaImg from "./components/dsa.png";
-import reactImg from "./components/reacts.jpg";
-import nodeImg from "./components/nodejs.png";
-import dbImg from "./components/mongo.png";     
-import genAiImg from "./components/gen.jpg";    
-import tsImg from "./components/ts.jpg";        
-import cloudImg from "./components/google.png"; 
-import figmaImg from "./components/fig.jpg";
-import gitImg from "./components/git.webp";
-import canvaImg from "./components/canvas.webp";
-
-// --- HELPER: SCROLL TO TOP ON ROUTE CHANGE ---
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    const mainContent = document.querySelector('.main-content');
-    if (mainContent) {
-      mainContent.scrollTo(0, 0);
-    }
-  }, [pathname]);
-
-  return null;
-};
-
-// --- DATA: SKILLS & HOME FEED ---
-// Moved outside main component to keep things clean
+// --- SKILL DATA WITH ICONS (No image files needed) ---
 const skillsData = [
-  { img: genAiImg, title: "Generative AI", desc: "Building LLM agents & RAG pipelines." },
-  { img: pythonImg, title: "Python & ML", desc: "Advanced scripting & TensorFlow models." },
-  { img: cloudImg, title: "Google Cloud", desc: "Deploying scalable infrastructure." },
-  { img: javaImg, title: "Java & OOP", desc: "Enterprise system architecture." },
-  { img: reactImg, title: "React Ecosystem", desc: "Dynamic component-driven UIs." },
-  { img: nodeImg, title: "Node.js & Backend", desc: "High-performance REST APIs." },
-  { img: dbImg, title: "MongoDB & SQL", desc: "Complex data modeling & schemas." },
-  { img: tsImg, title: "TypeScript", desc: "Type-safe scalable development." },
-  { img: dsaImg, title: "DSA & Algorithms", desc: "Optimized problem solving." },
-  { img: gitImg, title: "Git & DevOps", desc: "Version control & CI/CD." },
-  { img: figmaImg, title: "Figma & UI/UX", desc: "High-fidelity prototyping." },
-  { img: canvaImg, title: "Visual Design", desc: "Creative branding & assets." },
+  { icon: SiTensorflow, title: "Generative AI", desc: "Building LLM agents & RAG pipelines.", color: "#FF6B6B" },
+  { icon: SiPython, title: "Python & ML", desc: "Advanced scripting & TensorFlow models.", color: "#3776AB" },
+  { icon: SiGooglecloud, title: "Google Cloud", desc: "Deploying scalable infrastructure.", color: "#4285F4" },
+  { icon: SiJava, title: "Java & OOP", desc: "Enterprise system architecture.", color: "#ED8B00" },
+  { icon: SiReact, title: "React Ecosystem", desc: "Dynamic component-driven UIs.", color: "#61DAFB" },
+  { icon: SiNodedotjs, title: "Node.js & Backend", desc: "High-performance REST APIs.", color: "#68A063" },
+  { icon: SiMongodb, title: "MongoDB & SQL", desc: "Complex data modeling & schemas.", color: "#13AA52" },
+  { icon: SiTypescript, title: "TypeScript", desc: "Type-safe scalable development.", color: "#3178C6" },
+  { icon: FaCode, title: "DSA & Algorithms", desc: "Optimized problem solving.", color: "#FFD700" },
+  { icon: SiGit, title: "Git & DevOps", desc: "Version control & CI/CD.", color: "#F1502F" },
+  { icon: SiFigma, title: "Figma & UI/UX", desc: "High-fidelity prototyping.", color: "#F24E1E" },
+  { icon: FaDatabase, title: "Visual Design", desc: "Creative branding & assets.", color: "#FF1493" },
 ];
 
 const infiniteSkills = [...skillsData, ...skillsData];
@@ -77,21 +52,27 @@ const HomeFeed = () => (
   <>
     <Bio />
 
-    {/* SKILLS MARQUEE */}
+    {/* SKILLS MARQUEE - SVG ICONS WITH TRANSPARENT BACKGROUNDS */}
     <div className="section">
       <div className="section-header">
         <h2>Featured Skills</h2>
       </div>
       <div className="skill-marquee-container">
         <div className="skill-marquee-track">
-          {infiniteSkills.map((skill, index) => (
-            <div className="marquee-card" key={index}>
-              <img src={skill.img} alt={skill.title} className="marquee-img" />
-              <div className="marquee-overlay">
-                <h3 className="marquee-title">{skill.title}</h3>
+          {infiniteSkills.map((skill, index) => {
+            const IconComponent = skill.icon;
+            return (
+              <div className="marquee-card" key={index}>
+                <div className="marquee-icon-wrapper" style={{ color: skill.color }}>
+                  <IconComponent className="marquee-icon" />
+                </div>
+                <div className="marquee-text-overlay">
+                  <h3 className="marquee-tech-name">{skill.title}</h3>
+                  <p className="marquee-tech-desc">{skill.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
