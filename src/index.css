@@ -941,7 +941,18 @@ body {
     background: #242424;
     border-radius: 8px;
     padding: 20px;
-    border-left: 4px solid #ff0000;
+    border-left: 3px solid transparent;
+    background-image: linear-gradient(#242424 0%, #242424 calc(100% - 3px), #ff0000 calc(100% - 3px), #ff0000 100%);
+    background-position: 0 0;
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+    transition: all 0.3s ease;
+}
+
+.education-card:hover {
+    border-left-color: #ff3333;
+    background-image: linear-gradient(#242424 0%, #242424 calc(100% - 3px), #ff3333 calc(100% - 3px), #ff3333 100%);
+    box-shadow: inset -3px 0 8px rgba(255, 0, 0, 0.2);
 }
 
 .education-title {
@@ -1916,35 +1927,23 @@ body {
     opacity: 1;
     transform: translateX(0);
 }
-/* Hover Effects - Enhanced (Keep the cool animations) */
-.marquee-card:hover {
-    transform: scale(1.08) translateY(-12px) rotate(1deg);
-    border-color: rgba(255, 0, 0, 0.5);
-    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
-    z-index: 10;
-}
-
-.marquee-card:hover .marquee-icon {
-    transform: scale(1.2) rotate(5deg);
-    filter: drop-shadow(0 8px 15px rgba(255, 0, 0, 0.4));
-}
-
+/* Keep original bento/holo hover - preserved */
 .bento-card:hover {
-    transform: translateY(-10px) scale(1.03);
+    transform: translateY(-5px) scale(1.01);
     border-color: #ff0000;
-    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.25);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);
     z-index: 2;
 }
 
 .bento-card:hover .bento-img {
-    transform: scale(1.12);
-    filter: grayscale(20%) brightness(0.85);
+    transform: scale(1.1);
+    filter: grayscale(80%) brightness(0.6);
 }
 
 .holo-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: rgba(0, 255, 255, 0.5);
-    box-shadow: 0 12px 30px rgba(0, 255, 255, 0.2);
+    transform: translateY(-5px) scale(1.01);
+    border-color: #ff0000;
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);
 }
 
 /* 1. The Glass Container */
@@ -2320,21 +2319,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* 2. UPGRADE EDUCATION CARDS -> "DATA LOGS" */
-.education-card {
-    background: rgba(18, 18, 18, 0.8) !important; /* Dark Glass */
-    border: 1px solid #333 !important;
-    border-left: 4px solid #ff0000 !important; /* Keep the red accent */
-    border-radius: 4px !important;
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
-}
-
-.education-card:hover {
-    transform: translateX(10px); /* Slide right on hover */
-    background: rgba(30, 30, 30, 0.9) !important;
-    box-shadow: -5px 0 20px rgba(255, 0, 0, 0.2); /* Glow on the left */
-}
+/* 2. EDUCATION CARDS - ALREADY STYLED ABOVE - NO DUPLICATES */
 
 /* 3. UPGRADE SKILLS -> "HOLO PANELS" */
 .skill-category-card {
@@ -2411,6 +2396,146 @@ body {
 .connect-title {
     color: white !important;
     text-shadow: 0 0 10px #ff0000;
+}
+
+/* ===== PREMIUM UX FEATURES ===== */
+
+/* 1. SMOOTH SCROLL BEHAVIOR */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* 2. BREATHING ANIMATION - For "In Progress" elements */
+@keyframes breathing {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    }
+    50% {
+        opacity: 0.95;
+        transform: scale(1.02);
+        box-shadow: 0 0 0 8px rgba(255, 0, 0, 0);
+    }
+}
+
+.holo-card.in-progress {
+    animation: breathing 2.5s ease-in-out infinite;
+}
+
+/* 3. PULSE ANIMATION - For live indicators */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.status-live {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* 4. SHIMMER LOADING EFFECT */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading-skeleton {
+    background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+    border-radius: 6px;
+}
+
+/* 5. STAGGER ANIMATION FOR LISTS */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stagger-item {
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* 6. ENHANCED BUTTON TRANSITIONS */
+button, .holo-btn, .marquee-card, a {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 7. PAGE FADE IN */
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    animation: pageIn 0.5s ease-out;
+}
+
+/* 8. SCROLL REVEAL ANIMATIONS */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 9. GLITCH EFFECT ON HOVER (For extra techy vibe) */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+    100% { transform: translate(0); }
+}
+
+.glitch-hover:hover {
+    animation: glitch 0.2s ease-in-out;
+}
+
+/* 10. CURSOR TRACKING ELEMENT */
+.cursor-follow {
+    transition: transform 0.1s linear;
+}
+
+/* 11. FOCUS STATES FOR ACCESSIBILITY */
+button:focus,
+input:focus,
+a:focus {
+    outline: 2px solid #ff0000;
+    outline-offset: 2px;
+}
+
+/* 12. SMOOTH COLOR TRANSITIONS */
+.color-transition {
+    transition: color 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
 }
 /* Add to src/index.css */
 
@@ -2631,7 +2756,8 @@ body {
     font-size: 1rem;
     letter-spacing: 1px;
     margin-bottom: 30px;
-    border-left: 3px solid #ff0000;
+    border-left: 3px solid transparent;
+    background: linear-gradient(90deg, #ff0000 0%, #ff0000 3px, transparent 3px);
     padding-left: 15px;
 }
 
@@ -4687,5 +4813,4 @@ body {
     color: #ff0000;
     text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
     transition: all 0.3s ease;
-}/* ============================================================================
-   🌟 PREMIUM PORTFOLIO THEME ENHANCEMENTS 🌟
+}

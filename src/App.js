@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Link } from "react
 
 // --- REACT ICONS FOR DEVELOPER SKILLS ---
 import { SiPython, SiReact, SiNodedotjs, SiMongodb, SiTypescript, SiGit, SiFigma, SiTensorflow, SiGooglecloud } from "react-icons/si";
-import { FaDatabase, FaCode } from "react-icons/fa";
+import { FaDatabase, FaCode, FaEye } from "react-icons/fa";
 
 // --- Components ---
 import Header from "./components/Header";
@@ -170,7 +170,7 @@ const HomeFeed = () => (
         <HoloCard>
           <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }}>
             <div className="holo-img-wrapper">
-              <SiPython size={100} style={{ color: '#3776AB', opacity: 0.8 }} />
+              <FaEye size={100} style={{ color: '#ff6b35', opacity: 0.9 }} />
               <div className="holo-content">
                 <span className="holo-tech" style={{ color: '#00ccff' }}>Computer Vision • ML</span>
                 <h3 className="holo-title">AI Visual Proctor</h3>
