@@ -98,8 +98,8 @@ This isn't a static template. It's a custom-built React application designed to 
 <div align="center">
   <h3>Visit the Mainframe</h3>
   
-  <a href="portfolio-wine-gamma-97.vercel.app">
-    <img src="https://img.shields.io/badge/Live_Site-FF0000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Site" />
+  <a href="https://procriminal29-parth.vercel.app/">
+    <img src="https://img.shields.io/badge/Portfolio-Parth_Sharma-FF0000?style=for-the-badge&logoColor=white" alt="Portfolio" />
   </a>
 </div>
 >>>>>>> b6c32be5f8753e2e1ec67435c95f850eed4f85b8

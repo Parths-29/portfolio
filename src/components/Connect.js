@@ -45,7 +45,7 @@ function Connect() {
       <div className="uplink-grid">
          {/* 7. RESUME (Canva Link) */}
         <a 
-          href="https://drive.google.com/file/d/1ice2qONnHyA6kDRY5KGYabZk2QuXJLIx/view?usp=sharing" 
+          href="https://drive.google.com/file/d/1ZsHSWVdyWksoH5eIu2aTiUrlLG2Oi5fX/view?usp=sharing" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="uplink-card resume"

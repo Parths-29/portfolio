@@ -52,7 +52,7 @@ function Header() {
         {/* --- THE TERMINAL OS LOGO --- */}
 <div className="cyber-logo-container">
   <span className="logo-prompt">&gt;</span>
-  <span className="logo-name">PARTH</span>
+  <span className="logo-name">PARTH SHARMA</span>
   <span className="logo-cursor">_</span>
 </div>
 

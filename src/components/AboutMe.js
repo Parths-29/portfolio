@@ -39,7 +39,7 @@ function AboutMe() {
              <a href="https://github.com/Parths-29" target="_blank" rel="noopener noreferrer" className="btn btn-github">GitHub</a>
              <a href="https://www.linkedin.com/in/parth-sharma-16469a293" target="_blank" rel="noopener noreferrer" className="btn btn-linkedin">LinkedIn</a>
              <a href="https://leetcode.com/u/Procriminal29/" target="_blank" rel="noopener noreferrer" className="btn btn-leetcode">LeetCode</a>
-             <a href="./D Parth%20Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-resume">Resume</a>
+             <a href="https://drive.google.com/file/d/1ZsHSWVdyWksoH5eIu2aTiUrlLG2Oi5fX/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-resume">Resume</a>
           </div>
         </div>
       </div>

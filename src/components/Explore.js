@@ -5,7 +5,7 @@ import devopsImg from "./devops.jpg";    // Was wedev.png
 import aiImg from "./ai.png";            // Was ai.png
 import mlopsImg from "./mlops.webp";     // Was node.png
 import blockchainImg from "./block.webp"; // Was java.png
-import frontendImg from "./reacts.jpg";  // Was react.avif
+import frontendImg from "./logo.webp";  // Custom logo
 import figmaImg from "./fig.jpg";        // Was figma.webp
 
 function Explore() {
