@@ -59,62 +59,58 @@ body {
 }
 
 /* 3. FIX THE "UGLY RED BLOCK" HEADERS */
-/* --- HEAVY HEADERS (Striped Background + Red Border + Centered) --- */
+/* --- MODERN HEADER DESIGN (Top accent + Clean layout) --- */
 .section-header,
 .connect-header,
 .explore-section-header {
     width: 100% !important;
-    /* Add some spacing above and below */
     margin: 40px 0 40px 0 !important;
-    padding: 25px 30px !important;
+    padding: 30px 40px !important;
 
-    /* 1. The Heavy Striped Texture */
-    background: linear-gradient(90deg, rgba(20, 20, 20, 0.95) 0%, rgba(20, 20, 20, 0.7) 100%) !important;
+    /* Clean dark background with subtle texture */
+    background: linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%) !important;
     background-image: repeating-linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.03) 0px,
-        rgba(255, 255, 255, 0.03) 2px,
-        transparent 2px,
-        transparent 10px
+        90deg,
+        rgba(255, 255, 255, 0.02) 0px,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px,
+        transparent 20px
     ) !important;
 
-    /* 2. The Box Borders */
-    border-left: 8px solid #ff0000 !important; /* The thick red line */
-    border-bottom: 1px solid rgba(255, 0, 0, 0.3) !important;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.6);
-    border-radius: 0 8px 8px 0; /* Slight curve on right side */
+    /* Modern top border accent instead of left border */
+    border-top: 3px solid #ff0000 !important;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
 
-    /* 3. Center the Text */
+    /* Clean centered layout */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    align-items: center !important; /* Horizontal Center */
-    text-align: center !important;
+    align-items: flex-start !important;
+    text-align: left !important;
 }
 
-/* Ensure the H2 text inside is styled and centered */
+/* Ensure the H2 text inside is styled cleanly */
 .section-header h2,
 .connect-header h2,
 .explore-section-header h2 {
     color: white !important;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8) !important; /* Red Neon Glow */
-    font-weight: 800 !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 1.8rem;
+    letter-spacing: 1px;
+    font-size: 1.6rem;
     margin: 0 !important;
     width: 100%;
 }
 
-/* Add a glowing red blip at the start of every header */
+/* Remove the glowing red blip - cleaner look */
 .section-header::before, 
 .explore-section-header::before,
 .pills-nav-header::before {
     content: '';
-    width: 10px; height: 10px;
-    background: #ff0000;
-    margin-right: 15px;
-    box-shadow: 0 0 10px #ff0000;
+    display: none;
 }
 
 .section-header h2, 
@@ -124,9 +120,9 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 1.8rem !important;
+    font-size: 1.6rem !important;
     color: white !important;
-    text-shadow: 0 0 15px rgba(255, 0, 0, 0.4); /* Subtle Neon Glow */
+    text-shadow: none !important;
 }
 
 /* 4. CUSTOM SCROLLBAR (The "Energy Bar") */
@@ -1419,7 +1415,7 @@ body {
   width: 280px !important;    
   min-width: 280px !important; 
   height: 360px !important;    
-  background: #0a0a0a; /* Made slightly darker to frame the white logos better */
+  background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
   border-radius: 16px;
   position: relative;
   overflow: hidden;
@@ -1427,12 +1423,11 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   
-  /* --- FIX: Center the image inside the card --- */
+  /* Center and contain images cleanly */
   display: flex;
   justify-content: center;
   align-items: center;
-  /* --- FIX: Add padding so logos don't hit the edges --- */
-  padding: 40px; 
+  padding: 30px; 
 }
 
 /* Hover Effects */
@@ -1443,18 +1438,23 @@ body {
   z-index: 10;
 }
 
-/* 5. The Image */
+/* 5. The Image - Handle white backgrounds cleanly */
 .marquee-img {
   width: 100%;
   height: 100%;
-  /* --- CRITICAL FIX: Changed from 'cover' to 'contain' --- */
-  object-fit: contain; /* This prevents stretching and keeps the logo's real shape */
+  object-fit: contain;
   transition: filter 0.3s ease;
   display: block;
+  filter: drop-shadow(0 0 0px rgba(0, 0, 0, 0));
+}
+
+/* Remove white background from images - blend them better */
+.marquee-card .marquee-img {
+  background: transparent !important;
 }
 
 .marquee-card:hover .marquee-img {
-  filter: brightness(0.3); /* Darken image so text pops */
+  filter: brightness(0.4) drop-shadow(0 0 8px rgba(255, 0, 0, 0.3));
 }
 
 /* 6. The Text Overlay */
