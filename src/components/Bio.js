@@ -7,13 +7,13 @@ function Bio() {
       
       {/* --- LEFT SIDE: TEXT (No Changes) --- */}
       <div className="hero-content">
-        <p className="hero-greeting"> ACCESS GRANTED // WELCOME</p>
+        <p className="hero-greeting"> ACCESS GRANTED // NEURAL_SYNC_ACTIVE</p>
         <h1 className="hero-name glitch" data-text="PARTH SHARMA">
           PARTH SHARMA
         </h1>
         
         <div className="hero-tagline">
-          FULL STACK ARCHITECT | AI OPERATIVE | 3RD YEAR @ KJSCE
+          FULL STACK ARCHITECT | AI OPERATIVE | NEURAL ENGINEER
         </div>
 
         <div className="hero-manifesto">

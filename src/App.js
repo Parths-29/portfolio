@@ -29,7 +29,7 @@ import drImg from "./components/dr.jpeg";
 import pythonImg from "./components/python.webp";
 import javaImg from "./components/java.png";
 import dsaImg from "./components/dsa.png";
-import logoImg from "./components/logo.webp";
+import reactImg from "./components/reacts.jpg";
 import nodeImg from "./components/nodejs.png";
 import dbImg from "./components/mongo.png";     
 import genAiImg from "./components/gen.jpg";    
@@ -61,7 +61,7 @@ const skillsData = [
   { img: pythonImg, title: "Python & ML", desc: "Advanced scripting & TensorFlow models." },
   { img: cloudImg, title: "Google Cloud", desc: "Deploying scalable infrastructure." },
   { img: javaImg, title: "Java & OOP", desc: "Enterprise system architecture." },
-  { img: logoImg, title: "Full Stack Systems", desc: "Building scalable applications." },
+  { img: reactImg, title: "React Ecosystem", desc: "Dynamic component-driven UIs." },
   { img: nodeImg, title: "Node.js & Backend", desc: "High-performance REST APIs." },
   { img: dbImg, title: "MongoDB & SQL", desc: "Complex data modeling & schemas." },
   { img: tsImg, title: "TypeScript", desc: "Type-safe scalable development." },

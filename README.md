@@ -73,33 +73,43 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### About
 
-I don't just write code to pass exams; I build ecosystems.
+I don't just write code to pass exams; I build intelligent systems.
 
-My philosophy is simple: Theory is useless without execution. I built this portfolio because I was tired of standard, boring resume sites. I wanted a space that actually represents who I am—someone who cares about high-performance UI, complex backend logic, and the tiny details that make software feel alive.
+My philosophy is simple: **Theory is useless without execution.** I built this portfolio because I was tired of standard, boring resume sites. I wanted a space that actually represents who I am—someone obsessed with high-performance UI, complex backend architecture, deep learning models, and the tiny details that make software feel *alive*.
 
-Every repository here is a result of me trying to figure out how things work under the hood.
+Every repository here is a battle-tested experiment in pushing the boundaries of what's possible with modern tech.
 
 ---
 
-### Quick Info
+### Quick Specs
 
-* **Focus:** Full Stack Architecture & AI Systems
-* **Current Status:** Shipping code and breaking monoliths
-* **Academic:** 9.4 CGPA
+* **Focus:** Full Stack Architecture • Generative AI • Neural Systems  
+* **Current Status:** Shipping production-grade code and optimizing systems
+* **Academic Excellence:** 9.4 CGPA (Somaiya, Mumbai)
+* **Tech Stack:** React • Node.js • Python • TensorFlow • Cloud Architecture
 * **Languages:** English, Hindi, German (A1)
-* **Location:** Navi Mumbai, IN
+* **HQ:** Navi Mumbai, India
 
 ---
 
-### The Portfolio
+### The Mainframe
 
-This isn't a static template. It's a custom-built React application designed to feel like a high-tech interface. It represents my interest in Cyberpunk aesthetics and modern frontend engineering.
+This portfolio is a **custom-built React application** designed as an OS-inspired interface. It's not a template—it's a living representation of my philosophy: cyberpunk aesthetics meet cutting-edge engineering.
 
 <div align="center">
-  <h3>Visit the Mainframe</h3>
+  <h3>🔗 Access the Neural Interface</h3>
   
   <a href="https://procriminal29-parth.vercel.app/">
-    <img src="https://img.shields.io/badge/Portfolio-Parth_Sharma-FF0000?style=for-the-badge&logoColor=white" alt="Portfolio" />
+    <img src="https://img.shields.io/badge/Launch%20Portal-procriminal29--parth-FF0000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Portfolio" />
   </a>
 </div>
->>>>>>> b6c32be5f8753e2e1ec67435c95f850eed4f85b8
+
+---
+
+### 🎯 Core Competencies
+
+**Full Stack:** React • Node.js • TypeScript • Express  
+**AI/ML:** TensorFlow • OpenCV • NLP • RAG Pipelines  
+**Cloud:** Google Cloud • Vercel • Performance Optimization
+
+> *"Code is poetry. AI is prophecy."*
