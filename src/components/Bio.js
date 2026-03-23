@@ -5,7 +5,7 @@ function Bio() {
   return (
     <section className="hero-section">
       
-      {/* --- LEFT SIDE: TEXT (No Changes) --- */}
+      {/* --- LEFT SIDE: TEXT WITH PREMIUM STYLING --- */}
       <div className="hero-content">
         <p className="hero-greeting"> ACCESS GRANTED // NEURAL_SYNC_ACTIVE</p>
         <h1 className="hero-name glitch" data-text="PARTH SHARMA">
@@ -37,7 +37,7 @@ function Bio() {
         </div>
       </div>
 
-      {/* --- RIGHT SIDE: TACTICAL HUD FRAME (New Design) --- */}
+      {/* --- RIGHT SIDE: TACTICAL HUD FRAME WITH PREMIUM EFFECTS --- */}
       <div className="hero-visual">
         <div className="hud-frame-container">
             {/* The Image */}
@@ -53,7 +53,7 @@ function Bio() {
             <div className="hud-tag">ProCriminal29</div>
         </div>
         
-        {/* Background Atmosphere */}
+        {/* Background Atmosphere with Premium Glow */}
         <div className="hero-glow-spot left"></div>
         <div className="hero-glow-spot right"></div>
       </div>

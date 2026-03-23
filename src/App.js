@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BrowserRouter as Router, Routes, Route, useLocation, Link } from "react-router-dom";
 
 // --- REACT ICONS FOR DEVELOPER SKILLS ---
-import { SiPython, SiJava, SiReact, SiNodedotjs, SiMongodb, SiTypescript, SiGit, SiFigma, SiTensorflow, SiGooglecloud } from "react-icons/si";
+import { SiPython, SiReact, SiNodedotjs, SiMongodb, SiTypescript, SiGit, SiFigma, SiTensorflow, SiGooglecloud } from "react-icons/si";
 import { FaDatabase, FaCode } from "react-icons/fa";
 
 // --- Components ---
@@ -35,7 +35,7 @@ const skillsData = [
   { icon: SiTensorflow, title: "Generative AI", desc: "Building LLM agents & RAG pipelines.", color: "#FF6B6B" },
   { icon: SiPython, title: "Python & ML", desc: "Advanced scripting & TensorFlow models.", color: "#3776AB" },
   { icon: SiGooglecloud, title: "Google Cloud", desc: "Deploying scalable infrastructure.", color: "#4285F4" },
-  { icon: SiJava, title: "Java & OOP", desc: "Enterprise system architecture.", color: "#ED8B00" },
+  { icon: FaCode, title: "Java & OOP", desc: "Enterprise system architecture.", color: "#ED8B00" },
   { icon: SiReact, title: "React Ecosystem", desc: "Dynamic component-driven UIs.", color: "#61DAFB" },
   { icon: SiNodedotjs, title: "Node.js & Backend", desc: "High-performance REST APIs.", color: "#68A063" },
   { icon: SiMongodb, title: "MongoDB & SQL", desc: "Complex data modeling & schemas.", color: "#13AA52" },
@@ -47,6 +47,17 @@ const skillsData = [
 ];
 
 const infiniteSkills = [...skillsData, ...skillsData];
+
+// --- SCROLL TO TOP COMPONENT ---
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 const HomeFeed = () => (
   <>
@@ -159,7 +170,7 @@ const HomeFeed = () => (
         <HoloCard>
           <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }}>
             <div className="holo-img-wrapper">
-              <img src={pythonImg} alt="AI Proctor" className="holo-img" />
+              <SiPython size={100} style={{ color: '#3776AB', opacity: 0.8 }} />
               <div className="holo-content">
                 <span className="holo-tech" style={{ color: '#00ccff' }}>Computer Vision • ML</span>
                 <h3 className="holo-title">AI Visual Proctor</h3>

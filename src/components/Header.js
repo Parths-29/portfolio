@@ -69,7 +69,7 @@ function Header() {
             <div className="search-dropdown">
               {suggestions.map((page) => (
                 <div key={page.name} className="search-item" onClick={() => handleSelect(page.path)}>
-                  <span className="search-arrow">></span> {page.name}
+                  <span className="search-arrow">{'>'}  </span> {page.name}
                 </div>
               ))}
             </div>
