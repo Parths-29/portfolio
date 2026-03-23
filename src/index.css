@@ -31,10 +31,10 @@ body, html {
 
 /* 3. UPDATE HEADERS TO BE BOLD & STYLISH WITH PREMIUM SIZING */
 h1 {
-    font-family: 'Poppins', sans-serif !important;
-    font-weight: 900 !important;
-    letter-spacing: -1.5px !important;
-    font-size: 3.5rem !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    font-size: 2.5rem !important;
 }
 
 h2, h3, .tech-title, .section-header, .entry-title {
@@ -622,49 +622,31 @@ body {
     border-color: #888;
 }
 
-/* Sections (General) - PREMIUM ENHANCED */
+/* Sections (General) */
 .section {
-    margin-bottom: 60px;
-    padding: 50px 40px;
-    background: linear-gradient(180deg, rgba(0, 212, 255, 0.02) 0%, transparent 100%);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    position: relative;
-    overflow: hidden;
-}
-
-.section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.section:hover {
-    border-color: rgba(0, 212, 255, 0.2);
-    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.08);
-}
-
-.section:hover::before {
-    opacity: 1;
+    margin-bottom: 48px;
 }
 
 .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 40px 0 40px 0 !important;
+    padding: 24px 40px !important;
+    width: 100% !important;
 }
 
 .section-header h2 {
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: white !important;
+    text-shadow: none !important;
+    text-transform: uppercase;
+    letter-spacing: 2px !important;
+    margin: 0 !important;
+    width: 100%;
 }
 
 .view-all {
@@ -1934,7 +1916,36 @@ body {
     opacity: 1;
     transform: translateX(0);
 }
-/* --- CYBERPUNK GLASS HEADER --- */
+/* Hover Effects - Enhanced (Keep the cool animations) */
+.marquee-card:hover {
+    transform: scale(1.08) translateY(-12px) rotate(1deg);
+    border-color: rgba(255, 0, 0, 0.5);
+    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.marquee-card:hover .marquee-icon {
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 8px 15px rgba(255, 0, 0, 0.4));
+}
+
+.bento-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    border-color: #ff0000;
+    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.25);
+    z-index: 2;
+}
+
+.bento-card:hover .bento-img {
+    transform: scale(1.12);
+    filter: grayscale(20%) brightness(0.85);
+}
+
+.holo-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 12px 30px rgba(0, 255, 255, 0.2);
+}
 
 /* 1. The Glass Container */
 .glass-header {
@@ -4678,580 +4689,3 @@ body {
     transition: all 0.3s ease;
 }/* ============================================================================
    🌟 PREMIUM PORTFOLIO THEME ENHANCEMENTS 🌟
-   Advanced UI/UX refinements for luxury feel & smooth interactions
-   ============================================================================ */
-
-/* ============================================================================
-   1️⃣ PREMIUM COLOR PALETTE & GRADIENTS
-   ============================================================================ */
-
-:root {
-  /* Primary Gradient: Deep Cyberpunk */
-  --gradient-primary: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f3460 100%);
-  
-  /* Secondary Gradient: Neon Accent */
-  --gradient-secondary: linear-gradient(135deg, #ff0066 0%, #ff6600 100%);
-  
-  /* Tertiary Gradient: Cool Accent */
-  --gradient-tertiary: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-  
-  /* Glass Gradient: Semi-transparent premium effect */
-  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-  
-  /* Dark Premium Background */
-  --bg-dark-premium: linear-gradient(180deg, #050505 0%, #0a0a0a 50%, #151515 100%);
-  
-  /* Accent: Warm Glow */
-  --glow-warm: rgba(255, 100, 0, 0.3);
-  --glow-cool: rgba(0, 212, 255, 0.3);
-  --glow-danger: rgba(255, 0, 102, 0.3);
-}
-
-/* ============================================================================
-   2️⃣ ENHANCED GLASS-MORPHISM EFFECTS
-   ============================================================================ */
-
-.glass-effect {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.glass-effect-premium {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-  backdrop-filter: blur(30px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  box-shadow: 
-    0 10px 40px rgba(0, 0, 0, 0.4),
-    inset 0 1px 2px rgba(255, 255, 255, 0.1);
-}
-
-/* ============================================================================
-   3️⃣ PREMIUM ANIMATIONS & TRANSITIONS
-   ============================================================================ */
-
-/* Smooth Entrance Animation */
-@keyframes fadeInUpSmooth {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Glow Pulse Animation */
-@keyframes glowPulse {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 0, 102, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(255, 0, 102, 0.6);
-  }
-}
-
-/* Floating Animation */
-@keyframes floatSmooth {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-/* Rotating Glow Ring */
-@keyframes rotateGlow {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Premium Shimmer Effect */
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-/* Smooth Scale Bounce */
-@keyframes scaleBounce {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-/* ============================================================================
-   4️⃣ PREMIUM HERO SECTION ENHANCEMENTS
-   ============================================================================ */
-
-.hero-section {
-  background: var(--bg-dark-premium);
-  position: relative;
-  overflow: hidden;
-  padding: 80px 60px;
-  border-radius: 24px;
-  margin: 30px;
-}
-
-/* Enhanced hero content typography */
-.hero-greeting {
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 3px;
-  color: #00d4ff;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-  text-transform: uppercase;
-  animation: fadeInUpSmooth 0.8s ease-out;
-}
-
-.hero-name {
-  font-size: 4rem;
-  font-weight: 900;
-  letter-spacing: -2px;
-  background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 20px 0;
-  animation: fadeInUpSmooth 1s ease-out 0.1s both;
-}
-
-.hero-tagline {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #ff6666;
-  margin: 15px 0;
-  letter-spacing: 1.5px;
-  animation: fadeInUpSmooth 1.2s ease-out 0.2s both;
-}
-
-.hero-manifesto p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #b0b0b0;
-  animation: fadeInUpSmooth 1.4s ease-out 0.3s both;
-}
-
-/* ============================================================================
-   5️⃣ PREMIUM CARD ENHANCEMENTS
-   ============================================================================ */
-
-/* Skill Card Premium Update */
-.marquee-card {
-  background: var(--gradient-glass);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-}
-
-.marquee-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 0, 102, 0.1) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.marquee-card:hover {
-  transform: translateY(-20px) scale(1.05) rotate(2deg);
-  border-color: rgba(255, 0, 102, 0.6);
-  box-shadow: 
-    0 20px 50px rgba(255, 0, 102, 0.25),
-    inset 0 1px 2px rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-}
-
-.marquee-card:hover::before {
-  opacity: 1;
-}
-
-/* Enhanced Icon animation */
-.marquee-icon {
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: drop-shadow(0 0 10px rgba(255, 0, 102, 0.2));
-}
-
-.marquee-card:hover .marquee-icon {
-  transform: scale(1.3) rotate(8deg);
-  filter: drop-shadow(0 8px 20px currentColor);
-}
-
-/* ============================================================================
-   6️⃣ PREMIUM PROJECT CARD ENHANCEMENTS
-   ============================================================================ */
-
-.bento-card {
-  position: relative;
-  background: var(--gradient-glass);
-  border: 2px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-.bento-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, rgba(255, 107, 107, 0.1) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
-.bento-card:hover {
-  transform: translateY(-15px) scale(1.02);
-  border-color: rgba(255, 0, 102, 0.5);
-  box-shadow: 
-    0 25px 60px rgba(255, 0, 102, 0.3),
-    inset 0 1px 2px rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-}
-
-.bento-card:hover::after {
-  opacity: 1;
-}
-
-.bento-img {
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: grayscale(60%) brightness(0.7) contrast(1.1);
-}
-
-.bento-card:hover .bento-img {
-  transform: scale(1.15) rotate(2deg);
-  filter: grayscale(0%) brightness(0.9) contrast(1.2);
-}
-
-/* ============================================================================
-   7️⃣ PREMIUM HEADER/SECTION STYLING
-   ============================================================================ */
-
-.section-header {
-  background: var(--gradient-glass) !important;
-  backdrop-filter: blur(15px) !important;
-  border: 2px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 20px !important;
-  padding: 40px 50px !important;
-  transition: all 0.4s ease !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
-  position: relative;
-  overflow: hidden;
-}
-
-.section-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ff0066, transparent);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.section-header:hover::before {
-  opacity: 1;
-}
-
-.section-header h2 {
-  font-size: 2.2rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 3px !important;
-  background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 100%);
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  text-shadow: none !important;
-  margin: 0 !important;
-}
-
-/* ============================================================================
-   8️⃣ PREMIUM BUTTON STYLING
-   ============================================================================ */
-
-button, .btn, .holo-btn {
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  overflow: hidden;
-}
-
-button::before, .btn::before, .holo-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  transition: left 0.4s ease;
-  z-index: -1;
-}
-
-button:hover::before, .btn:hover::before, .holo-btn:hover::before {
-  left: 100%;
-}
-
-.holo-btn.primary {
-  background: linear-gradient(135deg, #ff0066 0%, #ff6600 100%);
-  box-shadow: 0 10px 30px rgba(255, 0, 102, 0.3);
-  color: white;
-  border: none;
-  transition: all 0.3s ease;
-}
-
-.holo-btn.primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(255, 0, 102, 0.5);
-}
-
-.holo-btn.secondary {
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  transition: all 0.3s ease;
-}
-
-.holo-btn.secondary:hover {
-  border-color: #ff0066;
-  background: rgba(255, 0, 102, 0.1);
-  box-shadow: 0 0 20px rgba(255, 0, 102, 0.3);
-  color: #ff0066;
-  transform: translateY(-2px);
-}
-
-/* ============================================================================
-   9️⃣ PREMIUM TEXT STYLING & TYPOGRAPHY
-   ============================================================================ */
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  transition: all 0.3s ease;
-}
-
-.highlight-red {
-  background: linear-gradient(135deg, #ff0066 0%, #ff6600 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 800;
-  text-shadow: 0 0 30px rgba(255, 0, 102, 0.2);
-}
-
-p {
-  line-height: 1.8;
-  color: #c0c0c0;
-  transition: color 0.3s ease;
-}
-
-/* ============================================================================
-   🔟 PREMIUM INTERACTIVE ELEMENTS
-   ============================================================================ */
-
-/* Enhanced Link Hover */
-a {
-  position: relative;
-  transition: all 0.3s ease;
-  color: #00d4ff;
-}
-
-a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #ff0066, #00d4ff);
-  transition: width 0.3s ease;
-}
-
-a:hover::after {
-  width: 100%;
-}
-
-/* Premium Form Elements */
-input, textarea, select {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: white;
-  transition: all 0.3s ease;
-  padding: 12px 16px;
-}
-
-input:focus, textarea:focus, select:focus {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 0, 102, 0.5);
-  box-shadow: 0 0 20px rgba(255, 0, 102, 0.2);
-  outline: none;
-}
-
-/* ============================================================================
-   1️⃣1️⃣ PREMIUM SCROLLBAR STYLING
-   ============================================================================ */
-
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #ff0066, #ff6600);
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #ff3366, #ff8800);
-  box-shadow: 0 0 20px rgba(255, 0, 102, 0.4);
-}
-
-/* ============================================================================
-   1️⃣2️⃣ PREMIUM RESPONSIVE ANIMATIONS
-   ============================================================================ */
-
-@media (prefers-reduced-motion: no-preference) {
-  * {
-    scroll-behavior: smooth;
-  }
-  
-  .section {
-    animation: fadeInUpSmooth 0.8s ease-out;
-  }
-  
-  .section:nth-child(2) {
-    animation: fadeInUpSmooth 0.8s ease-out 0.1s both;
-  }
-  
-  .section:nth-child(3) {
-    animation: fadeInUpSmooth 0.8s ease-out 0.2s both;
-  }
-}
-
-/* ============================================================================
-   1️⃣3️⃣ PREMIUM MOBILE RESPONSIVE ADJUSTMENTS
-   ============================================================================ */
-
-@media (max-width: 768px) {
-  .hero-section {
-    padding: 40px 20px;
-  }
-  
-  .hero-name {
-    font-size: 2.5rem;
-  }
-  
-  .section-header {
-    padding: 25px 20px !important;
-  }
-  
-  .section-header h2 {
-    font-size: 1.6rem !important;
-  }
-  
-  .marquee-card {
-    width: 240px !important;
-    height: 320px !important;
-  }
-}
-
-/* ============================================================================
-   1️⃣4️⃣ PREMIUM HOVER STATE ENHANCEMENTS
-   ============================================================================ */
-
-/* Global Hover Enhancement */
-body::selection {
-  background: linear-gradient(135deg, #ff0066 0%, #ff6600 100%);
-  color: white;
-}
-
-/* Enhanced Focus States for Accessibility */
-*:focus-visible {
-  outline: 2px solid #ff0066;
-  outline-offset: 4px;
-}
-
-/* Premium Cursor for interactive elements */
-button, 
-a, 
-.marquee-card, 
-.bento-card,
-input[type="submit"],
-.holo-btn {
-  cursor: pointer;
-}
-
-/* ============================================================================
-   1️⃣5️⃣ PREMIUM AMBIENT LIGHTING EFFECTS
-   ============================================================================ */
-
-.premium-glow-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Enhanced Glow Spots */
-.glow-spot {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  animation: floatSmooth 6s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.glow-spot-warm {
-  background: radial-gradient(circle, rgba(255, 100, 0, 0.3) 0%, transparent 70%);
-}
-
-.glow-spot-cool {
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
-}
-
-.glow-spot-pink {
-  background: radial-gradient(circle, rgba(255, 0, 102, 0.3) 0%, transparent 70%);
-}
-
-/* ============================================================================
-   ✨ PREMIUM THEME COMPLETE ✨
-   ============================================================================ */
