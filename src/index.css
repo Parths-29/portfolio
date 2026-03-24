@@ -4207,6 +4207,237 @@ a:focus {
     pointer-events: none; /* Let clicks pass through */
 }
 
+/* =========================================
+   📬 CONTACT WIDGET (Clean & Modern)
+   ========================================= */
+
+/* Contact Button - Floating in Top Right */
+.contact-widget-button {
+    position: fixed;
+    top: 120px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.05));
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ff0000;
+    transition: all 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+}
+
+.contact-widget-button:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.15));
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+/* Modal Overlay */
+.contact-widget-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-top: 100px;
+    padding-right: 20px;
+    z-index: 200;
+    animation: slideInOverlay 0.3s ease;
+}
+
+@keyframes slideInOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Container */
+.contact-widget-modal {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.1);
+    padding: 24px;
+    animation: slideInModal 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes slideInModal {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Modal Header */
+.contact-widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    gap: 16px;
+}
+
+.contact-widget-header h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 1px;
+}
+
+.contact-subtitle {
+    color: #999;
+    font-size: 0.85rem;
+    margin: 8px 0 0 0;
+    line-height: 1.4;
+}
+
+/* Close Button */
+.contact-close-btn {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff0000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.contact-close-btn:hover {
+    background: rgba(255, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+/* Quick Contact Options */
+.contact-quick-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.contact-option {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 14px;
+    background: rgba(255, 0, 0, 0.05);
+    border: 1px solid rgba(255, 0, 0, 0.15);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: inherit;
+}
+
+.contact-option:hover {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 0, 0, 0.3);
+    transform: translateX(4px);
+}
+
+.contact-option svg {
+    color: #ff0000;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.option-label {
+    color: #999;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.option-value {
+    color: white;
+    font-size: 0.9rem;
+    margin: 4px 0 0 0;
+    word-break: break-all;
+}
+
+/* Divider */
+.contact-divider {
+    height: 1px;
+    background: rgba(255, 0, 0, 0.1);
+    margin: 16px 0;
+}
+
+/* Quick Buttons */
+.contact-quick-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quick-button {
+    padding: 12px 16px;
+    background: rgba(255, 0, 0, 0.08);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+}
+
+.quick-button:hover {
+    background: rgba(255, 0, 0, 0.15);
+    border-color: rgba(255, 0, 0, 0.4);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    transform: translateX(4px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .contact-widget-button {
+        top: auto;
+        bottom: 100px;
+        right: 16px;
+    }
+
+    .contact-widget-overlay {
+        padding: 0;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .contact-widget-modal {
+        max-width: 100%;
+        width: calc(100% - 32px);
+        border-radius: 16px 16px 0 0;
+    }
+}
+
 .ring-1 {
     width: 360px;
     height: 360px;
