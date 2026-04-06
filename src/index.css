@@ -2016,13 +2016,14 @@ body {
     border: 1px solid #333;
     transition: all 0.4s ease;
     cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* Hover: Lift & Neon Glow */
+/* Hover: Lift & Premium Glow */
 .holo-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-12px);
     border-color: #ff0000;
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.15), 0 0 30px rgba(255, 0, 0, 0.1);
 }
 
 /* The Image Area */
@@ -2036,13 +2037,25 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
-    filter: brightness(0.7);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    filter: brightness(0.75) contrast(1.05) saturate(1.1);
 }
 
 .holo-card:hover .holo-img {
-    transform: scale(1.1);
-    filter: brightness(0.4); /* Darken image to show text */
+    transform: scale(1.08) rotate(0.5deg);
+    filter: brightness(0.35) contrast(1.15) saturate(1.3) blur(1px);
+}
+
+/* Premium Overlay Gradient */
+.holo-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 /* The Content Overlay */
@@ -2052,9 +2065,9 @@ body {
     left: 0;
     width: 100%;
     padding: 20px;
-    background: linear-gradient(to top, black 20%, transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, transparent 100%);
     transform: translateY(40px); /* Push text down initially */
-    transition: transform 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .holo-card:hover .holo-content {
@@ -2066,6 +2079,7 @@ body {
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 5px;
+    letter-spacing: 0.5px;
 }
 
 .holo-tech {
@@ -2075,6 +2089,7 @@ body {
     letter-spacing: 1px;
     margin-bottom: 10px;
     display: block;
+    font-weight: 600;
 }
 
 /* Action Buttons (Hidden until hover) */
@@ -2083,7 +2098,7 @@ body {
     gap: 10px;
     margin-top: 15px;
     opacity: 0;
-    transition: opacity 0.4s ease 0.1s; /* Slight delay */
+    transition: opacity 0.4s ease 0.2s; /* Slight delay */
 }
 
 .holo-card:hover .holo-actions {

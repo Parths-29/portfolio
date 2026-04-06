@@ -50,11 +50,11 @@ function ContactWidget() {
                   <p className="option-value">parth.sharma1@somaiya.edu</p>
                 </div>
               </a>
-              <a href="tel:+919876543210" className="contact-option">
+              <a href="tel:+919324769799" className="contact-option">
                 <Phone size={18} />
                 <div>
                   <p className="option-label">Phone</p>
-                  <p className="option-value">+91 9876543210</p>
+                  <p className="option-value">+91 9324769799</p>
                 </div>
               </a>
             </div>

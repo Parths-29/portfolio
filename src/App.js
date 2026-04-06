@@ -17,7 +17,8 @@ import Certifications from "./components/Certifications";
 import Experience from "./components/Experience";
 import Connect from "./components/Connect"; 
 import EntryPage from "./components/Entrypage";
-import HoloCard from "./components/Holocard"; 
+import HoloCard from "./components/Holocard";
+import ContactWidget from "./components/ContactWidget";
 import "./App.css";
 
 // --- 3D & Animation Imports ---
@@ -28,7 +29,10 @@ import 'aos/dist/aos.css';
 import iplImg from "./components/ipl.jpg"; 
 import receiptImg from "./components/receipt.webp";
 import voteImg from "./components/vote.jpg";   
-import drImg from "./components/dr.jpeg";      
+import drImg from "./components/dr.jpeg";
+import aiImg from "./components/ai.png";
+import emotionImg from "./components/gen.jpg";
+import healthcareImg from "./components/healthcare.jpg";      
 
 // --- SKILL DATA WITH ICONS (No image files needed) ---
 const skillsData = [
@@ -123,8 +127,38 @@ const HomeFeed = () => (
                 <span className="holo-tech">MERN Stack • OCR • AI</span>
                 <h3 className="holo-title">Smart Receipt Coach</h3>
                 <div className="holo-actions">
-                  <a href="https://github.com/Parths-29/Web-Engineering-Archives" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Source</a>
+                  <a href="https://receipt-scanner-frontend-woad.vercel.app/" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Live Demo</a>
                   <a href="https://github.com/Parths-29/Web-Engineering-Archives" target="_blank" rel="noopener noreferrer" className="holo-btn secondary">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </HoloCard>
+
+        <HoloCard>
+          <div className="holo-card">
+            <div className="holo-img-wrapper">
+              <img src={voteImg} alt="Voting" className="holo-img" />
+              <div className="holo-content">
+                <span className="holo-tech">Solidity • Blockchain</span>
+                <h3 className="holo-title">Decentralized Voting</h3>
+                <div className="holo-actions">
+                  <a href="https://github.com/Parths-29/Decentralized-Web3/tree/main/decentralized-voting" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </HoloCard>
+
+        <HoloCard>
+          <div className="holo-card">
+            <div className="holo-img-wrapper">
+              <img src={emotionImg} alt="Emotion Analysis" className="holo-img" />
+              <div className="holo-content">
+                <span className="holo-tech">NLP • Deep Learning • AI</span>
+                <h3 className="holo-title">Emotion Analysis</h3>
+                <div className="holo-actions">
+                  <a href="https://github.com/Parths-29/AI-Neural-Systems/tree/main/emotion-analysis/Emotion%20analysis%20using%20NLP%20-code" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Code</a>
                 </div>
               </div>
             </div>
@@ -144,12 +178,12 @@ const HomeFeed = () => (
         <HoloCard>
           <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }}>
             <div className="holo-img-wrapper">
-              <img src={voteImg} alt="Voting" className="holo-img" />
+              <img src={healthcareImg} alt="Healthcare Network" className="holo-img" />
               <div className="holo-content">
-                <span className="holo-tech" style={{ color: '#00ccff' }}>Solidity • Blockchain</span>
-                <h3 className="holo-title">Decentralized Voting</h3>
+                <span className="holo-tech" style={{ color: '#00ccff' }}>Hyperledger • AI • React</span>
+                <h3 className="holo-title">Healthcare Blockchain Network</h3>
                 <div className="holo-actions">
-                  <span className="holo-btn secondary" style={{ borderColor: '#00ccff', color: '#00ccff' }}>In Progress</span>
+                  <span className="holo-btn secondary" style={{ borderColor: '#00ccff', color: '#00ccff' }}>In Development</span>
                 </div>
               </div>
             </div>
@@ -174,7 +208,7 @@ const HomeFeed = () => (
         <HoloCard>
           <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }}>
             <div className="holo-img-wrapper">
-              <FaEye size={100} style={{ color: '#ff6b35', opacity: 0.9 }} />
+              <img src={aiImg} alt="Visual Proctor" className="holo-img" />
               <div className="holo-content">
                 <span className="holo-tech" style={{ color: '#00ccff' }}>Computer Vision • ML</span>
                 <h3 className="holo-title">AI Visual Proctor</h3>
@@ -264,6 +298,9 @@ function App() {
             <AnimatedRoutes />
           </main>
         </div>
+
+        {/* Global Contact Widget - Available on ALL Pages */}
+        <ContactWidget />
       </div> 
 
       {/* MOBILE DOCK */}

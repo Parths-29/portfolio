@@ -1,6 +1,5 @@
 import React from "react";
 import profileImg from "../img1.jpg";
-import ContactWidget from "./ContactWidget";
 
 function Bio() {
   return (
@@ -41,9 +40,6 @@ function Bio() {
       {/* --- RIGHT SIDE: TACTICAL HUD FRAME WITH PREMIUM EFFECTS --- */}
       <div className="hero-visual">
         <div className="hud-frame-container">
-            {/* Contact Widget - Top Right */}
-            <ContactWidget />
-
             {/* The Image */}
             <img src={profileImg} alt="Parth Sharma" className="hud-img" />
             
