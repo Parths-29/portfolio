@@ -38,9 +38,8 @@ h1 {
 }
 
 h2, h3, .tech-title, .section-header, .entry-title {
-    font-family: 'Space Grotesk', sans-serif !important;
-    text-transform: uppercase;
-    letter-spacing: 2px !important;
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: 0px !important;
     font-weight: 700 !important;
 }
 
@@ -51,80 +50,55 @@ h2, h3, .tech-title, .section-header, .entry-title {
 /* 1. IMPORT TECH FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
-/* 2. GLOBAL RESET & "MONITOR" BACKGROUND */
+/* 2. GLOBAL RESET & REFINED BACKGROUND */
 body {
-    background-color: #050505;
+    background-color: #0a0a0a;
     color: #e0e0e0;
-    font-family: 'Rajdhani', sans-serif; /* The Tech Font */
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     
-    /* The "Digital Grid" Background Pattern */
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px; /* Size of the grid squares */
+    /* Subtle, minimal background - inspired by modern design */
+    background-image: none;
     min-height: 100vh;
-    cursor: crosshair; /* Cool Crosshair Cursor */
 }
 
-/* 3. CLEAN CENTERED HEADERS */
-/* --- CENTERED HEADER DESIGN (No accent, clean & simple) --- */
+/* 3. REFINED SECTION HEADERS - Clean & Modern */
 .section-header,
 .connect-header,
 .explore-section-header {
     width: 100% !important;
-    margin: 40px 0 40px 0 !important;
-    padding: 24px 40px !important;
+    margin: 50px 0 40px 0 !important;
+    padding: 32px 40px !important;
 
-    /* Clean dark background with minimal texture */
-    background: linear-gradient(135deg, rgba(15, 15, 15, 0.6) 0%, rgba(20, 20, 20, 0.8) 100%) !important;
-    background-image: none !important;
-
-    /* No borders - just clean */
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    /* Clean, minimal background */
+    background: transparent !important;
+    border: none !important;
+    border-left: 4px solid #ff0000;
     box-shadow: none;
-    border-radius: 8px;
+    border-radius: 0;
 
     /* Centered layout */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
+    align-items: flex-start !important;
+    text-align: left !important;
 }
 
-/* Ensure the H2 text inside is styled cleanly */
+/* Refined H2 styling */
 .section-header h2,
 .connect-header h2,
 .explore-section-header h2 {
     color: white !important;
     text-shadow: none !important;
-    font-weight: 600 !important;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 1.5rem;
+    font-weight: 700 !important;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-size: 1.8rem;
     margin: 0 !important;
+    margin-left: 16px !important;
     width: 100%;
-}
-
-/* Remove any red decorations */
-.section-header::before, 
-.explore-section-header::before,
-.pills-nav-header::before {
-    content: '';
-    display: none !important;
-}
-
-.section-header h2, 
-.explore-section-header h2,
-.pills-nav-header h2 {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 1.5rem !important;
-    color: white !important;
-    text-shadow: none !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
 /* Remove the glowing red blip - cleaner look */
@@ -138,11 +112,11 @@ body {
 .section-header h2, 
 .explore-section-header h2,
 .pills-nav-header h2 {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 1.6rem !important;
+    text-transform: none;
+    letter-spacing: 0px;
+    font-size: 1.8rem !important;
     color: white !important;
     text-shadow: none !important;
 }
@@ -2013,17 +1987,17 @@ body {
     background: #111;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid #333;
-    transition: all 0.4s ease;
+    border: 1px solid #222;
+    transition: all 0.3s ease;
     cursor: pointer;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Hover: Lift & Premium Glow */
+/* Hover: Lift & Subtle Glow */
 .holo-card:hover {
-    transform: translateY(-12px);
+    transform: translateY(-8px);
     border-color: #ff0000;
-    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.15), 0 0 30px rgba(255, 0, 0, 0.1);
+    box-shadow: 0 12px 32px rgba(255, 0, 0, 0.12);
 }
 
 /* The Image Area */
@@ -2106,16 +2080,37 @@ body {
 }
 
 .holo-btn {
-    padding: 6px 14px;
-    font-size: 0.8rem;
-    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
 }
 
-.holo-btn.primary { background: #ff0000; color: white; border: none; }
-.holo-btn.secondary { background: transparent; color: white; border: 1px solid white; }
-.holo-btn:hover { opacity: 0.8; }
+.holo-btn.primary { 
+    background: #ff0000; 
+    color: white; 
+    border: none; 
+}
+.holo-btn.primary:hover {
+    background: #e60000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.25);
+}
+
+.holo-btn.secondary { 
+    background: transparent; 
+    color: white; 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.holo-btn.secondary:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-1px);
+}
 
 /* --- ABOUT ME: HOLO-ID & MISSION --- */
 .about-container { padding-bottom: 60px; }
@@ -2709,79 +2704,52 @@ a:focus {
     z-index: 2;
 }
 
-/* 1. Identity & Glitch Effect */
+/* 1. Identity & Refined Styling */
 .hero-greeting {
-    color: #ff0000;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    opacity: 0.8;
+    color: #999;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0px;
+    margin-bottom: 20px;
+    opacity: 1;
+    font-weight: 500;
 }
 
 .hero-name {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     font-weight: 800;
     color: white;
-    line-height: 1;
-    margin-bottom: 10px;
+    line-height: 1.1;
+    margin-bottom: 16px;
     position: relative;
-    text-transform: uppercase;
+    text-transform: none;
+    font-family: 'Inter', sans-serif;
 }
 
-/* The Glitch Animation */
+/* Disable glitch animation */
 .glitch::before, .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-}
-.glitch::before {
-    left: 2px;
-    text-shadow: -1px 0 #ff0000;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
-}
-.glitch::after {
-    left: -2px;
-    text-shadow: -1px 0 #00ffff;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim2 5s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim {
-    0% { clip: rect(10px, 9999px, 30px, 0); }
-    20% { clip: rect(80px, 9999px, 100px, 0); }
-    40% { clip: rect(40px, 9999px, 60px, 0); }
-    60% { clip: rect(10px, 9999px, 30px, 0); }
-    80% { clip: rect(60px, 9999px, 90px, 0); }
-    100% { clip: rect(30px, 9999px, 50px, 0); }
-}
-@keyframes glitch-anim2 {
-    0% { clip: rect(60px, 9999px, 90px, 0); }
-    20% { clip: rect(10px, 9999px, 50px, 0); }
-    40% { clip: rect(80px, 9999px, 100px, 0); }
-    60% { clip: rect(30px, 9999px, 50px, 0); }
-    80% { clip: rect(10px, 9999px, 30px, 0); }
-    100% { clip: rect(40px, 9999px, 60px, 0); }
+    display: none;
 }
 
 .hero-tagline {
-    color: #888;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
-    border-left: 3px solid transparent;
-    background: linear-gradient(90deg, #ff0000 0%, #ff0000 3px, transparent 3px);
-    padding-left: 15px;
+    color: #aaa;
+    font-size: 1.05rem;
+    letter-spacing: 0px;
+    margin-bottom: 32px;
+    border-left: 3px solid #ff0000;
+    background: none;
+    padding-left: 16px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
 }
 
 /* 2. Manifesto Text */
 .hero-manifesto p {
-    color: #ccc;
-    font-size: 1.1rem;
-    line-height: 1.6;
+    color: #bbb;
+    font-size: 1rem;
+    line-height: 1.7;
     margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
 }
 
 .highlight-red {
@@ -3107,8 +3075,7 @@ a:focus {
         transparent 20px
     ) !important;
     
-    /* Tech Border styling */
-    border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+    /* Tech Border styling - bottom only, no second left border */
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
@@ -3136,26 +3103,12 @@ a:focus {
 
 /* 3. The "Deco-Brackets" (Visual Clutter) */
 .section-header::after {
-    content: "[LIVE]";
-
-    position: absolute;
-    right: 20px;
-    bottom: 5px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
-    color: #ff0000;
-    opacity: 0.7;
-    letter-spacing: 2px;
+    display: none;
 }
 
 /* 4. The Blinking "Data Square" */
 .section-header::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 20px; height: 20px;
-    background: #ff0000;
-    animation: flash 1s infinite;
+    display: none;
 }
 
 @keyframes flash {
@@ -3429,12 +3382,7 @@ a:focus {
 
 /* 5. ADD THE "SCAN LINE" ANIMATION BACK (Optional Cool Factor) */
 .section-header::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, #ff0000, transparent);
-    animation: scan-line 3s infinite linear;
+    display: none;
 }
 
 @keyframes scan-line {
@@ -4017,7 +3965,8 @@ a:focus {
     text-align: left; 
     background: rgba(255, 0, 0, 0.05); 
     padding: 20px; 
-    border-left: 2px solid #ff0000; 
+    border: 2px solid #ff0000;
+    border-radius: 4px;
 }
 .log-line { color: #ff0000; opacity: 0; animation: typeLine 0.5s forwards; margin: 8px 0; font-size: 0.9rem; }
 .delay-1 { animation-delay: 0.5s; }

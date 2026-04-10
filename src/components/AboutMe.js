@@ -44,6 +44,7 @@ function AboutMe() {
         </div>
       </div>
 
+
       {/* --- SECTION 2: EDUCATION --- */}
       <section className="content-section">
         <div className="section-header">

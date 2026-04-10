@@ -78,10 +78,10 @@ function EntryPage({ onEnter }) {
            <h1 className="access-title">ACCESS GRANTED</h1>
            
            <div className="console-log">
-              <p className="log-line">>> DECRYPTING USER DATA...</p>
-              <p className="log-line delay-1">>> LOADING PORTFOLIO MODULES...</p>
-              <p className="log-line delay-2">>> ESTABLISHING SECURE CONNECTION...</p>
-              <p className="log-line delay-3 success">>> WELCOME BACK, ADMIN.</p>
+              <p className="log-line">>> Loading my creative portfolio...</p>
+              <p className="log-line delay-1">>> Initializing projects & achievements...</p>
+              <p className="log-line delay-2">>> Connecting you to my development journey...</p>
+              <p className="log-line delay-3 success">>> Welcome to my world. Let's build something amazing.</p>
            </div>
         </div>
       )}

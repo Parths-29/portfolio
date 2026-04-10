@@ -26,6 +26,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 // --- Image Imports (for projects only) ---
+import resilientImg from "./components/Resilient.png";
 import iplImg from "./components/ipl.jpg"; 
 import receiptImg from "./components/receipt.webp";
 import voteImg from "./components/vote.jpg";   
@@ -106,13 +107,13 @@ const HomeFeed = () => (
         <HoloCard>
           <div className="holo-card">
             <div className="holo-img-wrapper">
-              <img src={iplImg} alt="IPL Predictor" className="holo-img" />
+              <img src={resilientImg} alt="ResiliNet" className="holo-img" />
               <div className="holo-content">
-                <span className="holo-tech">Python • Streamlit • ML</span>
-                <h3 className="holo-title">IPL Win Predictor</h3>
+                <span className="holo-tech">Python • Graph Neural Networks • Game Theory</span>
+                <h3 className="holo-title">ResiliNet</h3>
                 <div className="holo-actions">
-                  <a href="https://ipl-win-predictor-be6tyhrvdccfgcfwihxf8u.streamlit.app/" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Live App</a>
-                  <a href="https://github.com/Parths-29/ipl-win-predictor" target="_blank" rel="noopener noreferrer" className="holo-btn secondary">Code</a>
+                  <a href="https://resilinet-core.vercel.app/" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Live App</a>
+                  <a href="https://github.com/Parths-29/Resilinet-core" target="_blank" rel="noopener noreferrer" className="holo-btn secondary">Code</a>
                 </div>
               </div>
             </div>
@@ -144,6 +145,22 @@ const HomeFeed = () => (
                 <h3 className="holo-title">Decentralized Voting</h3>
                 <div className="holo-actions">
                   <a href="https://github.com/Parths-29/Decentralized-Web3/tree/main/decentralized-voting" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </HoloCard>
+
+        <HoloCard>
+          <div className="holo-card">
+            <div className="holo-img-wrapper">
+              <img src={iplImg} alt="IPL Predictor" className="holo-img" />
+              <div className="holo-content">
+                <span className="holo-tech">Python • Streamlit • ML</span>
+                <h3 className="holo-title">IPL Win Predictor</h3>
+                <div className="holo-actions">
+                  <a href="https://ipl-win-predictor-be6tyhrvdccfgcfwihxf8u.streamlit.app/" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Live App</a>
+                  <a href="https://github.com/Parths-29/ipl-win-predictor" target="_blank" rel="noopener noreferrer" className="holo-btn secondary">Code</a>
                 </div>
               </div>
             </div>
