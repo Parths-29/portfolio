@@ -4463,103 +4463,161 @@ a:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px; /* Space between image and corners */
+    padding: 15px;
+    cursor: pointer;
+    group: 1;
 }
 
-/* 2. The Image */
+/* 2. The Image - Dark & Mysterious by default */
 .hud-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Clean Square or Slight Rounding - NOT a Circle */
-    border-radius: 4px; 
+    border-radius: 12px; 
     
-    /* The "Cool" Factor: B&W by default, Color on Hover */
-    filter: grayscale(100%) contrast(1.1) brightness(0.9);
-    transition: all 0.4s ease-out;
-    
-    /* A subtle border directly on the image */
-    border: 1px solid #333;
+    /* Heavy dark filter by default - image is dim */
+    filter: brightness(0.3) contrast(0.8) saturate(0.5);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 2;
 }
 
-/* Hover Effect: Image lights up */
+/* Dark overlay layer */
+.hud-frame-container::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 12px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.95) 100%);
+    opacity: 1;
+    transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Red accent line that appears on hover */
+.hud-frame-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    right: 15px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* On Hover: Image becomes visible, dark overlay fades */
 .hud-frame-container:hover .hud-img {
-    filter: grayscale(0%) contrast(1) brightness(1);
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
-    border-color: #ff0000;
+    filter: brightness(1) contrast(1.1) saturate(1.2);
 }
 
-/* 3. The Corners (The Viewfinder brackets) */
+.hud-frame-container:hover::before {
+    opacity: 0;
+}
+
+.hud-frame-container:hover::after {
+    opacity: 1;
+    animation: scan-reveal 0.6s ease forwards;
+}
+
+@keyframes scan-reveal {
+    0% { top: 50%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 50%; opacity: 0.3; }
+}
+
+/* 3. Dynamic corners with black accents */
 .hud-corner {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    border: 3px solid #ff0000; /* Red Brackets */
-    transition: all 0.3s ease;
-    opacity: 0.7;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Neon Glow */
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgba(255, 0, 0, 0);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(255, 0, 0, 0);
+    z-index: 4;
 }
 
 /* Positioning the 4 corners */
 .hud-corner.top-left {
-    top: 0; left: 0;
-    border-right: none; border-bottom: none; /* Make it an "L" shape */
+    top: 15px; left: 15px;
+    border-right: none; border-bottom: none;
 }
 
 .hud-corner.top-right {
-    top: 0; right: 0;
+    top: 15px; right: 15px;
     border-left: none; border-bottom: none;
 }
 
 .hud-corner.bottom-left {
-    bottom: 0; left: 0;
+    bottom: 15px; left: 15px;
     border-right: none; border-top: none;
 }
 
 .hud-corner.bottom-right {
-    bottom: 0; right: 0;
+    bottom: 15px; right: 15px;
     border-left: none; border-top: none;
 }
 
-/* Hover Interaction: The corners "tighten" around the image */
+/* Corner glow effect on hover */
 .hud-frame-container:hover .hud-corner {
-    width: 330px; /* Expand to form a full box? Or shrink? */
-    height: 330px; /* Let's make them form a full box */
+    border-color: rgba(255, 0, 0, 0.8);
     opacity: 1;
-    border-width: 1px; /* Thinner when full */
-    box-shadow: 0 0 20px red;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
 }
 
-/* Wait, let's keep the bracket animation simpler so it's not "crazy" */
-.hud-frame-container:hover .hud-corner.top-left { transform: translate(5px, 5px); }
-.hud-frame-container:hover .hud-corner.top-right { transform: translate(-5px, 5px); }
-.hud-frame-container:hover .hud-corner.bottom-left { transform: translate(5px, -5px); }
-.hud-frame-container:hover .hud-corner.bottom-right { transform: translate(-5px, -5px); }
+.hud-frame-container:hover .hud-corner.top-left { 
+    transform: translate(-5px, -5px);
+    box-shadow: inset 0 0 8px rgba(255, 0, 0, 0.3), 0 0 12px rgba(255, 0, 0, 0.6);
+}
+.hud-frame-container:hover .hud-corner.top-right { 
+    transform: translate(5px, -5px);
+    box-shadow: inset 0 0 8px rgba(255, 0, 0, 0.3), 0 0 12px rgba(255, 0, 0, 0.6);
+}
+.hud-frame-container:hover .hud-corner.bottom-left { 
+    transform: translate(-5px, 5px);
+    box-shadow: inset 0 0 8px rgba(255, 0, 0, 0.3), 0 0 12px rgba(255, 0, 0, 0.6);
+}
+.hud-frame-container:hover .hud-corner.bottom-right { 
+    transform: translate(5px, 5px);
+    box-shadow: inset 0 0 8px rgba(255, 0, 0, 0.3), 0 0 12px rgba(255, 0, 0, 0.6);
+}
 
-
-/* 4. The "SYS_ADMIN" Tag */
+/* 4. Refined Tag with dark background */
 .hud-tag {
     position: absolute;
-    bottom: -30px;
+    bottom: -35px;
     left: 50%;
     transform: translateX(-50%);
     
-    font-family: 'Courier New', monospace;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    font-weight: 600;
     color: #ff0000;
-    background: rgba(20, 0, 0, 0.8);
-    padding: 5px 10px;
-    border: 1px solid #ff0000;
-    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    border-radius: 6px;
     
     opacity: 0;
-    transition: 0.3s;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 5;
 }
 
 .hud-frame-container:hover .hud-tag {
     opacity: 1;
-    bottom: -40px; /* Slide down slightly */
+    bottom: -45px;
+    border-color: rgba(255, 0, 0, 0.8);
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.3);
 }
 
 /* Mobile Fix */
