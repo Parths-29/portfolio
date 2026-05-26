@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import profileImage from "../img1.jpg";
+import profileImage from "./img1.jpeg";
 
 function Header() {
   const navigate = useNavigate();

@@ -1,15 +1,239 @@
-/* index.css - Complete Stylesheet (YouTube Music Style) */
-/* --- PHASE 3: MASTER LAYOUT FIXES --- */
-/* --- GLOBAL CYBERPUNK PATCH (src/index.css) --- */
-/* 1. IMPORT PREMIUM FONTS & ENHANCEMENTS */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Outfit:wght@400;600;700&display=swap');
+/* ========================================
+   PARTH SHARMA PORTFOLIO - COMPLETE STYLESHEET
+   Design System v1.0 + Component Styles
+   Cyberpunk OS / Dark Media Player Interface
+   ======================================== */
 
+/* --- DESIGN SYSTEM CSS VARIABLES --- */
+:root {
+  /* Background Palette */
+  --bg-base:           #0a0a0a;
+  --bg-elevated:       #121212;
+  --bg-surface:        #1a1a1a;
+  --bg-hover:          #242424;
+  --bg-glass:          rgba(18, 18, 18, 0.75);
+  --bg-glass-elevated: rgba(30, 30, 30, 0.85);
 
-/* The Animation that makes it fly */
+  /* Red Accent (Sacred — use with restraint) */
+  --accent:            #ff0000;
+  --accent-dim:        #cc0000;
+  --accent-glow:       rgba(255, 0, 0, 0.15);
+  --accent-soft:       rgba(255, 0, 0, 0.08);
+  --accent-strong:     rgba(255, 0, 0, 0.4);
+
+  /* Text Palette */
+  --text-primary:      #ffffff;
+  --text-secondary:    #aaaaaa;
+  --text-muted:        #666666;
+  --text-on-accent:    #000000;
+
+  /* Border Palette */
+  --border-default:    rgba(255, 255, 255, 0.08);
+  --border-hover:      rgba(255, 255, 255, 0.15);
+  --border-active:     rgba(255, 0, 0, 0.4);
+
+  /* Easing Functions */
+  --ease-out-expo:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:       cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:       cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-standard:     cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  /* Spacing Scale */
+  --spacing-xs:        4px;
+  --spacing-sm:        8px;
+  --spacing-md:        12px;
+  --spacing-lg:        16px;
+  --spacing-xl:        24px;
+  --spacing-2xl:       32px;
+  --spacing-3xl:       40px;
+
+  /* Shadow System */
+  --shadow-sm:         0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md:         0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg:         0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow-red:   0 0 15px rgba(255, 0, 0, 0.4), 0 0 40px rgba(255, 0, 0, 0.15);
+}
+
+/* --- FONT IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&family=Outfit:wght@400;600;700&display=swap');
+
+/* --- TYPE SCALE UTILITY CLASSES --- */
+.type-hero {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 64px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.type-h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+
+.type-h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.type-h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.type-body-lg {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.7;
+  max-width: 65ch;
+}
+
+.type-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.type-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.type-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* --- UTILITY CLASSES --- */
+.uppercase { text-transform: uppercase; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+.accent { color: var(--accent); }
+.muted { color: var(--text-muted); }
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+.gap-lg { gap: var(--spacing-lg); }
+.gap-xl { gap: var(--spacing-xl); }
+
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+
+/* Shadow Utility Classes */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-card { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); }
+.shadow-card-hover { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--accent-soft); }
+.shadow-accent { box-shadow: var(--shadow-glow-red); }
+
+/* Glass Effect Classes */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid var(--border-default);
+}
+
+.glass-elevated {
+  background: var(--bg-glass-elevated);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-lg);
+}
+
+/* --- CORE ANIMATIONS --- */
 @keyframes gridMove {
     0% { transform: rotateX(60deg) translateY(0); }
     100% { transform: rotateX(60deg) translateY(40px); }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(255, 0, 0, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}
+
+@keyframes neonPulse {
+  0% {
+    box-shadow: 0 0 5px var(--accent), 0 0 10px rgba(255, 0, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 15px var(--accent), 0 0 30px rgba(255, 0, 0, 0.2);
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Respects reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* --- GLOWING ORB IN THE DISTANCE --- */
@@ -24,42 +248,37 @@
     z-index: -2;
     pointer-events: none;
 }
-/* 2. APPLY THEM GLOBALLY */
-body, html {
-    font-family: 'Inter', sans-serif !important; /* Clean human reading font */
+
+/* --- GLOBAL STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* 3. UPDATE HEADERS TO BE BOLD & STYLISH WITH PREMIUM SIZING */
-h1 {
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-weight: 700 !important;
-    letter-spacing: 1px !important;
-    font-size: 2.5rem !important;
-}
-
-h2, h3, .tech-title, .section-header, .entry-title {
-    font-family: 'Inter', sans-serif !important;
-    letter-spacing: 0px !important;
-    font-weight: 700 !important;
-}
-
-/* 4. TWEAK THE MONOSPACE (Keep it only for small tech details) */
-.tech-badge, .access-badge, .console-log {
-    font-family: 'Courier New', monospace !important;
-}
-/* 1. IMPORT TECH FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
-
-/* 2. GLOBAL RESET & REFINED BACKGROUND */
-body {
-    background-color: #0a0a0a;
-    color: #e0e0e0;
+html,
+body,
+#root {
+    height: 100%;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    
-    /* Subtle, minimal background - inspired by modern design */
-    background-image: none;
+}
+
+body {
     min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Tech badges and monospace elements */
+.tech-badge, .access-badge, .console-log {
+    font-family: 'JetBrains Mono', monospace;
 }
 
 /* 3. REFINED SECTION HEADERS - Clean & Modern */
@@ -1758,28 +1977,53 @@ body {
 /* The Grid Container */
 .bento-grid {
     display: grid;
-    /* Create a responsive grid with roughly 3 columns on large screens */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 240px; /* Fixed row height */
+    /* Create a responsive grid with roughly 3-4 columns on large screens */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-auto-rows: 280px; /* Uniform row height */
     gap: 24px;
     padding: 20px;
 }
 
-/* --- Card Sizing Logic (The "Bento" Effect) --- */
-/* Large Wide: Spans 2 columns */
-.bento-card.large-wide {
-    grid-column: span 2;
+/* --- TAB NAVIGATION STYLING --- */
+.explore-tabs {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    border-bottom: 2px solid var(--border-default);
 }
 
-/* Tall: Spans 2 rows (Vertical) */
-.bento-card.tall {
-    grid-row: span 2;
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'JetBrains Mono', monospace;
 }
 
-/* Large Square: Spans 2 cols and 2 rows (Big Box) */
-.bento-card.large-square {
-    grid-column: span 2;
-    grid-row: span 2;
+.tab-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+/* --- Card Sizing Logic - ALL UNIFORM --- */
+/* All cards now have equal size - no spanning */
+.bento-card {
+    grid-column: span 1;
+    grid-row: span 1;
 }
 
 /* Mobile Fix: On phones, make everything 1 column */
@@ -1914,6 +2158,48 @@ body {
     filter: grayscale(80%) brightness(0.6);
 }
 
+/* --- PROJECT CARD LINKS --- */
+.project-links {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.project-link {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    z-index: 10;
+}
+
+.project-link.live {
+    background: var(--accent);
+    color: var(--text-on-accent);
+}
+
+.project-link.live:hover {
+    background: var(--accent-dim);
+    box-shadow: var(--shadow-glow-red);
+}
+
+.project-link.code {
+    background: transparent;
+    color: var(--accent);
+}
+
+.project-link.code:hover {
+    background: rgba(255, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
 .holo-card:hover {
     transform: translateY(-5px) scale(1.01);
     border-color: #ff0000;
@@ -2011,6 +2297,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     filter: brightness(0.75) contrast(1.05) saturate(1.1);
 }
@@ -3477,6 +3764,50 @@ a:focus {
     height: 3px; /* Slightly thicker */
     background: linear-gradient(90deg, transparent, #ff0000, transparent);
     /* Make sure it stays strictly at the bottom */
+}
+
+/* --- ACCESSIBILITY & RESPONSIVE TWEAKS --- */
+
+/* Focus Visibility for Keyboard Navigation */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Enhanced Tab Navigation */
+a:focus-visible {
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
+}
+
+/* Tablet Optimizations (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .header { padding: 12px 20px; }
+    .sidebar { width: 220px; }
+    .main-content { padding: 20px; }
+    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Extra Small Screens (< 480px) */
+@media (max-width: 480px) {
+    .type-hero { font-size: 32px; }
+    .type-h1 { font-size: 24px; }
+    .type-h2 { font-size: 20px; }
+    .bento-grid { gap: 12px; }
+    .header-clock { font-size: 0.9rem; padding: 4px 10px; }
+}
+
+/* Large Screens (> 1440px) */
+@media (min-width: 1440px) {
+    .type-hero { font-size: 72px; }
+    .bento-grid { grid-template-columns: repeat(4, 1fr); }
+    .bento-card.large-wide { grid-column: span 2; }
 }
 
 /* --- FIX: FORCE IDENTICAL RECTANGLES --- */

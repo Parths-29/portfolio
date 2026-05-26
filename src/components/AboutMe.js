@@ -1,5 +1,5 @@
 import React from 'react';
-import profileImage from "../img1.jpg"; 
+import profileImage from "./img1.jpeg"; 
 import receiptImg from "./receipt.webp"; // <--- Make sure to import this!
 
 function AboutMe() {

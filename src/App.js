@@ -28,10 +28,10 @@ import 'aos/dist/aos.css';
 // --- Image Imports (for projects only) ---
 import resilientImg from "./components/Resilient.png";
 import iplImg from "./components/ipl.jpg"; 
-import receiptImg from "./components/receipt.webp";
+import receiptImg from "./components/receipt.png";
 import voteImg from "./components/vote.jpg";   
 import drImg from "./components/dr.jpeg";
-import aiImg from "./components/ai.png";
+import interviewImg from "./components/interview.png";
 import emotionImg from "./components/gen.jpg";
 import healthcareImg from "./components/healthcare.jpg";      
 
@@ -175,7 +175,23 @@ const HomeFeed = () => (
                 <span className="holo-tech">NLP • Deep Learning • AI</span>
                 <h3 className="holo-title">Emotion Analysis</h3>
                 <div className="holo-actions">
-                  <a href="https://github.com/Parths-29/AI-Neural-Systems/tree/main/emotion-analysis/Emotion%20analysis%20using%20NLP%20-code" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Code</a>
+                  <a href="https://github.com/Parths-29/Ai-ml/tree/main/emotion-analysis" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </HoloCard>
+
+        <HoloCard>
+          <div className="holo-card">
+            <div className="holo-img-wrapper">
+              <img src={interviewImg} alt="Interview Prep AI" className="holo-img" />
+              <div className="holo-content">
+                <span className="holo-tech">Computer Vision • ML • Speech Recognition</span>
+                <h3 className="holo-title">Interview Prep AI</h3>
+                <div className="holo-actions">
+                  <a href="https://ai-neural-systems-client.vercel.app/" target="_blank" rel="noopener noreferrer" className="holo-btn primary">Live Demo</a>
+                  <a href="https://github.com/Parths-29/Interview-Prep-AI" target="_blank" rel="noopener noreferrer" className="holo-btn secondary">Code</a>
                 </div>
               </div>
             </div>
@@ -198,9 +214,9 @@ const HomeFeed = () => (
               <img src={healthcareImg} alt="Healthcare Network" className="holo-img" />
               <div className="holo-content">
                 <span className="holo-tech" style={{ color: '#00ccff' }}>Hyperledger • AI • React</span>
-                <h3 className="holo-title">Healthcare Blockchain Network</h3>
+                <h3 className="holo-title">MedChain DataLock (Healthcare Blockchain)</h3>
                 <div className="holo-actions">
-                  <span className="holo-btn secondary" style={{ borderColor: '#00ccff', color: '#00ccff' }}>In Development</span>
+                  <a href="https://github.com/Parths-29/Decentralized-Web3/tree/main/medchain-datalock-ehr" target="_blank" rel="noopener noreferrer" className="holo-btn secondary" style={{ borderColor: '#00ccff', color: '#00ccff' }}>Code</a>
                 </div>
               </div>
             </div>
@@ -216,21 +232,6 @@ const HomeFeed = () => (
                 <h3 className="holo-title">Neural Med-Assist</h3>
                 <div className="holo-actions">
                   <span className="holo-btn secondary" style={{ borderColor: '#00ccff', color: '#00ccff' }}>In Progress</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </HoloCard>
-
-        <HoloCard>
-          <div className="holo-card" style={{ borderLeft: '1px solid #00ccff' }}>
-            <div className="holo-img-wrapper">
-              <img src={aiImg} alt="Visual Proctor" className="holo-img" />
-              <div className="holo-content">
-                <span className="holo-tech" style={{ color: '#00ccff' }}>Computer Vision • ML</span>
-                <h3 className="holo-title">AI Visual Proctor</h3>
-                <div className="holo-actions">
-                  <span className="holo-btn secondary" style={{ borderColor: '#00ccff', color: '#00ccff' }}>In Progress...</span>
                 </div>
               </div>
             </div>

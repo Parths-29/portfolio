@@ -1,5 +1,5 @@
 import React from "react";
-import profileImg from "../img1.jpg";
+import profileImg from "./img1.jpeg";
 
 function Bio() {
   return (
