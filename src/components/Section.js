@@ -28,7 +28,9 @@ function Section({ title, linkText, arrows, items, headerClass }) {
     return (
         <section className="section">
             <div className={`section-header ${headerClass || ''}`}>
-                <h2>{title}</h2>
+                <div className="section-title-group">
+                    <h2>{title}</h2>
+                </div>
                 {linkText ? (
                     <a href="#" className="view-all">{linkText}</a>
                 ) : arrows ? (

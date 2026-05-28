@@ -26,7 +26,9 @@ function AboutMe() {
 
         <div className="mission-control">
           <div className="section-header">
-             <h2>About Me</h2>
+             <div className="section-title-group">
+               <h2>About Me</h2>
+             </div>
           </div>
           <p className="mission-text">
             Hey! I'm Parth. I'm a 3rd-year IT student who loves building things that actually work. 
@@ -48,7 +50,9 @@ function AboutMe() {
       {/* --- SECTION 2: EDUCATION --- */}
       <section className="content-section">
         <div className="section-header">
-          <h2>Education</h2>
+          <div className="section-title-group">
+            <h2>Education</h2>
+          </div>
         </div>
         <div className="section-content">
           <div className="education-grid">
@@ -75,7 +79,9 @@ function AboutMe() {
       {/* --- SECTION 3: LEADERSHIP --- */}
       <section className="content-section">
         <div className="section-header">
-           <h2>Leadership & Teamwork</h2>
+           <div className="section-title-group">
+             <h2>Leadership & Teamwork</h2>
+           </div>
         </div>
         <div className="council-grid">
           <div className="council-card">
@@ -104,7 +110,9 @@ function AboutMe() {
       {/* --- SECTION 4: TECHNICAL SKILLS --- */}
       <section className="content-section">
         <div className="section-header">
-          <h2>Tech Stack</h2>
+          <div className="section-title-group">
+            <h2>Tech Stack</h2>
+          </div>
         </div>
         <div className="section-content">
           <div className="skills-grid">
@@ -131,7 +139,9 @@ function AboutMe() {
       {/* --- SECTION 5: KEY PROJECTS --- */}
       <section className="content-section">
         <div className="section-header">
-          <h2>Key Highlights</h2>
+          <div className="section-title-group">
+            <h2>Key Highlights</h2>
+          </div>
         </div>
         <div className="section-content">
           <div className="projects-grid">

@@ -145,9 +145,9 @@ function Explore() {
     <div className="explore-page">
       {/* Dynamic Header */}
       <div className="section-header explore-header">
-        <div>
+        <div className="section-title-group">
           <h2 className="neon-text">MY WORK</h2>
-          <p className="explore-subtitle">Explore projects and domains</p>
+          <p className="section-sub">Explore projects and domains</p>
         </div>
       </div>
 

@@ -75,7 +75,9 @@ const HomeFeed = () => (
     {/* SKILLS MARQUEE - SVG ICONS WITH TRANSPARENT BACKGROUNDS */}
     <div className="section">
       <div className="section-header">
-        <h2>Featured Skills</h2>
+        <div className="section-title-group">
+          <h2>Featured Skills</h2>
+        </div>
       </div>
       <div className="skill-marquee-container">
         <div className="skill-marquee-track">
@@ -100,7 +102,9 @@ const HomeFeed = () => (
     {/* DEPLOYED SYSTEMS */}
     <div className="section">
       <div className="section-header">
-        <h2>Deployed Systems</h2>
+        <div className="section-title-group">
+          <h2>Deployed Systems</h2>
+        </div>
       </div>
       <div className="holo-grid">
         
@@ -298,6 +302,10 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      
+      {/* Overlay Elements */}
+      <div id="scanline-overlay" className="scanline-overlay" />
+      <div id="film-grain" className="film-grain" />
       
       <div className="app-master-wrapper fade-in-active yt-music-theme">
         

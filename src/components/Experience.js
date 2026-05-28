@@ -110,7 +110,9 @@ function Experience() {
   return (
     <div className="experience-page">
       <div className="section-header">
-        <h2 className="neon-text">My Journey</h2>
+        <div className="section-title-group">
+          <h2 className="neon-text">My Journey</h2>
+        </div>
       </div>
 
       <div className="timeline-container">

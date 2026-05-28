@@ -27,9 +27,11 @@ function Connect() {
       
       {/* --- THE HEAVY "HOLO-BANNER" HEADER --- */}
       <div className="section-header">
-        <h2 className="glitch-text" data-text="LETS CONNECT">
-          LETS CONNECT
-        </h2>
+        <div className="section-title-group">
+          <h2 className="glitch-text" data-text="LETS CONNECT">
+            LETS CONNECT
+          </h2>
+        </div>
         
         {/* Tech Data Bar */}
         <div className="header-data-bar">

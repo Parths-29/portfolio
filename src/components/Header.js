@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import profileImage from "./img1.jpeg";
+import ProfileControlPanel from "./ProfileControlPanel";
 
 function Header() {
   const navigate = useNavigate();
@@ -85,7 +86,7 @@ function Header() {
             </div>
 
             <div className="profile-section">
-                <img src={profileImage} alt="Profile" className="profile-avatar-img" />
+                <ProfileControlPanel avatarSrc={profileImage} />
             </div>
         </div>
 

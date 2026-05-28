@@ -82,7 +82,9 @@ function Certifications() {
     <div className="cert-page">
       {/* CERTIFICATIONS SECTION */}
       <div className="section-header">
-        <h2 className="neon-text">Credentials & Honors</h2>
+        <div className="section-title-group">
+          <h2 className="neon-text">Credentials & Honors</h2>
+        </div>
       </div>
 
       <div className="trophy-case">

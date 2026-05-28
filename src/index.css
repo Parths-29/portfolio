@@ -15,11 +15,18 @@
   --bg-glass-elevated: rgba(30, 30, 30, 0.85);
 
   /* Red Accent (Sacred — use with restraint) */
-  --accent:            #ff0000;
+  --accent:            var(--accent);
+  --accent-rgb:        255, 0, 0;
   --accent-dim:        #cc0000;
   --accent-glow:       rgba(255, 0, 0, 0.15);
   --accent-soft:       rgba(255, 0, 0, 0.08);
   --accent-strong:     rgba(255, 0, 0, 0.4);
+
+  /* Motion speed multiplier */
+  --motion-speed:      1;
+  --dur-fast:          calc(0.15s * var(--motion-speed));
+  --dur-normal:        calc(0.3s * var(--motion-speed));
+  --dur-slow:          calc(0.6s * var(--motion-speed));
 
   /* Text Palette */
   --text-primary:      #ffffff;
@@ -52,6 +59,74 @@
   --shadow-md:         0 4px 20px rgba(0, 0, 0, 0.5);
   --shadow-lg:         0 8px 32px rgba(0, 0, 0, 0.4);
   --shadow-glow-red:   0 0 15px rgba(255, 0, 0, 0.4), 0 0 40px rgba(255, 0, 0, 0.15);
+}
+
+/* Recruiter mode — strips all decorative effects */
+body.recruiter-mode {
+  --accent:       #555555;
+  --accent-rgb:   85, 85, 85;
+  --accent-dim:   rgba(85,85,85,0.1);
+  --accent-hover: #333333;
+}
+body.recruiter-mode .cursor-dot,
+body.recruiter-mode .scanline-overlay,
+body.recruiter-mode .film-grain,
+body.recruiter-mode [class*="neon"],
+body.recruiter-mode [class*="glow"] {
+  display: none !important;
+  opacity: 0 !important;
+}
+body.recruiter-mode * {
+  animation-duration: 0.01ms !important;
+  box-shadow: none !important;
+}
+
+/* Hacker mode */
+body.hacker-mode {
+  --accent:       #00ff41;
+  --accent-rgb:   0, 255, 65;
+  --accent-dim:   rgba(0,255,65,0.12);
+  --accent-hover: #00cc33;
+  background: #000 !important;
+  font-family: 'Courier New', monospace !important;
+}
+body.hacker-mode * { font-family: 'Courier New', monospace !important; }
+body.hacker-mode h1, body.hacker-mode h2, body.hacker-mode h3 {
+  text-shadow: 0 0 8px var(--accent);
+}
+
+/* CRT Scanlines overlay */
+.scanline-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99998;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+}
+
+/* Film grain overlay */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99997;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+  animation: grainShift 0.5s steps(1) infinite;
+}
+
+@keyframes grainShift {
+  0%  { background-position: 0 0; }
+  25% { background-position: -50px 30px; }
+  50% { background-position: 20px -40px; }
+  75% { background-position: -30px -20px; }
 }
 
 /* --- FONT IMPORTS --- */
@@ -165,6 +240,124 @@
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: var(--shadow-lg);
+}
+
+/* --- PROFILE MENU DROPDOWN --- */
+.profile-menu-container {
+  position: relative;
+  z-index: 1000;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 260px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  box-shadow:
+    0 4px 6px rgba(0,0,0,0.3),
+    0 20px 48px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,0,0,0.06);
+  padding: 6px;
+  animation: dropdownReveal 0.2s cubic-bezier(0.16,1,0.3,1) both;
+  z-index: 9999;
+}
+
+@keyframes dropdownReveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dropdown-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+}
+
+.dropdown-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+}
+
+.dropdown-role {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin: 4px 0;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+.dropdown-item.primary {
+  background: rgba(255,0,0,0.08);
+  color: #ff4444;
+  border: 1px solid rgba(255,0,0,0.15);
+  margin-top: 2px;
+}
+
+.dropdown-item.primary:hover {
+  background: rgba(255,0,0,0.15);
+  color: #ff6666;
+}
+
+.dropdown-status {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  color: rgba(255,255,255,0.35);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- CURSOR DOT TRAIL --- */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0.7;
+  mix-blend-mode: screen;
 }
 
 /* --- CORE ANIMATIONS --- */
@@ -292,7 +485,6 @@ h1, h2, h3, h4, h5, h6 {
     /* Clean, minimal background */
     background: transparent !important;
     border: none !important;
-    border-left: 4px solid #ff0000;
     box-shadow: none;
     border-radius: 0;
 
@@ -304,7 +496,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: left !important;
 }
 
-/* Refined H2 styling */
+/* Refined H2 styling WITH red accent bar */
 .section-header h2,
 .connect-header h2,
 .explore-section-header h2 {
@@ -315,17 +507,84 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0px;
     font-size: 1.8rem;
     margin: 0 !important;
-    margin-left: 16px !important;
     width: 100%;
     font-family: 'Inter', sans-serif !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
 }
 
-/* Remove the glowing red blip - cleaner look */
+/* Red accent bar - scoped to heading only */
+.section-header h2::before,
+.connect-header h2::before,
+.explore-section-header h2::before {
+    content: '';
+    display: none;
+}
+
+/* Remove old ::before styles */
 .section-header::before, 
 .explore-section-header::before,
 .pills-nav-header::before {
     content: '';
     display: none;
+}
+
+/* OPTION A - CORNER BRACKETS FOR HEADING GROUP */
+.section-title-group {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 22px;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+/* Top-left corner bracket */
+.section-title-group::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+  border-radius: 2px 0 0 0;
+}
+
+/* Bottom-right corner bracket */
+.section-title-group::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  border-radius: 0 0 2px 0;
+}
+
+.section-heading {
+  text-align: center;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.section-sub {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-top: 6px;
 }
 
 .section-header h2, 
@@ -357,8 +616,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #ff0000; /* Turns red when you grab it */
-    box-shadow: 0 0 10px #ff0000;
+    background: var(--accent); /* Turns red when you grab it */
+    box-shadow: 0 0 10px var(--accent);
 }
 
 /* 5. FIX THE "RED RECTANGLE" PROJECTS */
@@ -392,11 +651,11 @@ p, span, .desc, .bio-description {
 }
 
 .pill.active {
-    background: #ff0000 !important;
+    background: var(--accent) !important;
     color: black !important; /* High contrast */
     font-weight: bold;
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
-    border-color: #ff0000;
+    border-color: var(--accent);
 }
 /* --- FIX: FIXED SIDEBAR & SCROLLABLE CONTENT --- */
 
@@ -531,7 +790,7 @@ body {
 .logo-icon {
     width: 20px;
     height: 20px;
-    background: #ff0000;
+    background: var(--accent);
     border-radius: 50%;
     margin-right: 8px;
     display: flex;
@@ -578,7 +837,7 @@ body {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #ff0000;
+    background: var(--accent);
     color: white;
     display: flex;
     align-items: center;
@@ -622,8 +881,8 @@ body {
     position: absolute;
     top: 20px; right: 20px;
     width: 10px; height: 10px;
-    border-top: 2px solid #ff0000;
-    border-right: 2px solid #ff0000;
+    border-top: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
 }
 
 .clock-time {
@@ -639,7 +898,7 @@ body {
     margin-top: 5px;
     font-size: 0.7rem;
     letter-spacing: 3px;
-    color: #ff0000;
+    color: var(--accent);
     text-transform: uppercase;
     display: flex;
     align-items: center;
@@ -698,8 +957,8 @@ body {
     left: 0; top: 0;
     height: 100%;
     width: 4px;
-    background: #ff0000;
-    box-shadow: 0 0 10px #ff0000;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
 }
 
 .nav-icon img {
@@ -797,12 +1056,12 @@ body {
 }
 
 .btn-primary {
-    background: #ff0000;
+    background: var(--accent);
     color: white;
 }
 
 .btn-primary:hover {
-    background: #cc0000;
+    background: var(--accent-dim);
 }
 
 .btn-secondary {
@@ -840,10 +1099,11 @@ body {
     letter-spacing: 2px !important;
     margin: 0 !important;
     width: 100%;
+    text-align: center !important;
 }
 
 .view-all {
-    color: #ff0000;
+    color: var(--accent);
     font-size: 14px;
     text-decoration: none;
     font-weight: 500;
@@ -855,7 +1115,7 @@ body {
 
 /* FIX 1: Specific style for the Explore Project Categories header (Red Banner) */
 .explore-section-header.section-header {
-    background: #ff0000;
+    background: var(--accent);
     padding: 16px 24px;
     border-radius: 4px;
     margin-bottom: 24px; 
@@ -935,7 +1195,7 @@ body {
 }
 
 .card-image.project {
-    background: linear-gradient(135deg, #ff0000, #cc0000);
+    background: linear-gradient(135deg, var(--accent), var(--accent-dim));
     height: 200px;
 }
 
@@ -1098,7 +1358,7 @@ body {
 }
 
 .section-header {
-    background: linear-gradient(135deg, #ff0000, #cc0000);
+    background: linear-gradient(135deg, var(--accent), var(--accent-dim));
     padding: 16px 24px;
     border-radius: 8px 8px 0 0;
     margin-bottom: 0;
@@ -1135,7 +1395,7 @@ body {
     border-radius: 8px;
     padding: 20px;
     border-left: 3px solid transparent;
-    background-image: linear-gradient(#242424 0%, #242424 calc(100% - 3px), #ff0000 calc(100% - 3px), #ff0000 100%);
+    background-image: linear-gradient(#242424 0%, #242424 calc(100% - 3px), var(--accent) calc(100% - 3px), var(--accent) 100%);
     background-position: 0 0;
     background-origin: padding-box, border-box;
     background-clip: padding-box, border-box;
@@ -1143,8 +1403,8 @@ body {
 }
 
 .education-card:hover {
-    border-left-color: #ff3333;
-    background-image: linear-gradient(#242424 0%, #242424 calc(100% - 3px), #ff3333 calc(100% - 3px), #ff3333 100%);
+    border-left-color: var(--accent);
+    background-image: linear-gradient(#242424 0%, #242424 calc(100% - 3px), var(--accent) calc(100% - 3px), var(--accent) 100%);
     box-shadow: inset -3px 0 8px rgba(255, 0, 0, 0.2);
 }
 
@@ -1297,7 +1557,7 @@ body {
 
 /* Connect Section */
 .connect-section {
-    background: linear-gradient(135deg, #ff0000, #cc0000);
+    background: linear-gradient(135deg, var(--accent), var(--accent-dim));
     border-radius: 8px;
     padding: 32px;
     text-align: center;
@@ -1386,7 +1646,7 @@ body {
 /* CRITICAL: Style the header to look like the red box and align arrows */
 .pills-nav-header.section-header {
     /* Use the red theme for the header background */
-    background: linear-gradient(135deg, #ff0000, #cc0000); 
+    background: linear-gradient(135deg, var(--accent), var(--accent-dim)); 
     color: white;
     padding: 16px 24px;
     border-radius: 4px;
@@ -1502,7 +1762,7 @@ body {
     content: ''; /* Required for pseudo-element */
     width: 6px; 
     height: 36px; /* Match the height of the font */
-    background-color: #ff0000; /* Red color */
+    background-color: var(--accent); /* Red color */
     display: block;
     border-radius: 2px;
     flex-shrink: 0; /* Ensures the box doesn't shrink */
@@ -1516,7 +1776,7 @@ body {
 }
 
 .location-link:hover {
-    color: #ff0000; /* Optional: Highlight red on hover */
+    color: var(--accent); /* Optional: Highlight red on hover */
 }
 
 /* --- Certificate Grid Styles --- */
@@ -1603,7 +1863,7 @@ body {
 }
 
 .modal-close:hover {
-    color: #ff0000; /* Red hover effect */
+    color: var(--accent); /* Red hover effect */
 }
 
 .modal-caption {
@@ -1718,7 +1978,7 @@ body {
 
 /* Tech Name - Technology label */
 .marquee-tech-name {
-  color: #ff0000;
+  color: var(--accent);
   font-size: 16px;
   font-weight: 700;
   margin: 0 0 8px 0;
@@ -1773,7 +2033,7 @@ body {
     align-items: center;
     gap: 8px;
     font-size: 0.75rem;
-    color: #ff0000;
+    color: var(--accent);
     font-weight: bold;
     letter-spacing: 2px;
 }
@@ -1781,9 +2041,9 @@ body {
 .pulsing-dot {
     width: 8px;
     height: 8px;
-    background-color: #ff0000;
+    background-color: var(--accent);
     border-radius: 50%;
-    box-shadow: 0 0 10px #ff0000;
+    box-shadow: 0 0 10px var(--accent);
     animation: pulse 2s infinite;
 }
 
@@ -1805,8 +2065,6 @@ body {
     text-transform: uppercase;
     text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
     margin-bottom: 40px;
-    padding-left: 20px;
-    border-left: 5px solid #ff0000;
 }
 
 /* The Container */
@@ -1857,10 +2115,10 @@ body {
     width: 20px;
     height: 20px;
     background: #121212;
-    border: 3px solid #ff0000;
+    border: 3px solid var(--accent);
     border-radius: 50%;
     z-index: 10;
-    box-shadow: 0 0 15px #ff0000; /* Neon Pulse */
+    box-shadow: 0 0 15px var(--accent); /* Neon Pulse */
     transition: background 0.3s;
 }
 
@@ -1871,8 +2129,8 @@ body {
 
 /* Active State: Fill dot red when hovered */
 .timeline-item:hover .timeline-dot {
-    background: #ff0000;
-    box-shadow: 0 0 30px #ff0000;
+    background: var(--accent);
+    box-shadow: 0 0 30px var(--accent);
 }
 
 /* The Content Card (Glassmorphism) */
@@ -1888,13 +2146,13 @@ body {
 
 .timeline-content:hover {
     transform: scale(1.02);
-    border-color: #ff0000;
+    border-color: var(--accent);
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
 /* Typography */
 .timeline-date {
-    color: #ff0000;
+    color: var(--accent);
     font-size: 0.9rem;
     font-weight: bold;
     letter-spacing: 1px;
@@ -1949,9 +2207,9 @@ body {
 }
 /* Special Tag Styling */
 .timeline-content:hover .tag {
-    background: #ff0000; /* Tags turn red when card is hovered */
+    background: var(--accent); /* Tags turn red when card is hovered */
     color: white;
-    border-color: #ff0000;
+    border-color: var(--accent);
 }
 
 /* Make the title of the current roles glow slightly more */
@@ -2053,8 +2311,8 @@ body {
 /* Hover: Lift, Glow Red, Zoom Image */
 .bento-card:hover {
     transform: translateY(-5px) scale(1.01);
-    border-color: #ff0000;
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(var(--accent-rgb), 0.15);
     z-index: 2;
 }
 
@@ -2100,7 +2358,7 @@ body {
 }
 
 .bento-subtitle {
-    color: #ff0000;
+    color: var(--accent);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -2148,8 +2406,8 @@ body {
 /* Keep original bento/holo hover - preserved */
 .bento-card:hover {
     transform: translateY(-5px) scale(1.01);
-    border-color: #ff0000;
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(var(--accent-rgb), 0.15);
     z-index: 2;
 }
 
@@ -2202,8 +2460,8 @@ body {
 
 .holo-card:hover {
     transform: translateY(-5px) scale(1.01);
-    border-color: #ff0000;
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(var(--accent-rgb), 0.15);
 }
 
 /* 1. The Glass Container */
@@ -2221,12 +2479,12 @@ body {
 .header-laser-line {
     height: 2px;
     width: 100%;
-    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
     position: absolute;
     bottom: 0;
     left: 0;
     opacity: 0.7;
-    box-shadow: 0 0 10px #ff0000;
+    box-shadow: 0 0 10px var(--accent);
 }
 
 /* 3. The Glowing Search Bar */
@@ -2242,8 +2500,8 @@ body {
 
 /* When you click the search bar: Glows Red & Expands */
 .cyber-search-box:focus {
-    border-color: #ff0000;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.3);
     width: 105%; /* Subtle expansion */
     outline: none;
 }
@@ -2254,8 +2512,8 @@ body {
 }
 
 @keyframes neonPulse {
-    from { box-shadow: 0 0 5px #ff0000; }
-    to { box-shadow: 0 0 15px #ff0000, 0 0 5px #ff0000; }
+    from { box-shadow: 0 0 5px var(--accent); }
+    to { box-shadow: 0 0 15px var(--accent), 0 0 5px var(--accent); }
 }
 /* --- HOLO-DECK PROJECTS --- */
 
@@ -2282,7 +2540,7 @@ body {
 /* Hover: Lift & Subtle Glow */
 .holo-card:hover {
     transform: translateY(-8px);
-    border-color: #ff0000;
+    border-color: var(--accent);
     box-shadow: 0 12px 32px rgba(255, 0, 0, 0.12);
 }
 
@@ -2344,7 +2602,7 @@ body {
 }
 
 .holo-tech {
-    color: #ff0000;
+    color: var(--accent);
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -2378,14 +2636,14 @@ body {
 }
 
 .holo-btn.primary { 
-    background: #ff0000; 
+    background: var(--accent); 
     color: white; 
     border: none; 
 }
 .holo-btn.primary:hover {
-    background: #e60000;
+    background: var(--accent-dim);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.25);
+    box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.25);
 }
 
 .holo-btn.secondary { 
@@ -2450,14 +2708,14 @@ body {
 .scan-line {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 2px;
-    background: rgba(255, 0, 0, 0.8);
-    box-shadow: 0 0 10px red;
+    background: rgba(var(--accent-rgb), 0.8);
+    box-shadow: 0 0 10px var(--accent);
     animation: scan 3s infinite linear;
 }
 @keyframes scan { 0% {top:0} 100% {top:100%} }
 
 .id-name { font-size: 1.8rem; margin-bottom: 5px; color: white; }
-.id-role { font-size: 0.9rem; color: #ff0000; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px;}
+.id-role { font-size: 0.9rem; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px;}
 
 .id-stats { display: flex; justify-content: space-between; gap: 10px; }
 .stat-box { background: #111; padding: 10px; border-radius: 6px; text-align: center; flex: 1; border: 1px solid #222; }
@@ -2472,7 +2730,7 @@ body {
     line-height: 1.8;
     color: #ccc;
     margin-bottom: 30px;
-    border-left: 4px solid #ff0000;
+    border-left: 4px solid var(--accent);
     padding-left: 20px;
 }
 
@@ -2493,8 +2751,8 @@ body {
 .goal-desc { font-size: 0.9rem; color: #aaa; margin-bottom: 16px; line-height: 1.5; }
 
 .progress-bar { width: 100%; height: 6px; background: #333; border-radius: 3px; margin-bottom: 8px; overflow: hidden; }
-.progress-fill { height: 100%; background: #ff0000; box-shadow: 0 0 10px #ff0000; }
-.progress-text { font-size: 0.8rem; color: #ff0000; font-family: monospace; }
+.progress-fill { height: 100%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+.progress-text { font-size: 0.8rem; color: var(--accent); font-family: monospace; }
 
 /* 3. Leadership / Council Grid */
 .leadership-section { margin-top: 20px; }
@@ -2509,9 +2767,9 @@ body {
     cursor: default;
 }
 
-.council-card:hover { border-color: #ff0000; transform: translateY(-5px); }
+.council-card:hover { border-color: var(--accent); transform: translateY(-5px); }
 .council-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.8rem; color: #666; text-transform: uppercase; }
-.council-role { color: #ff0000; font-weight: bold; }
+.council-role { color: var(--accent); font-weight: bold; }
 .council-name { font-size: 1.3rem; margin-bottom: 10px; color: white; }
 .council-desc { font-size: 0.9rem; color: #999; line-height: 1.5; }
 
@@ -2545,7 +2803,7 @@ body {
 
 .trophy-icon { font-size: 3rem; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,215,0,0.3)); }
 .trophy-title { font-size: 1.1rem; color: white; margin-bottom: 8px; font-weight: 600; }
-.trophy-issuer { display: block; font-size: 0.9rem; color: #ff0000; margin-bottom: 4px; }
+.trophy-issuer { display: block; font-size: 0.9rem; color: var(--accent); margin-bottom: 4px; }
 .trophy-date { font-size: 0.8rem; color: #666; font-family: monospace; }
 
 /* Shine Effect on Hover */
@@ -2628,13 +2886,13 @@ body {
 }
 
 .skill-category-card:hover {
-    border-color: #ff0000 !important;
+    border-color: var(--accent) !important;
     transform: translateY(-5px);
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.15);
 }
 
 .skill-category-title {
-    color: #ff0000 !important;
+    color: var(--accent) !important;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -2650,7 +2908,7 @@ body {
 }
 
 .project-card:hover {
-    border-color: #ff0000 !important;
+    border-color: var(--accent) !important;
     transform: scale(1.02);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -2660,7 +2918,7 @@ body {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 4px; height: 100%;
-    background: #ff0000;
+    background: var(--accent);
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -2687,12 +2945,12 @@ body {
 .connect-section {
     background: linear-gradient(135deg, #1a1a1a, #000) !important;
     border: 1px solid #333 !important;
-    border-top: 2px solid #ff0000 !important;
+    border-top: 2px solid var(--accent) !important;
 }
 
 .connect-title {
     color: white !important;
-    text-shadow: 0 0 10px #ff0000;
+    text-shadow: 0 0 10px var(--accent);
 }
 
 /* ===== PREMIUM UX FEATURES ===== */
@@ -2826,7 +3084,7 @@ body {
 button:focus,
 input:focus,
 a:focus {
-    outline: 2px solid #ff0000;
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
 
@@ -2863,7 +3121,7 @@ a:focus {
 
 /* BOOT SEQUENCE */
 .boot-text {
-    color: #ff0000;
+    color: var(--accent);
     font-family: 'Courier New', monospace;
     font-size: 1.5rem;
     margin-bottom: 20px;
@@ -2881,8 +3139,8 @@ a:focus {
 .boot-progress {
     width: 0%;
     height: 100%;
-    background: #ff0000;
-    box-shadow: 0 0 10px #ff0000;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
     animation: load 2s linear forwards;
 }
 
@@ -2928,7 +3186,7 @@ a:focus {
 }
 
 .profile-card:hover .profile-img-wrapper {
-    border-color: #ff0000;
+    border-color: var(--accent);
     box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
 }
 
@@ -3023,7 +3281,7 @@ a:focus {
     font-size: 1.05rem;
     letter-spacing: 0px;
     margin-bottom: 32px;
-    border-left: 3px solid #ff0000;
+    border-left: 3px solid var(--accent);
     background: none;
     padding-left: 16px;
     font-weight: 500;
@@ -3040,7 +3298,7 @@ a:focus {
 }
 
 .highlight-red {
-    color: #ff0000;
+    color: var(--accent);
     font-weight: bold;
 }
 
@@ -3082,7 +3340,7 @@ a:focus {
 
 .hero-img-container:hover {
     transform: scale(1.05);
-    border-color: #ff0000;
+    border-color: var(--accent);
 }
 
 .hero-img {
@@ -3124,7 +3382,7 @@ a:focus {
 .scroll-indicator span {
     font-size: 0.7rem;
     letter-spacing: 2px;
-    color: #ff0000;
+    color: var(--accent);
 }
 
 .arrow-down {
@@ -3140,7 +3398,7 @@ a:focus {
 @media (max-width: 1024px) {
     .hero-section { flex-direction: column-reverse; justify-content: center; text-align: center; padding-top: 40px;}
     .hero-content { margin-top: 40px; }
-    .hero-tagline { border-left: none; border-bottom: 3px solid #ff0000; padding-bottom: 10px; display: inline-block;}
+    .hero-tagline { border-left: none; border-bottom: 3px solid var(--accent); padding-bottom: 10px; display: inline-block;}
     .hero-name { font-size: 3rem; }
     .hero-visual { flex: 0 0 auto; }
 }
@@ -3165,7 +3423,7 @@ a:focus {
 /* Specific Glow Colors based on likely icon colors */
 /* This adds a white/blue electric glow around the icon shape */
 .nav-item.active .nav-icon img {
-    filter: grayscale(0%) drop-shadow(0 0 10px #ff0000); /* Red glow for active */
+    filter: grayscale(0%) drop-shadow(0 0 10px var(--accent)); /* Red glow for active */
 }
 
 /* --- CONNECT PAGE: NEURAL UPLINK --- */
@@ -3269,7 +3527,7 @@ a:focus {
 
 /* 1. EMAIL (Red) */
 .uplink-card.email:hover {
-    border-color: #ff0000;
+    border-color: var(--accent);
     box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
     transform: translateY(-10px) rotateX(5deg);
 }
@@ -3277,8 +3535,8 @@ a:focus {
 .action-status {
     margin-top: 15px;
     font-size: 0.7rem;
-    color: #ff0000;
-    border: 1px solid #ff0000;
+    color: var(--accent);
+    border: 1px solid var(--accent);
     padding: 4px 8px;
     border-radius: 4px;
 }
@@ -3349,7 +3607,6 @@ a:focus {
 .section-header, 
 .connect-header {
     background: linear-gradient(90deg, rgba(20, 20, 20, 0.9) 0%, rgba(20, 20, 20, 0) 100%) !important;
-    border-left: 5px solid #ff0000;
     padding: 20px 30px !important;
     margin-bottom: 50px !important;
     position: relative;
@@ -3377,7 +3634,9 @@ a:focus {
     letter-spacing: 5px;
     margin: 0;
     position: relative;
-    display: inline-block;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 16px !important;
     
     /* The "Solid" Look */
     text-shadow: 
@@ -3386,6 +3645,18 @@ a:focus {
         1px -1px 0 #333,
         -1px 1px 0 #333,
         1px 1px 0 #333;
+}
+
+/* Red accent bar on headings */
+.section-header h2::before,
+.connect-header h2::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 3.5em;
+    background: var(--accent);
+    border-radius: 2px;
+    flex-shrink: 0;
 }
 
 /* 3. The "Deco-Brackets" (Visual Clutter) */
@@ -3405,7 +3676,7 @@ a:focus {
 
 /* Special Fix for the CONNECT Page Header text */
 .glitch-text {
-    text-shadow: 4px 4px 0px #ff0000; /* 3D Red Shadow */
+    text-shadow: 4px 4px 0px var(--accent); /* 3D Red Shadow */
 }
 
 /* Add to src/index.css */
@@ -3422,7 +3693,7 @@ a:focus {
 }
 
 .header-data-bar .spacer {
-    color: #ff0000;
+    color: var(--accent);
     margin: 0 15px;
 }
 /* --- SEARCH DROPDOWN STYLES --- */
@@ -3433,7 +3704,7 @@ a:focus {
     width: 100%;
     background: rgba(10, 10, 10, 0.95);
     border: 1px solid #333;
-    border-top: 2px solid #ff0000;
+    border-top: 2px solid var(--accent);
     border-radius: 0 0 8px 8px;
     backdrop-filter: blur(10px);
     z-index: 2000;
@@ -3457,7 +3728,7 @@ a:focus {
 }
 
 .search-arrow {
-    color: #ff0000;
+    color: var(--accent);
     margin-right: 10px;
     font-weight: bold;
 }
@@ -3483,7 +3754,7 @@ a:focus {
 }
 
 .live-dot {
-    color: #ff0000;
+    color: var(--accent);
     font-size: 0.8rem;
     animation: blink 1s infinite;
 }
@@ -3521,10 +3792,10 @@ a:focus {
 .sidebar-toggle-btn .bar {
     width: 25px;
     height: 3px;
-    background: #ff0000;
+    background: var(--accent);
     border-radius: 2px;
     transition: 0.3s;
-    box-shadow: 0 0 5px #ff0000;
+    box-shadow: 0 0 5px var(--accent);
 }
 
 .sidebar-toggle-btn:hover .bar {
@@ -3638,8 +3909,7 @@ a:focus {
         transparent 10px
     ) !important;
     
-    /* 2. BRING BACK THE BOX (The Heavy Border) */
-    border-left: 8px solid #ff0000 !important; /* Thick Red Bar */
+    /* Border styling - no left border */
     border-bottom: 1px solid rgba(255, 0, 0, 0.3) !important;
     
     /* 3. LAYOUT & SHADOW */
@@ -3650,26 +3920,64 @@ a:focus {
     position: relative;
     overflow: hidden;
     
-    /* Ensure it spans width */
+    /* CENTER everything */
     display: flex !important;
-    align-items: center;
-    justify-content: space-between;
+    align-items: center !important;
+    justify-content: center;
+    flex-direction: column;
 }
 
 /* 4. KEEP TEXT SHARP (But with the Heavy Background) */
 .section-header h2,
 .connect-header h2 {
     color: white !important;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8) !important; /* Clean Red Glow */
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8) !important;
     font-weight: 800 !important;
     text-transform: uppercase;
     letter-spacing: 3px;
     z-index: 2;
+    text-align: center !important;
+    font-size: clamp(28px, 5vw, 52px) !important;
 }
 
-/* 5. ADD THE "SCAN LINE" ANIMATION BACK (Optional Cool Factor) */
-.section-header::before {
+/* Remove red bar from h2 */
+.section-header h2::before,
+.connect-header h2::before {
+    content: '';
     display: none;
+}
+
+/* 5. ADD CORNER BRACKETS TO HEADING WRAPPER IF PRESENT */
+.section-title-group {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 22px;
+}
+
+.section-title-group::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+  border-radius: 2px 0 0 0;
+}
+
+.section-title-group::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+  border-radius: 0 0 2px 0;
 }
 
 @keyframes scan-line {
@@ -3705,7 +4013,7 @@ a:focus {
 }
 
 .explore-card:hover {
-    border-color: #ff0000;
+    border-color: var(--accent);
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);
 }
@@ -3762,7 +4070,7 @@ a:focus {
 .explore-section-header::before {
     bottom: 0;
     height: 3px; /* Slightly thicker */
-    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
     /* Make sure it stays strictly at the bottom */
 }
 
@@ -3874,8 +4182,8 @@ a:focus-visible {
 
 .contact-option-card:hover {
     background: #1a1a1a;
-    border-color: #ff0000;
-    border-left-color: #ff0000; /* Red accent on hover */
+    border-color: var(--accent);
+    border-left-color: var(--accent); /* Red accent on hover */
     transform: translateX(5px);
     box-shadow: 0 5px 15px rgba(255, 0, 0, 0.1);
 }
@@ -3906,7 +4214,7 @@ a:focus-visible {
 
 .action-text {
     font-size: 0.8rem;
-    color: #ff0000;
+    color: var(--accent);
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -3926,7 +4234,7 @@ a:focus-visible {
     color: white;
     margin-bottom: 25px;
     font-size: 1.5rem;
-    border-bottom: 2px solid #ff0000;
+    border-bottom: 2px solid var(--accent);
     display: inline-block;
     padding-bottom: 5px;
 }
@@ -3948,14 +4256,14 @@ a:focus-visible {
 }
 
 .cyber-input:focus {
-    border-color: #ff0000;
+    border-color: var(--accent);
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
 }
 
 .cyber-btn {
     width: 100%;
     padding: 15px;
-    background: #ff0000;
+    background: var(--accent);
     color: white;
     border: none;
     border-radius: 8px;
@@ -4016,7 +4324,7 @@ a:focus-visible {
 .loader-ring {
     width: 100%; height: 100%;
     border: 3px solid transparent;
-    border-top: 3px solid #ff0000;
+    border-top: 3px solid var(--accent);
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -4026,14 +4334,14 @@ a:focus-visible {
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 60%; height: 60%;
-    background: radial-gradient(circle, #ff0000 0%, transparent 70%);
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
     opacity: 0.5;
     animation: pulse 1s infinite alternate;
 }
 
 .boot-text {
     font-family: 'JetBrains Mono', monospace;
-    color: #ff0000;
+    color: var(--accent);
     letter-spacing: 2px;
     margin-bottom: 15px;
     font-size: 0.9rem;
@@ -4047,8 +4355,8 @@ a:focus-visible {
 
 .boot-progress-fill {
     height: 100%; width: 0%;
-    background: #ff0000;
-    box-shadow: 0 0 10px #ff0000;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
     animation: bootLoad 2.5s ease-out forwards;
 }
 
@@ -4103,7 +4411,7 @@ a:focus-visible {
 
 /* Hover: Red Border & Zoom */
 .tech-profile-card:hover .tech-img-box {
-    border-color: #ff0000;
+    border-color: var(--accent);
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
 }
 
@@ -4143,7 +4451,7 @@ a:focus-visible {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
     padding: 4px 8px;
-    background: #ff0000;
+    background: var(--accent);
     color: black;
     font-weight: bold;
     letter-spacing: 1px;
@@ -4173,7 +4481,7 @@ a:focus-visible {
 }
 
 .log-line {
-    color: #ff0000;
+    color: var(--accent);
     font-size: 1rem;
     margin-bottom: 8px;
     opacity: 0; /* Hidden initially */
@@ -4224,10 +4532,10 @@ a:focus-visible {
 /* CHANGED TO RED */
 .boot-text { 
     margin-top: 20px; 
-    color: #ff0000; 
+    color: var(--accent); 
     letter-spacing: 2px; 
     font-size: 1.1rem;
-    text-shadow: 0 0 5px #ff0000; 
+    text-shadow: 0 0 5px var(--accent); 
 }
 
 .boot-bar-container {
@@ -4235,9 +4543,9 @@ a:focus-visible {
 }
 /* CHANGED TO RED */
 .boot-progress-fill {
-    height: 100%; background: #ff0000; width: 0%;
+    height: 100%; background: var(--accent); width: 0%;
     animation: loadBar 2.5s linear forwards;
-    box-shadow: 0 0 10px #ff0000;
+    box-shadow: 0 0 10px var(--accent);
 }
 
 /* Profile Selection */
@@ -4261,7 +4569,7 @@ a:focus-visible {
     min-width: 200px;
 }
 .tech-profile-card:hover { 
-    border-color: #ff0000; 
+    border-color: var(--accent); 
     transform: scale(1.05); 
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); 
 }
@@ -4275,7 +4583,7 @@ a:focus-visible {
 .guest-icon { font-size: 50px; color: #555; }
 
 .tech-badge {
-    background: #ff0000; color: #000; font-weight: bold;
+    background: var(--accent); color: #000; font-weight: bold;
     padding: 5px 10px; display: inline-block; font-size: 0.8rem; margin-top: 10px; letter-spacing: 1px;
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
@@ -4285,21 +4593,21 @@ a:focus-visible {
 .unlock-sequence { text-align: center; width: 100%; max-width: 600px; }
 /* CHANGED TO RED */
 .access-title { 
-    color: #ff0000; 
+    color: var(--accent); 
     font-size: 2.5rem; 
     animation: blink 0.5s infinite; 
     margin-bottom: 20px; 
-    text-shadow: 0 0 10px #ff0000;
+    text-shadow: 0 0 10px var(--accent);
 }
 /* CHANGED TO RED */
 .console-log { 
     text-align: left; 
     background: rgba(255, 0, 0, 0.05); 
     padding: 20px; 
-    border: 2px solid #ff0000;
+    border: 2px solid var(--accent);
     border-radius: 4px;
 }
-.log-line { color: #ff0000; opacity: 0; animation: typeLine 0.5s forwards; margin: 8px 0; font-size: 0.9rem; }
+.log-line { color: var(--accent); opacity: 0; animation: typeLine 0.5s forwards; margin: 8px 0; font-size: 0.9rem; }
 .delay-1 { animation-delay: 0.5s; }
 .delay-2 { animation-delay: 1.2s; }
 .delay-3 { animation-delay: 2.0s; color: #fff; text-shadow: 0 0 5px #fff; }
@@ -4520,7 +4828,7 @@ a:focus-visible {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #ff0000;
+    color: var(--accent);
     transition: all 0.3s ease;
     z-index: 100;
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
@@ -4618,7 +4926,7 @@ a:focus-visible {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ff0000;
+    color: var(--accent);
     cursor: pointer;
     transition: all 0.2s ease;
     flex-shrink: 0;
@@ -4657,7 +4965,7 @@ a:focus-visible {
 }
 
 .contact-option svg {
-    color: #ff0000;
+    color: var(--accent);
     flex-shrink: 0;
     margin-top: 2px;
 }
@@ -4736,8 +5044,8 @@ a:focus-visible {
 .ring-1 {
     width: 360px;
     height: 360px;
-    border-top: 2px solid #ff0000;
-    border-bottom: 2px solid #ff0000;
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
     opacity: 0.6;
     animation: spin-right 10s linear infinite;
 }
@@ -4746,7 +5054,7 @@ a:focus-visible {
 .ring-2 {
     width: 320px;
     height: 320px;
-    border-left: 4px solid #ff0000;
+    border-left: 4px solid var(--accent);
     border-right: 4px solid transparent;
     opacity: 0.4;
     animation: spin-left 6s linear infinite;
@@ -4796,7 +5104,6 @@ a:focus-visible {
     align-items: center;
     padding: 15px;
     cursor: pointer;
-    group: 1;
 }
 
 /* 2. The Image - Dark & Mysterious by default */
@@ -4838,7 +5145,7 @@ a:focus-visible {
     left: 15px;
     right: 15px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #ff0000, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
     opacity: 0;
     transition: opacity 0.6s ease;
     pointer-events: none;
@@ -4933,7 +5240,7 @@ a:focus-visible {
     font-size: 0.75rem;
     letter-spacing: 1px;
     font-weight: 600;
-    color: #ff0000;
+    color: var(--accent);
     background: rgba(0, 0, 0, 0.7);
     padding: 6px 12px;
     border: 1px solid rgba(255, 0, 0, 0.4);
@@ -5080,7 +5387,7 @@ a:focus-visible {
 .holo-id-card {
     background: #0a0a0a !important;
     border: 1px solid #333 !important;
-    border-top: 4px solid #ff0000 !important; /* Thick red accent line */
+    border-top: 4px solid var(--accent) !important; /* Thick red accent line */
     /* Hard, sharp shadow instead of a blurry glow */
     box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.8) !important; 
     border-radius: 4px !important;
@@ -5148,7 +5455,7 @@ a:focus-visible {
     position: absolute;
     top: 12px; 
     right: 12px;
-    color: #ff0000;
+    color: var(--accent);
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
     font-weight: 700;
@@ -5176,7 +5483,7 @@ a:focus-visible {
     /* This creates the jagged, cyberpunk cut-corner shape */
     clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
     border: 2px solid #333;
-    border-top: 4px solid #ff0000;
+    border-top: 4px solid var(--accent);
     transition: all 0.5s ease;
     box-shadow: 0 0 0 transparent; /* Resets standard shadow due to clip-path */
 }
@@ -5192,7 +5499,7 @@ a:focus-visible {
 }
 
 .neural-id-card:hover {
-    border-color: #ff0000;
+    border-color: var(--accent);
     background: #0a0a0a !important;
 }
 
@@ -5246,7 +5553,7 @@ a:focus-visible {
 .neural-crosshair::after {
     content: ''; position: absolute;
     top: 10px; left: 10px; right: 10px; bottom: 10px;
-    border: 1px solid #ff0000;
+    border: 1px solid var(--accent);
     opacity: 0.3;
 }
 
@@ -5265,8 +5572,8 @@ a:focus-visible {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 3px;
-    background: #ff0000;
-    box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent);
     z-index: 4;
     opacity: 0.8;
     animation: biometricScan 3s ease-in-out infinite;
@@ -5289,11 +5596,11 @@ a:focus-visible {
 .data-line {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
-    color: #ff0000;
+    color: var(--accent);
     background: rgba(0,0,0,0.7);
     padding: 2px 6px;
     margin-bottom: 2px;
-    text-shadow: 0 0 5px #ff0000;
+    text-shadow: 0 0 5px var(--accent);
 }
 
 .neural-id-card:hover .data-line {
@@ -5329,7 +5636,7 @@ a:focus-visible {
 
 /* --- DETAILS AREA BELOW PHOTO --- */
 .neural-name { font-size: 1.8rem; color: white; margin-bottom: 5px; text-transform: uppercase; }
-.neural-role { font-size: 0.9rem; color: #ff0000; font-family: 'JetBrains Mono', monospace; margin-bottom: 15px; }
+.neural-role { font-size: 0.9rem; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 15px; }
 .neural-status { font-size: 0.8rem; color: #aaa; display: flex; align-items: center; gap: 10px; }
 .blink-dot { width: 8px; height: 8px; background: #00ff00; border-radius: 50%; animation: recBlink 1s infinite; box-shadow: 0 0 10px #00ff00; }
 
@@ -5368,7 +5675,7 @@ a:focus-visible {
 
 /* The ">" symbol */
 .logo-prompt {
-    color: #ff0000; /* Neon Red */
+    color: var(--accent); /* Neon Red */
     margin-right: 8px;
     text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
 }
@@ -5381,7 +5688,7 @@ a:focus-visible {
 
 /* The Blinking Cursor */
 .logo-cursor {
-    color: #ff0000;
+    color: var(--accent);
     margin-left: 2px;
     animation: terminalBlink 1s step-end infinite;
     text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
@@ -5394,7 +5701,7 @@ a:focus-visible {
 
 /* Hover Effect: The whole logo glows slightly when moused over */
 .cyber-logo-container:hover .logo-name {
-    color: #ff0000;
+    color: var(--accent);
     text-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
     transition: all 0.3s ease;
 }
