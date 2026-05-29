@@ -16,7 +16,7 @@ import AboutMe from "./components/AboutMe";
 import Certifications from "./components/Certifications";
 import Experience from "./components/Experience";
 import Connect from "./components/Connect"; 
-import EntryPage from "./components/Entrypage";
+import IntroSequence from "./components/IntroSequence";
 import HoloCard from "./components/Holocard";
 import ContactWidget from "./components/ContactWidget";
 import "./App.css";
@@ -296,7 +296,7 @@ function App() {
   }, []);
 
   if (!hasEntered) {
-    return <EntryPage onEnter={() => setHasEntered(true)} />;
+    return <IntroSequence onComplete={() => setHasEntered(true)} />;
   }
 
   return (
@@ -307,7 +307,7 @@ function App() {
       <div id="scanline-overlay" className="scanline-overlay" />
       <div id="film-grain" className="film-grain" />
       
-      <div className="app-master-wrapper fade-in-active yt-music-theme">
+      <div className="app-master-wrapper fade-in-active yt-music-theme" style={{ animation: 'fadeInFromBlack 0.5s ease both' }}>
         
         {/* 3D Background Grid */}
         <div className="cyber-grid-container">
