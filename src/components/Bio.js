@@ -7,32 +7,33 @@ function Bio() {
       
       {/* --- LEFT SIDE: TEXT WITH PREMIUM STYLING --- */}
       <div className="hero-content">
-        <p className="hero-greeting">Full-Stack Developer & AI Engineer</p>
+        <p className="hero-greeting">7th Semester • KJSCE Mumbai</p>
         <h1 className="hero-name glitch" data-text="PARTH SHARMA">
           Parth Sharma
         </h1>
         
         <div className="hero-tagline">
-          Building scalable systems • Training ML models • Learning & growing
+          Full-stack developer & AI enthusiast building systems that actually work.
         </div>
 
         <div className="hero-manifesto">
           <p>
-            I'm a developer who loves solving complex problems. 
-            I have a <span className="highlight-red">9.4 CGPA</span>, but I believe real learning 
-            happens through building projects on GitHub, not just classrooms.
+            I'm a seventh-semester IT student from KJSCE with a <span className="accent-text">9.4 GPA</span>.
+            I've spent the last few years learning how to build things — web apps, ML models, blockchain systems —
+            and more importantly, learning how to build them right. Not just demos that look good.
+            Real systems that solve real problems.
           </p>
           <p>
-            Right now, I'm focused on building production-ready web applications, training deep learning models, 
-            and actively learning <span className="highlight-red">German</span> for future opportunities. 
-            I'm always looking for the next meaningful problem to solve.
+            I work with <span className="accent-text">React, Node.js, Python, and TensorFlow</span> mostly.
+            I'm learning <span className="accent-text">German</span> on the side because I want to do grad school in Germany.
+            I take code seriously. I take learning seriously. Everything else I'm pretty relaxed about.
           </p>
         </div>
 
         <div className="hero-personal">
           <div style={{ display: 'flex', gap: '20px', fontSize: '0.9rem', color: '#888' }}>
-            <span>⚡ Actively shipping code</span>
-            <span>🇩🇪 Learning German (A1)</span>
+            <span>⚡ Shipping code daily</span>
+            <span>🇩🇪 A1 → A2 in progress</span>
           </div>
         </div>
       </div>

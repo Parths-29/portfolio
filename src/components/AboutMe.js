@@ -31,11 +31,20 @@ function AboutMe() {
              </div>
           </div>
           <p className="mission-text">
-            Hey! I'm Parth. I'm a 3rd-year IT student who loves building things that actually work. 
-            I started with web development because I liked seeing my code come to life instantly, 
-            and now I'm diving deep into AI because I want to build systems that can think.
+            I'm from Mumbai. Seventh semester at KJSCE, Information Technology.
+            I got into coding properly in first year when I couldn't find a tool
+            that did what I needed — so I built it. That's still how it works.
             <br /><br />
-            When I'm not coding, you'll probably find me  gaming or just exploring new things.
+            The academic side: <span className="accent-text">9.4 GPA</span>, decent at OOSE,
+            really into anything that touches data or security. The non-academic side:
+            two hackathons, one national-level pitch, and an internship at
+            <span className="accent-text"> a fintech startup</span> where I built things
+            that people actually used.
+            <br /><br />
+            Outside code I'm learning <span className="accent-text">German</span> —
+            which is harder than any ML paper I've read — and thinking about
+            where I want to be in five years. Probably a grad school lab in Berlin or Munich.
+            Probably working on something I can't fully describe yet.
           </p>
           <div className="social-buttons" style={{marginBottom: '30px'}}>
              <a href="https://github.com/Parths-29" target="_blank" rel="noopener noreferrer" className="btn btn-github">GitHub</a>
@@ -60,16 +69,16 @@ function AboutMe() {
               <h3 className="education-title">B.Tech in Information Technology</h3>
               <p className="education-institution">KJ Somaiya College of Engineering (KJSCE)</p>
               <p className="education-description">
-                Currently in my 3rd year. I'm focusing on becoming a strong developer, learning how 
-                large software systems are built, and maintaining a good CGPA while working on my projects.
+                Currently Semester VII. <span className="accent-text">9.4 GPA</span>, decent at systems courses, 
+                really into anything with data or security. Learning the kind of stuff that doesn't go on tests.
               </p>
             </div>
             <div className="education-card">
               <h3 className="education-title">High School</h3>
               <p className="education-institution">DAV Public School, Panvel</p>
               <p className="education-description">
-                This is where I grew up. I had a great time here, made some lifelong friends, 
-                and built my foundation in Science and Math before moving into engineering.
+                Built my foundation in Science and Math here before moving into engineering. 
+                Made some lifelong friends. Still the place where I learned how to actually learn.
               </p>
             </div>
           </div>
@@ -90,8 +99,8 @@ function AboutMe() {
             </div>
             <h3 className="council-name">SMLRA (ML Council)</h3>
             <p className="council-desc">
-              I was part of the AI council where we helped students get started with Ml and handled creative work. 
-              We organized workshops and built a community of developers who love building cool stuff.
+              Helped students get started with ML, organized workshops. Built community of developers 
+              who actually enjoy building things. Handled branding and creative work too.
             </p>
           </div>
           <div className="council-card">
@@ -100,8 +109,8 @@ function AboutMe() {
             </div>
             <h3 className="council-name">Robocon (Robotics)</h3>
             <p className="council-desc">
-              I helped the robotics team with their branding and designs. It was an amazing experience 
-              to see our logos and visuals representing the team at national competitions.
+              Built branding and design identity for the robotics team. Saw our logos represent them 
+              at national competitions. Real work with real impact.
             </p>
           </div>
         </div>
@@ -117,20 +126,43 @@ function AboutMe() {
         <div className="section-content">
           <div className="skills-grid">
             <div className="skill-category-card">
-              <h3 className="skill-category-title">Web Development</h3>
-              <p className="skill-list">React.js • Node.js • Express • HTML/CSS • Tailwind </p>
+              <h3 className="skill-category-title">AI / ML</h3>
+              <p className="skill-list">TensorFlow • PyTorch • scikit-learn</p>
+              <p style={{fontSize: '0.85rem', color: '#888', marginTop: '8px'}}>
+                Fraud detection, anomaly detection, image classifiers.
+                Mostly supervised learning — getting into RL slowly.
+              </p>
             </div>
             <div className="skill-category-card">
-              <h3 className="skill-category-title">Machine Learning</h3>
-              <p className="skill-list">Python • TensorFlow • Scikit-learn • Pandas</p>
+              <h3 className="skill-category-title">Web & Full Stack</h3>
+              <p className="skill-list">React • Node.js • MongoDB • Express</p>
+              <p style={{fontSize: '0.85rem', color: '#888', marginTop: '8px'}}>
+                MERN is what I default to. Built fintech projects with it.
+                Would use <span className="accent-text">Next.js</span> if I started fresh today.
+              </p>
             </div>
             <div className="skill-category-card">
-              <h3 className="skill-category-title">DSA & Core</h3>
-              <p className="skill-list">Java • LeetCode • Problem Solving • OOPs</p>
+              <h3 className="skill-category-title">Infrastructure</h3>
+              <p className="skill-list">Google Cloud • Docker • Git</p>
+              <p style={{fontSize: '0.85rem', color: '#888', marginTop: '8px'}}>
+                Cloud for deployment, Docker when environment matters,
+                Git for everything. I don't do DevOps by choice but I can.
+              </p>
             </div>
             <div className="skill-category-card">
-              <h3 className="skill-category-title">Others</h3>
-              <p className="skill-list">Git/GitHub • SQL • OS • Canva • Figma</p>
+              <h3 className="skill-category-title">Security</h3>
+              <p className="skill-list">Blockchain • Smart Contracts • Cryptography</p>
+              <p style={{fontSize: '0.85rem', color: '#888', marginTop: '8px'}}>
+                <span className="accent-text">MedChain</span> is my deepest dive here —
+                EHR system on blockchain with role-based access. It works.
+              </p>
+            </div>
+            <div className="skill-category-card">
+              <h3 className="skill-category-title">Learning Right Now</h3>
+              <p className="skill-list">German (A1 → A2) • Advanced ML • System design</p>
+              <p style={{fontSize: '0.85rem', color: '#888', marginTop: '8px'}}>
+                These don't belong on a resume yet. They will.
+              </p>
             </div>
           </div>
         </div>

@@ -31,6 +31,11 @@ function Connect() {
           <h2 className="glitch-text" data-text="LETS CONNECT">
             LETS CONNECT
           </h2>
+          <p style={{fontSize: '0.9rem', color: '#888', marginTop: '12px', letterSpacing: '0.05em'}}>
+            If you're a recruiter: my resume is below, response time is usually same day.
+            If you're a researcher or builder: tell me what you're working on.
+            If you found a bug on this site: I genuinely want to know.
+          </p>
         </div>
         
         {/* Tech Data Bar */}
@@ -69,8 +74,8 @@ function Connect() {
           <div className="card-bg"></div>
           <div className="card-content">
             <div className="icon-wrapper">✉️</div>
-            <h3>DROP ME AN EMAIL</h3>
-            <p className="link-text">parth.sharma1@somaiya.edu</p>
+            <h3>parth.sharma1@somaiya.edu</h3>
+            <p className="link-text">I check this more than I should</p>
             <div className="action-status">
                 {copied ? ">> COPIED TO CLIPBOARD <<" : "CLICK TO COPY"}
             </div>

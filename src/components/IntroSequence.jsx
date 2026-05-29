@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import tudumSound from './netflix-tudum.mp3';
-import profileImg from './img1.jpg';
+import profileImg from './image1.jpg';
 
 // ── Timing constants ──────────────────────────────────────────────
 const T = {

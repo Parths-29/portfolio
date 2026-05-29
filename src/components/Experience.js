@@ -51,9 +51,9 @@ function Experience() {
     {
       id: 6,
       role: "Fintech Web Developer Intern",
-      company: "Bluestock Fintech",
+      company: "Fintech Startup",
       date: "May 2025 - July 2025",
-      desc: "Contributed to the core trading dashboard. Integrated real-time stock APIs and implemented secure user authentication flows. Enhanced the frontend architecture for high-frequency data updates.",
+      desc: "Built full-stack features for fintech platform. Worked on React frontends, REST APIs, real-time data integration. Real users, real data, the kind of work where mistakes actually cost money.",
       tags: ["Fintech", "React", "API Integration"],
       category: "dev"
     },
